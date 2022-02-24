@@ -38,7 +38,7 @@ public class EquipementCRUD {
     */
     public void ajouterequipement(){
         try {
-            String requete= "INSERT INTO equipement(nom_equipement,image,prix_equipement,description_equipement) VALUES('tt','image',199,'table pour losir')";
+            String requete= "INSERT INTO equipement(nom_equipement,image,prix_equipement,description_equipement) VALUES('tentet','immagee',1999,'tente')";
            Statement st = new MyConnection().getCnx().createStatement();
            st.executeUpdate(requete);
            System.out.println("equipement ajoutee ");
@@ -85,9 +85,9 @@ public class EquipementCRUD {
     
     
     
-     public void supprimerequipement(Equipement E) {
+     public void supprimerequipement(int ref) {
         try {
-            String req = "DELETE FROM Equipement where Ref_equipement=" + E.getRef_equipement();
+            String req = "DELETE FROM Equipement where Ref_equipement=" + ref;
             Statement st = new MyConnection().getCnx().createStatement();
             st.executeUpdate(req);
             System.out.println("Equipement supprimée !");
@@ -95,25 +95,7 @@ public class EquipementCRUD {
             System.out.println(ex.getMessage());
         }
     }
-    /*
-    public void rechercherparnom (String Nom_equipement){
-    try {
-    String req = "SELECT * FROM Equipement where Nom_equipement ='"+Nom_equipement+"'";
-    Statement st = new MyConnection().getCnx().createStatement();
-    ResultSet res = st.executeQuery(req);
-   res.last() ;
-   int nbrRow = res.getRow() ;
-   if (nbrRow!=0){
-   System.out.println("equipement trouve");
-   }else {
-   System.out.println("equipement non trouve ");}
-    } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-            
-            
-            
-            }*/
+    
 }
     
     

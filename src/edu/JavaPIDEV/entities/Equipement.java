@@ -13,7 +13,7 @@ public class Equipement {
   private int Ref_equipement;
   private String Nom_equipement;
   private String image ;
-  private int Prix_equipement;
+  private  int Prix_equipement;
   private String Description_equipement ; 
 
   public Equipement(){} 
@@ -42,7 +42,7 @@ public class Equipement {
         this.Nom_equipement = Nom_equipement;
     }
 
-    public int getPrix_equipement() {
+    public  int getPrix_equipement() {
         return Prix_equipement;
     }
 
