@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="509.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.JavaPIDEV.GUI.LoginController">
+   <children>
+      <ImageView fitHeight="400.0" fitWidth="603.0" layoutX="-7.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../Capture%20d’écran%202022-02-27%20143040.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="153.0" layoutY="164.0" text="Email :" textFill="WHITE" />
+      <TextField fx:id="txtemail" layoutX="192.0" layoutY="159.0" prefHeight="26.0" prefWidth="177.0" />
+      <Label layoutX="153.0" layoutY="209.0" text="Mot de Passe :" textFill="WHITE" />
+      <PasswordField fx:id="txtmdp" layoutX="234.0" layoutY="204.0" prefHeight="26.0" prefWidth="136.0" />
+      <Button fx:id="btnconn" layoutX="163.0" layoutY="292.0" mnemonicParsing="false" onAction="#login" prefHeight="26.0" prefWidth="90.0" text="Se connecter" />
+      <Label fx:id="txtmdpoub" layoutX="150.0" layoutY="250.0" mouseTransparent="true" text="Mot de passe oublié ?" textFill="#68a5fa" underline="true" />
+      <Button fx:id="btninscri" layoutX="277.0" layoutY="292.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="89.0" text="S'inscrire" />
+   </children>
+</AnchorPane>
