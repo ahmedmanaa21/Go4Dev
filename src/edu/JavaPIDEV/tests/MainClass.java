@@ -10,7 +10,6 @@ import edu.JavaPIDEV.entities.Client;
 import edu.JavaPIDEV.services.AdminCRUD;
 import edu.JavaPIDEV.services.ClientCRUD;
 import edu.JavaPIDEV.utils.MyConnection;
-import java.time.LocalDate;
 import java.time.Period;
 import java.util.List;
 
@@ -22,7 +21,6 @@ public class MainClass {
 
     public static void main(String[] args) {
         System.out.println("***********   Connection BDD   ***************");
-        MyConnection mc = new MyConnection();
         MyConnection m1 = MyConnection.getInstance();
         System.out.println("***********   Gestion Admins   ***************");
         AdminCRUD ad = new AdminCRUD();

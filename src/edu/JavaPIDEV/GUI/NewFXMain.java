@@ -1,19 +1,15 @@
 package edu.JavaPIDEV.GUI;
 
-import edu.JavaPIDEV.GUI.AjouterAdminsController;
-import edu.JavaPIDEV.GUI.AjouterClientsController;
+
+import edu.JavaPIDEV.entities.Admin;
+import edu.JavaPIDEV.entities.Client;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.layout.StackPane;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 /**
@@ -22,14 +18,17 @@ import javafx.stage.Stage;
  */
 public class NewFXMain extends Application {
 
+    public static Admin Userconnected = new Admin();
+    public static Client UserconnectedC = new Client();
     @Override
     public void start(Stage primaryStage) {
         Parent root;
         try {
 
-            root = FXMLLoader.load(getClass().getResource("Login.fxml"));
-            Scene scene = new Scene(root, 603, 400);
-            primaryStage.setTitle("");
+            root = FXMLLoader.load(getClass().getResource("login.fxml"));
+            Scene scene = new Scene(root, 1335, 909);
+            primaryStage.setTitle("CamperDen");
+            primaryStage.getIcons().add(new Image("file:C:\\Users\\MSI\\Desktop\\CampersDen\\src\\Images\\logo.png"));
             primaryStage.setScene(scene);
             primaryStage.show();
 

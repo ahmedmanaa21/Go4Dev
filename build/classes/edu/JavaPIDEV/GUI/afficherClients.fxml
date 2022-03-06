@@ -1,20 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.JavaPIDEV.GUI.AfficherClientsController">
    <children>
-      <AnchorPane id="AnchorPane" layoutX="10.0" layoutY="10.0" prefHeight="400.0" prefWidth="784.0">
+      <AnchorPane id="AnchorPane" fx:id="displayArea" layoutX="296.0" layoutY="71.0" prefHeight="789.0" prefWidth="1028.0" stylesheets="@../../../../../../Downloads/zero/src/zero/views/css/style.css">
          <children>
-            <Button fx:id="btnmodifier" layoutX="428.0" layoutY="353.0" mnemonicParsing="false" onAction="#modifierClients" text="Modifier" />
-            <Button fx:id="btnsupprimer" layoutX="310.0" layoutY="353.0" mnemonicParsing="false" onAction="#supprimerClients" text="Supprimer" />
-            <TextField layoutX="30.0" layoutY="14.0" />
-            <TableView fx:id="table" layoutX="30.0" layoutY="64.0" prefHeight="279.0" prefWidth="740.0">
+            <TextField fx:id="idm" layoutX="-22.0" layoutY="170.0" prefHeight="31.0" prefWidth="26.0" visible="false" />
+         </children>
+      </AnchorPane>
+      <AnchorPane id="AnchorPane" prefHeight="906.0" prefWidth="1335.0" stylesheets="@../../../CSS/style.css">
+         <children>
+            <Button fx:id="btnmodifier" layoutX="1132.0" layoutY="655.0" mnemonicParsing="false" onAction="#Refresh" style="-fx-background-radius: 30;" text="Refresh" />
+            <Button fx:id="btnsupprimer" layoutX="728.0" layoutY="655.0" mnemonicParsing="false" onAction="#supprimerClients" style="-fx-background-radius: 30;" text="Supprimer" />
+            <TextField fx:id="txtrecherche" layoutX="448.0" layoutY="316.0" prefHeight="26.0" prefWidth="200.0" promptText="Recherche :" style="-fx-background-radius: 50;" />
+            <TableView fx:id="table" layoutX="448.0" layoutY="366.0" prefHeight="279.0" prefWidth="740.0">
                <columns>
                   <TableColumn fx:id="txtcin" prefWidth="75.0" text="Cin" />
                   <TableColumn fx:id="txtnom" prefWidth="97.60003662109375" text="Nom Complet" />
@@ -26,7 +36,73 @@
                   <TableColumn fx:id="txtimage" minWidth="8.800048828125" prefWidth="98.39990234375" text="Image" />
                </columns>
             </TableView>
-            <Label fx:id="lbtotal" layoutX="670.0" layoutY="18.0" text="Total :" />
+            <Button fx:id="btnajouter" layoutX="558.0" layoutY="655.0" mnemonicParsing="false" onAction="#ajouterClients" prefHeight="26.0" prefWidth="150.0" style="-fx-background-radius: 30;" text="Ajouter Clients" />
+            <Label layoutX="755.0" layoutY="256.0" text="Gestion des Clients">
+               <font>
+                  <Font name="Impact" size="22.0" />
+               </font>
+            </Label>
+            <VBox alignment="TOP_CENTER" layoutY="-3.0" prefHeight="912.0" prefWidth="285.0" spacing="37.0" style="-fx-background-color: #05071F;">
+               <children>
+                  <ImageView fx:id="fxlogo" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../PI%20DEV%20Project/logo.png" />
+                     </image>
+                  </ImageView>
+                  <Button alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" mnemonicParsing="false" onAction="#changeScreenAdmin" prefHeight="42.0" prefWidth="258.0" stylesheets="@../../../CSS/style.css" text="Gestion des Admins" textFill="#e7e5e5" textOverrun="CLIP">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Button>
+                  <Button alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" mnemonicParsing="false" onAction="#changeScreenClient" prefHeight="42.0" prefWidth="258.0" stylesheets="@../../../CSS/style.css" text="Gestion des Clients" textOverrun="CLIP">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Button>
+                  <Button alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" mnemonicParsing="false" onAction="#changeScreenReclamations" prefHeight="42.0" prefWidth="258.0" stylesheets="@../../../CSS/style.css" text="Gestion des Réclamations" textOverrun="CLIP">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Button>
+                  <Button alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" mnemonicParsing="false" onAction="#changeScreenZoneCamp" prefHeight="42.0" prefWidth="258.0" stylesheets="@../../../CSS/style.css" text=" Gestion Zone de Camping" textOverrun="CLIP">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Button>
+                  <Button alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" mnemonicParsing="false" onAction="#changeScreenOfre" prefHeight="42.0" prefWidth="258.0" stylesheets="@../../../CSS/style.css" text="Gestion Offre" textOverrun="CLIP">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Button>
+                  <Button alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" mnemonicParsing="false" onAction="#changeScreenCommandes" prefHeight="42.0" prefWidth="258.0" stylesheets="@../../../CSS/style.css" text="Gestion Commandes" textOverrun="CLIP">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Button>
+                  <Button alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" mnemonicParsing="false" onAction="#changeScreenEvent" prefHeight="42.0" prefWidth="258.0" stylesheets="@../../../CSS/style.css" text="Gestion Evenement" textOverrun="CLIP">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Button>
+                  <Button alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" mnemonicParsing="false" onAction="#changeScreenEquip" prefHeight="42.0" prefWidth="258.0" stylesheets="@../../../CSS/style.css" text="Gestion des Equipements" textOverrun="CLIP" />
+                  <Button alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" mnemonicParsing="false" onAction="#changeScreenPanier" prefHeight="42.0" prefWidth="258.0" stylesheets="@../../../CSS/style.css" text="Gestion Panier" textOverrun="CLIP" />
+               </children>
+               <padding>
+                  <Insets top="55.0" />
+               </padding>
+            </VBox>
+            <Button layoutX="1157.0" layoutY="14.0" mnemonicParsing="false" onAction="#logout" prefHeight="31.0" prefWidth="164.0" text="Déconnexion">
+               <graphic>
+                  <ImageView fx:id="fxlogout" fitHeight="26.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../../Downloads/zero/src/Images/logout.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
          </children>
       </AnchorPane>
    </children>

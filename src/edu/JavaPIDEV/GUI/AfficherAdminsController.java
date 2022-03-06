@@ -5,42 +5,42 @@
  */
 package edu.JavaPIDEV.GUI;
 
+import static edu.JavaPIDEV.GUI.NewFXMain.Userconnected;
+import static edu.JavaPIDEV.GUI.NewFXMain.UserconnectedC;
 import edu.JavaPIDEV.entities.Admin;
 import edu.JavaPIDEV.services.AdminCRUD;
-import edu.JavaPIDEV.utils.MyConnection;
 
 import java.net.URL;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import edu.JavaPIDEV.utils.MyConnection;
 import java.io.IOException;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableColumn.CellEditEvent;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.control.cell.TextFieldTableCell;
-import static javafx.scene.input.KeyCode.S;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.util.converter.IntegerStringConverter;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -48,9 +48,13 @@ import javafx.util.converter.IntegerStringConverter;
  * @author dell
  */
 public class AfficherAdminsController implements Initializable {
+    
+    Connection cnx;
+    public AfficherAdminsController(){
+        cnx = MyConnection.getInstance().getCnx();
+    }
 
     AdminCRUD pc = new AdminCRUD();
-    Connection cnx = new MyConnection().getCnx();
     @FXML
     private TableView<Admin> table;
     @FXML
@@ -66,44 +70,56 @@ public class AfficherAdminsController implements Initializable {
     @FXML
     private Button btnsupprimer;
     @FXML
-    private Button btnmodifier;
+    private Button btnref;
+    @FXML
+    private Button btnajouter;
     @FXML
     private TextField txtrecherche;
 
     public ObservableList<Admin> dataAdmin = FXCollections.observableArrayList();
+    @FXML
+    private Button btnretour;
+    @FXML
+    private AnchorPane displayArea;
+    @FXML
+    private TextField idm;
+    @FXML
+    private ImageView fxlogo;
+    @FXML
+    private ImageView fxlogout;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        fxlogo.setImage(new Image("file:C:\\Users\\MSI\\Desktop\\CampersDen\\src\\Images\\logo.png"));
+        fxlogout.setImage(new Image("file:C:\\Users\\MSI\\Desktop\\CampersDen\\src\\Images\\logout.png"));
 
+        loadData();
+        searchAdmin();
         /**
          *
          *
          */
-        try {
-            ResultSet rs = cnx.createStatement().executeQuery("SELECT * FROM admin");
-            while (rs.next()) {
-                dataAdmin.add(new Admin(rs.getInt("id"),rs.getString("nom"), rs.getString("prenom"), rs.getString("email"), rs.getString("mdp"), rs.getInt("numtel")));
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(AfficherAdminsController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//        try {
+//            ResultSet rs = cnx.createStatement().executeQuery("SELECT * FROM admin");
+//            while (rs.next()) {
+//                dataAdmin.add(new Admin(rs.getInt("id"), rs.getString("nom"), rs.getString("prenom"), rs.getString("email"), rs.getString("mdp"), rs.getInt("numtel")));
+//            }
+//        } catch (SQLException ex) {
+//            Logger.getLogger(AfficherAdminsController.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//
+//        table.setEditable(true);
+//        txtnom.setCellValueFactory(new PropertyValueFactory<>("nom"));
+//        txtnom.setCellFactory(TextFieldTableCell.forTableColumn());
+//        txtprenom.setCellValueFactory(new PropertyValueFactory<>("prenom"));
+//        txtemail.setCellValueFactory(new PropertyValueFactory<>("email"));
+//        txtnum.setCellValueFactory(new PropertyValueFactory<>("numtel"));
+//        txtnum.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+//        table.setItems(dataAdmin);
 
-        table.setEditable(true);
-        table.getSelectionModel().cellSelectionEnabledProperty().set(true);
-        txtnom.setCellValueFactory(new PropertyValueFactory<>("nom"));
-        txtnom.setCellFactory(TextFieldTableCell.forTableColumn());
-        txtprenom.setCellValueFactory(new PropertyValueFactory<>("prenom"));
-        txtprenom.setCellFactory(TextFieldTableCell.forTableColumn());
-        txtemail.setCellValueFactory(new PropertyValueFactory<>("email"));
-        txtemail.setCellFactory(TextFieldTableCell.forTableColumn());
-        txtmdp.setCellFactory(TextFieldTableCell.forTableColumn());
-        txtnum.setCellValueFactory(new PropertyValueFactory<>("numtel"));
-        txtnum.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
-        table.setItems(dataAdmin);
-        
     }
 
     @FXML
@@ -136,30 +152,187 @@ public class AfficherAdminsController implements Initializable {
             selectBookAlert.showAndWait();
         }
     }
-    
+
     @FXML
-    private void modifieradmins(ActionEvent event) {
-        if (table.getSelectionModel().getSelectedItem() != null) {
+    private void Refresh() {
+        dataAdmin.clear();
+        AdminCRUD ad = new AdminCRUD();
+        dataAdmin.addAll(ad.affichageAdmin());
+        ad.affichageAdmin();
 
-            Admin ec = table.getSelectionModel().getSelectedItem();
-            pc.updateAdmin(ec.getNom(),ec.getPrenom(),ec.getEmail(),ec.getMdp(),ec.getNumtel(),ec.getId());
-            Alert BookAlert = new Alert(Alert.AlertType.INFORMATION);
-            BookAlert.setTitle("Modifier");
-            BookAlert.setHeaderText(null);
-            BookAlert.setContentText("Admin Modifié");
-            BookAlert.showAndWait();
+        table.setItems(dataAdmin);
+    }
 
-        } else {
+    private void loadData() {
+        Refresh();
+//        String mdp = null;
+//        pc.cryptPassword(mdp);
+        txtnom.setCellValueFactory(new PropertyValueFactory<>("nom"));
+        txtprenom.setCellValueFactory(new PropertyValueFactory<>("prenom"));
+        txtemail.setCellValueFactory(new PropertyValueFactory<>("email"));
+//        txtmdp.setCellValueFactory(new PropertyValueFactory<>(mdp));
+        txtnum.setCellValueFactory(new PropertyValueFactory<>("numtel"));
+        table.setOnMousePressed(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
 
-            Alert selectBookAlert = new Alert(Alert.AlertType.WARNING);
-            selectBookAlert.setTitle("Selectionner un admin");
-            selectBookAlert.setHeaderText(null);
-            selectBookAlert.setContentText("Selectionner un Admin !");
-            selectBookAlert.showAndWait();
+                if (event.getClickCount() == 2) {
+                    FXMLLoader Loader = new FXMLLoader();
+                    Loader.setLocation(getClass().getResource("ModifierAdmins.fxml"));
+                    try {
+                        Loader.load();
+                    } catch (IOException ex) {
+                        // ex.printStackTrace();
 
-            
+                        System.out.println("error : " + ex.getMessage());;
+                    }
+                    ModifierAdminsController Mdc = Loader.getController();
+                    Mdc.setData(table.getSelectionModel().getSelectedItem().getId(),
+                             table.getSelectionModel().getSelectedItem().getNom(),
+                             table.getSelectionModel().getSelectedItem().getPrenom(),
+                             table.getSelectionModel().getSelectedItem().getEmail(),
+                             table.getSelectionModel().getSelectedItem().getMdp(),
+                             table.getSelectionModel().getSelectedItem().getNumtel());
+
+                    Parent p = Loader.getRoot();
+                    Stage stage = new Stage();
+                    stage.setScene(new Scene(p));
+                    stage.show();
+                }
+            }
+
+        });
+    }
+
+    @FXML
+    private void ajouterAdmins(ActionEvent event) {
+
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("ajouterAdmins.fxml"));
+            Scene scene = new Scene(root, 1335, 909);
+            Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            appStage.setScene(scene);
+            appStage.show();
+        } catch (IOException ex) {
+            ex.getMessage();
+        }
+
+    }
+
+    
+    void searchAdmin() {
+        Admin ad = new Admin();
+        
+        txtnom.setCellValueFactory(new PropertyValueFactory<>("nom"));
+        txtprenom.setCellValueFactory(new PropertyValueFactory<>("prenom"));
+        txtemail.setCellValueFactory(new PropertyValueFactory<>("email"));
+        txtmdp.setCellValueFactory(new PropertyValueFactory<>(""));
+        txtnum.setCellValueFactory(new PropertyValueFactory<>("numtel"));
+        
+       
+        table.setItems(dataAdmin);
+       
+        FilteredList<Admin> filteredData = new FilteredList<>(dataAdmin, b -> true);
+       
+        txtrecherche.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredData.setPredicate((Admin adm) -> {
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+                String lowerCaseFilter = newValue.toLowerCase();
+
+                if (adm.getNom().toLowerCase().indexOf(lowerCaseFilter) != -1 ) {
+					return true; // Filter matches first name.
+				} else if (adm.getPrenom().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+					return true; // Filter matches last name.
+				}
+                                if (adm.getEmail().toLowerCase().indexOf(lowerCaseFilter) != -1 ) {
+					return true; // Filter matches first name.
+				}
+                                                         
+				     else  
+				    	 return false; // Does not match.
+			});
+		});
+        SortedList<Admin> sortedData = new SortedList<>(filteredData);
+        sortedData.comparatorProperty().bind(table.comparatorProperty());
+        table.setItems(sortedData);
+   }
+
+    @FXML
+    private void changeScreenAdmin(ActionEvent event) throws IOException {
+        Parent tableViewParent=FXMLLoader.load(getClass().getResource("afficherAdmins.fxml"));
+        Scene tableViewScene= new Scene(tableViewParent);
+        Stage window =(Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(tableViewScene);
+        window.show();
+    }
+
+    @FXML
+    private void changeScreenClient(ActionEvent event) throws IOException {
+        Parent tableViewParent=FXMLLoader.load(getClass().getResource("afficherClients.fxml"));
+        Scene tableViewScene= new Scene(tableViewParent);
+        Stage window =(Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(tableViewScene);
+        window.show();
+    }
+
+
+    @FXML
+    private void changeScreenZoneCamp(ActionEvent event) {
+    }
+
+    @FXML
+    private void changeScreenOfre(ActionEvent event) {
+    }
+
+    @FXML
+    private void changeScreenCommandes(ActionEvent event) {
+    }
+
+    @FXML
+    private void changeScreenEvent(ActionEvent event) {
+    }
+
+    @FXML
+    private void changeScreenEquip(ActionEvent event) {
+    }
+
+    @FXML
+    private void logout(ActionEvent event) {
+        UserconnectedC.setCin(0);
+        UserconnectedC.setNomPrenom("");
+        UserconnectedC.setSurnom("");
+        UserconnectedC.setEmail("");
+        UserconnectedC.setMdp("");
+        UserconnectedC.setAdresse("");
+        UserconnectedC.setImage("");
+
+        Userconnected.setId(0);
+        Userconnected.setNom("");
+        Userconnected.setPrenom("");
+        Userconnected.setEmail("");
+        Userconnected.setMdp("");
+        Userconnected.setNumtel(0);
+
+        FXMLLoader LOADER = new FXMLLoader(getClass().getResource("login.fxml"));
+        try {
+            Parent root = LOADER.load();
+            Scene sc = new Scene(root);
+            LoginController cntr = LOADER.getController();
+            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            window.setScene(sc);
+            window.show();
+        } catch (IOException ex) {
+
         }
     }
+
+    @FXML
+    private void changeScreenReclamations(ActionEvent event) {
+    }
+
+    @FXML
+    private void changeScreenPanier(ActionEvent event) {
+    }
 }
-
-

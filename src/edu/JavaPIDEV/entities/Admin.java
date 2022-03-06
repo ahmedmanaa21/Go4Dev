@@ -12,7 +12,7 @@ package edu.JavaPIDEV.entities;
 public class Admin {
 
     private int id;
-    private String nom;
+    public String nom;
     private String prenom;
     private String email;
     private String mdp;

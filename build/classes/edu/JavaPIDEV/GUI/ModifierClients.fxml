@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.JavaPIDEV.GUI.ModifierClientsController">
+   <children>
+      <AnchorPane id="AnchorPane" fx:id="displayArea" layoutX="296.0" layoutY="11.0" prefHeight="912.0" prefWidth="1050.0" stylesheets="@../../../CSS/style.css">
+         <children>
+            <TextField fx:id="idm" layoutX="-22.0" layoutY="170.0" prefHeight="31.0" prefWidth="26.0" visible="false" />
+            <Button layoutX="872.0" layoutY="14.0" mnemonicParsing="false" onAction="#logout" prefHeight="31.0" prefWidth="164.0" stylesheets="@../../../CSS/style.css" text="Déconnexion">
+               <graphic>
+                  <ImageView fx:id="fxlogout" fitHeight="26.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../../Downloads/zero/src/Images/logout.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </AnchorPane>
+      <AnchorPane id="AnchorPane" prefHeight="909.0" prefWidth="1335.0" stylesheets="@../../../CSS/style.css">
+         <children>
+            <Label layoutX="528.0" layoutY="398.0" text="CIN :" />
+            <TextField fx:id="fxcin" editable="false" layoutX="648.0" layoutY="390.0" />
+            <Label layoutX="528.0" layoutY="441.0" text="Nom &amp; Prenom :" />
+            <TextField fx:id="fxnom" layoutX="648.0" layoutY="433.0" />
+            <Label layoutX="528.0" layoutY="484.0" text="Surnom :" />
+            <TextField fx:id="fxsurnom" layoutX="648.0" layoutY="476.0" />
+            <Label layoutX="528.0" layoutY="525.0" text="Email :" />
+            <TextField fx:id="fxemail" layoutX="648.0" layoutY="517.0" />
+            <Label layoutX="528.0" layoutY="604.0" text="Date de naissance :" />
+            <Label layoutX="528.0" layoutY="643.0" text="Adresse :" />
+            <TextField fx:id="fxadresse" layoutX="648.0" layoutY="635.0" />
+            <Label layoutX="528.0" layoutY="568.0" text="Mot de passe :" />
+            <Button fx:id="btnmodif" layoutX="1005.0" layoutY="614.0" mnemonicParsing="false" onAction="#updateClients" prefHeight="39.0" prefWidth="111.0" text="Modifier" />
+            <DatePicker fx:id="fxdate" layoutX="647.0" layoutY="600.0" prefHeight="26.0" prefWidth="158.0" />
+            <Label layoutX="906.0" layoutY="397.0" text="Image :" />
+            <PasswordField fx:id="fxmdp" layoutX="649.0" layoutY="564.0" />
+            <Button fx:id="btnimage" layoutX="968.0" layoutY="390.0" mnemonicParsing="false" onAction="#dropImage" prefHeight="26.0" prefWidth="171.0" text="Parcourir image" />
+            <ImageView fx:id="fximage" fitHeight="150.0" fitWidth="200.0" layoutX="954.0" layoutY="442.0" pickOnBounds="true" preserveRatio="true" />
+            <Label layoutX="777.0" layoutY="335.0" text="Modifier Clients">
+               <font>
+                  <Font name="Impact" size="22.0" />
+               </font>
+            </Label>
+            <VBox alignment="TOP_CENTER" layoutY="-1.0" prefHeight="930.0" prefWidth="286.0" spacing="37.0" style="-fx-background-color: #05071F;">
+               <children>
+                  <ImageView fx:id="fxlogo" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../PI%20DEV%20Project/logo.png" />
+                     </image>
+                  </ImageView>
+                  <Button alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" mnemonicParsing="false" onAction="#changeScreenAdmin" prefHeight="42.0" prefWidth="258.0" stylesheets="@../../../CSS/style.css" text="Gestion des Admins" textFill="#e7e5e5" textOverrun="CLIP">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Button>
+                  <Button alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" mnemonicParsing="false" onAction="#changeScreenClient" prefHeight="42.0" prefWidth="258.0" stylesheets="@../../../CSS/style.css" text="Gestion des Clients" textOverrun="CLIP">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Button>
+                  <Button alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" mnemonicParsing="false" onAction="#changeScreenReclamations" prefHeight="42.0" prefWidth="258.0" stylesheets="@../../../CSS/style.css" text="Gestion des Réclamations" textOverrun="CLIP">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Button>
+                  <Button alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" mnemonicParsing="false" onAction="#changeScreenZoneCamp" prefHeight="42.0" prefWidth="258.0" stylesheets="@../../../CSS/style.css" text=" Gestion Zone de Camping" textOverrun="CLIP">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Button>
+                  <Button alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" mnemonicParsing="false" onAction="#changeScreenOfre" prefHeight="42.0" prefWidth="258.0" stylesheets="@../../../CSS/style.css" text="Gestion Offre" textOverrun="CLIP">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Button>
+                  <Button alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" mnemonicParsing="false" onAction="#changeScreenCommandes" prefHeight="42.0" prefWidth="258.0" stylesheets="@../../../CSS/style.css" text="Gestion Commandes" textOverrun="CLIP">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Button>
+                  <Button alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" mnemonicParsing="false" onAction="#changeScreenEvent" prefHeight="42.0" prefWidth="258.0" stylesheets="@../../../CSS/style.css" text="Gestion Evenement" textOverrun="CLIP">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Button>
+                  <Button alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" mnemonicParsing="false" onAction="#changeScreenEquip" prefHeight="42.0" prefWidth="258.0" stylesheets="@../../../CSS/style.css" text="Gestion des Equipements" textOverrun="CLIP" />
+                  <Button alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" mnemonicParsing="false" onAction="#changeScreenPanier" prefHeight="42.0" prefWidth="258.0" stylesheets="@../../../CSS/style.css" text="Gestion Panier" textOverrun="CLIP" />
+               </children>
+               <padding>
+                  <Insets top="55.0" />
+               </padding>
+            </VBox>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

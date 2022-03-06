@@ -5,41 +5,42 @@
  */
 package edu.JavaPIDEV.GUI;
 
+import static edu.JavaPIDEV.GUI.NewFXMain.Userconnected;
+import static edu.JavaPIDEV.GUI.NewFXMain.UserconnectedC;
 import edu.JavaPIDEV.entities.Client;
 import edu.JavaPIDEV.services.ClientCRUD;
 import edu.JavaPIDEV.utils.MyConnection;
 
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import edu.JavaPIDEV.utils.MyConnection;
 import java.io.IOException;
+import java.sql.Connection;
 import java.sql.Date;
-import java.sql.SQLException;
 import java.util.Optional;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
-import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableColumn.CellEditEvent;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.control.cell.TextFieldTableCell;
-import static javafx.scene.input.KeyCode.S;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.util.converter.DateStringConverter;
-import javafx.util.converter.IntegerStringConverter;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -47,6 +48,11 @@ import javafx.util.converter.IntegerStringConverter;
  * @author dell
  */
 public class AfficherClientsController implements Initializable {
+    
+    Connection cnx;
+    public AfficherClientsController(){
+        cnx = MyConnection.getInstance().getCnx();
+    }
 
     ClientCRUD pc = new ClientCRUD();
     Client c = new Client();
@@ -73,70 +79,78 @@ public class AfficherClientsController implements Initializable {
     @FXML
     private Button btnmodifier;
     @FXML
-    private Label lbltotal;
+    private Button btnajouter;
 
     public ObservableList<Client> dataClient = FXCollections.observableArrayList();
+    @FXML
+    private Button btnretour;
+    @FXML
+    private TextField txtrecherche;
+    @FXML
+    private AnchorPane displayArea;
+    @FXML
+    private TextField idm;
+    @FXML
+    private ImageView fxlogo;
+    @FXML
+    private ImageView fxlogout;
 
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+        fxlogo.setImage(new Image("file:C:\\Users\\MSI\\Desktop\\CampersDen\\src\\Images\\logo.png"));
+        fxlogout.setImage(new Image("file:C:\\Users\\MSI\\Desktop\\CampersDen\\src\\Images\\logout.png"));
+        loadData();
+        searchAdmin();
         /**
          *
          *
          */
-        try {
-            Connection cnx = new MyConnection().getCnx();
-            ResultSet rs = cnx.createStatement().executeQuery("SELECT cin,nomPrenom ,surnom , email,mdp , dateNaissance,adresse,image FROM client");
-            while (rs.next()) {
-                dataClient.add(new Client(rs.getInt("cin"), rs.getString("nomPrenom"), rs.getString("surnom"), rs.getString("email"), rs.getString("mdp"), rs.getDate("dateNaissance"), rs.getString("adresse"), rs.getString("image")));
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(AfficherClientsController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        String requete ="SELECT mdp FROM client where cin='"+c.getCin()+"' ";
-        String hiddenPass = "";
-        for (int i = 0; i < requete.length(); i++) {
-            hiddenPass += "*";   
-        }
+//        try {
+//            Connection cnx = new MyConnection().getCnx();
+//            ResultSet rs = cnx.createStatement().executeQuery("SELECT cin,nomPrenom ,surnom , email,mdp , dateNaissance,adresse,image FROM client");
+//            while (rs.next()) {
+//                dataClient.add(new Client(rs.getInt("cin"), rs.getString("nomPrenom"), rs.getString("surnom"), rs.getString("email"), rs.getString("mdp"), rs.getDate("dateNaissance"), rs.getString("adresse"), rs.getString("image")));
+//            }
+//        } catch (SQLException ex) {
+//            Logger.getLogger(AfficherClientsController.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        
+//        String requete ="SELECT mdp FROM client where cin='"+c.getCin()+"' ";
+//        String hiddenPass = "";
+//        for (int i = 0; i < requete.length(); i++) {
+//            hiddenPass += "*";   
+//        }
+//
+//        table.setEditable(true);
+//        txtcin.setCellValueFactory(new PropertyValueFactory<>("cin"));
+//        txtcin.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+//        txtnom.setCellValueFactory(new PropertyValueFactory<>("nomPrenom"));
+//        txtsurnom.setCellValueFactory(new PropertyValueFactory<>("surnom"));
+//        txtemail.setCellValueFactory(new PropertyValueFactory<>("email"));
+//        txtmdp.setCellValueFactory(new PropertyValueFactory<>(hiddenPass));
+//        txtdate.setCellValueFactory(new PropertyValueFactory<>("dateNaissance"));
+//        txtadresse.setCellValueFactory(new PropertyValueFactory<>("adresse"));
+//        txtimage.setCellValueFactory(new PropertyValueFactory<>("image"));
+//        table.setItems(dataClient);
 
-        table.setEditable(true);
-        table.getSelectionModel().cellSelectionEnabledProperty().set(true);
-        txtcin.setCellValueFactory(new PropertyValueFactory<>("cin"));
-        txtcin.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
-        txtnom.setCellValueFactory(new PropertyValueFactory<>("nomPrenom"));
-        txtnom.setCellFactory(TextFieldTableCell.forTableColumn());
-        txtsurnom.setCellValueFactory(new PropertyValueFactory<>("surnom"));
-        txtsurnom.setCellFactory(TextFieldTableCell.forTableColumn());
-        txtemail.setCellValueFactory(new PropertyValueFactory<>("email"));
-        txtemail.setCellFactory(TextFieldTableCell.forTableColumn());
-        txtmdp.setCellValueFactory(new PropertyValueFactory<>(hiddenPass));
-        txtdate.setCellValueFactory(new PropertyValueFactory<>("dateNaissance"));
-//        txtdate.setCellFactory(TextFieldTableCell.forTableColumn(new DateStringConverter()));
-        txtadresse.setCellValueFactory(new PropertyValueFactory<>("adresse"));
-        txtadresse.setCellFactory(TextFieldTableCell.forTableColumn());
-        txtimage.setCellValueFactory(new PropertyValueFactory<>("image"));
-        txtimage.setCellFactory(TextFieldTableCell.forTableColumn());
-        table.setItems(dataClient);
-        
-        
         txtcin.setSortType(TableColumn.SortType.DESCENDING);
         txtnom.setSortType(TableColumn.SortType.DESCENDING);
         txtsurnom.setSortType(TableColumn.SortType.DESCENDING);
         txtemail.setSortType(TableColumn.SortType.DESCENDING);
         txtdate.setSortType(TableColumn.SortType.DESCENDING);
         txtadresse.setSortType(TableColumn.SortType.DESCENDING);
-        
+
     }
 
     @FXML
     private void supprimerClients(ActionEvent event) {
-        
-        
-         if (table.getSelectionModel().getSelectedItem() != null) {
+
+        if (table.getSelectionModel().getSelectedItem() != null) {
             Alert deleteAdmintAlert = new Alert(Alert.AlertType.CONFIRMATION);
             deleteAdmintAlert.setTitle("Supprimer Client");
             deleteAdmintAlert.setHeaderText(null);
@@ -168,31 +182,193 @@ public class AfficherClientsController implements Initializable {
             selectBookAlert.showAndWait();
             //Alert Select Book !
 
-        } 
-           
-        
-    }
-    
-    @FXML
-    private void modifierClients(ActionEvent event) {
-        if (table.getSelectionModel().getSelectedItem() != null) {
-
-            Client ec = table.getSelectionModel().getSelectedItem();
-            pc.modifierClient(new Client(ec.getCin(),ec.getNomPrenom(),ec.getSurnom(),ec.getEmail(),ec.getMdp(),ec.getDateNaissance(),ec.getAdresse(),ec.getImage()));
-            Alert BookAlert = new Alert(Alert.AlertType.INFORMATION);
-            BookAlert.setTitle("Modifier");
-            BookAlert.setHeaderText(null);
-            BookAlert.setContentText("Client Modifié");
-            BookAlert.showAndWait();
-
-        } else {
-
-            Alert selectBookAlert = new Alert(Alert.AlertType.WARNING);
-            selectBookAlert.setTitle("Selectionner un Client");
-            selectBookAlert.setHeaderText(null);
-            selectBookAlert.setContentText("Selectioneer un Client !");
-            selectBookAlert.showAndWait();
-            
         }
+
+    }
+
+    @FXML
+    private void Refresh() {
+        dataClient.clear();
+        ClientCRUD cl = new ClientCRUD();
+        dataClient.addAll(cl.affichageClient());
+        cl.affichageClient();
+
+        table.setItems(dataClient);
+    }
+
+    private void loadData() {
+
+        Refresh();
+        txtcin.setCellValueFactory(new PropertyValueFactory<>("cin"));
+        txtnom.setCellValueFactory(new PropertyValueFactory<>("nomPrenom"));
+        txtsurnom.setCellValueFactory(new PropertyValueFactory<>("surnom"));
+        txtemail.setCellValueFactory(new PropertyValueFactory<>("email"));
+//    txtmdp.setCellValueFactory(new PropertyValueFactory<>("mdp"));
+        txtdate.setCellValueFactory(new PropertyValueFactory<>("dateNaissance"));
+        txtadresse.setCellValueFactory(new PropertyValueFactory<>("adresse"));
+        txtimage.setCellValueFactory(new PropertyValueFactory<>("image"));
+        table.setOnMousePressed(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+
+                if (event.getClickCount() == 2) {
+                    FXMLLoader Loader = new FXMLLoader();
+                    Loader.setLocation(getClass().getResource("ModifierClients.fxml"));
+                    try {
+                        Loader.load();
+                    } catch (IOException ex) {
+                        // ex.printStackTrace();
+
+                        System.out.println("error : " + ex.getMessage());;
+                    }
+                    ModifierClientsController Mcc = Loader.getController();
+                    Mcc.setData(table.getSelectionModel().getSelectedItem().getCin(),
+                             table.getSelectionModel().getSelectedItem().getNomPrenom(),
+                             table.getSelectionModel().getSelectedItem().getSurnom(),
+                             table.getSelectionModel().getSelectedItem().getEmail(),
+                             table.getSelectionModel().getSelectedItem().getMdp(),
+                             table.getSelectionModel().getSelectedItem().getDateNaissance(),
+                             table.getSelectionModel().getSelectedItem().getAdresse(),
+                             table.getSelectionModel().getSelectedItem().getImage());
+
+                    Parent p = Loader.getRoot();
+                    Stage stage = new Stage();
+                    stage.setScene(new Scene(p));
+                    stage.show();
+                }
+            }
+
+        });
+    }
+
+    @FXML
+    private void ajouterClients(ActionEvent event) {
+
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("ajouterClients.fxml"));
+            Scene scene = new Scene(root, 1335, 909);
+            Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            appStage.setScene(scene);
+            appStage.show();
+        } catch (IOException ex) {
+            ex.getMessage();
+        }
+
+    }
+
+
+    void searchAdmin() {
+        Client ad = new Client();
+
+        txtnom.setCellValueFactory(new PropertyValueFactory<>("nomPrenom"));
+        txtsurnom.setCellValueFactory(new PropertyValueFactory<>("surnom"));
+        txtemail.setCellValueFactory(new PropertyValueFactory<>("email"));
+        txtadresse.setCellValueFactory(new PropertyValueFactory<>("adresse"));
+
+        table.setItems(dataClient);
+
+        FilteredList<Client> filteredData = new FilteredList<>(dataClient, b -> true);
+
+        txtrecherche.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredData.setPredicate((Client cli) -> {
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+                String lowerCaseFilter = newValue.toLowerCase();
+
+                if (cli.getNomPrenom().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                    return true;
+                } else if (cli.getSurnom().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                    return true;
+                }
+                if (cli.getEmail().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                    return true;
+                }
+                if (cli.getAdresse().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                    return true;
+                } else {
+                    return false; // Does not match.
+                }
+            });
+        });
+        SortedList<Client> sortedData = new SortedList<>(filteredData);
+        sortedData.comparatorProperty().bind(table.comparatorProperty());
+        table.setItems(sortedData);
+    }
+
+    @FXML
+    private void changeScreenAdmin(ActionEvent event) throws IOException {
+        Parent tableViewParent = FXMLLoader.load(getClass().getResource("afficherAdmins.fxml"));
+        Scene tableViewScene = new Scene(tableViewParent);
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(tableViewScene);
+        window.show();
+    }
+
+    @FXML
+    private void changeScreenClient(ActionEvent event) throws IOException {
+        Parent tableViewParent = FXMLLoader.load(getClass().getResource("afficherClients.fxml"));
+        Scene tableViewScene = new Scene(tableViewParent);
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(tableViewScene);
+        window.show();
+    }
+
+    @FXML
+    private void changeScreenReclamations(ActionEvent event) {
+    }
+
+    @FXML
+    private void changeScreenZoneCamp(ActionEvent event) {
+    }
+
+    @FXML
+    private void changeScreenOfre(ActionEvent event) {
+    }
+
+    @FXML
+    private void changeScreenCommandes(ActionEvent event) {
+    }
+
+    @FXML
+    private void changeScreenEvent(ActionEvent event) {
+    }
+
+    @FXML
+    private void changeScreenEquip(ActionEvent event) {
+    }
+
+    @FXML
+    private void logout(ActionEvent event) {
+        UserconnectedC.setCin(0);
+        UserconnectedC.setNomPrenom("");
+        UserconnectedC.setSurnom("");
+        UserconnectedC.setEmail("");
+        UserconnectedC.setMdp("");
+        UserconnectedC.setAdresse("");
+        UserconnectedC.setImage("");
+
+        Userconnected.setId(0);
+        Userconnected.setNom("");
+        Userconnected.setPrenom("");
+        Userconnected.setEmail("");
+        Userconnected.setMdp("");
+        Userconnected.setNumtel(0);
+
+        FXMLLoader LOADER = new FXMLLoader(getClass().getResource("login.fxml"));
+        try {
+            Parent root = LOADER.load();
+            Scene sc = new Scene(root);
+            LoginController cntr = LOADER.getController();
+            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            window.setScene(sc);
+            window.show();
+        } catch (IOException ex) {
+
+        }
+    }
+
+    @FXML
+    private void changeScreenPanier(ActionEvent event) {
     }
 }

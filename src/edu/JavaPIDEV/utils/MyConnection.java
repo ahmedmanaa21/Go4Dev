@@ -24,7 +24,7 @@ public class MyConnection {
     public Connection cnx;
     public static MyConnection instance;
 
-    public MyConnection() {
+    private MyConnection() {
         try {
             cnx = DriverManager.getConnection(url, login, pwd);
             System.out.println("Connexion établie!");
