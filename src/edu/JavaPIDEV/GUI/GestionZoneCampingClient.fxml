@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="430.0" prefWidth="600.0" style="-fx-background-color: #BCCAE6;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.JavaPIDEV.GUI.GestionZoneCampingClientController">
+   <children>
+      <Label layoutX="163.0" layoutY="14.0" text="Liste des zones de camping" textFill="#302b70">
+         <font>
+            <Font name="Impact" size="26.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tabzcC" layoutX="71.0" layoutY="100.0" prefHeight="257.0" prefWidth="474.0">
+        <columns>
+          <TableColumn fx:id="collregion" prefWidth="92.0" text="Région" />
+          <TableColumn fx:id="colldelegation" prefWidth="105.0" text="Délégation" />
+            <TableColumn fx:id="collnomCentre" prefWidth="134.0" text="Nom centre" />
+            <TableColumn fx:id="colldescription" prefWidth="142.0" text="Description" />
+        </columns>
+      </TableView>
+      <TextField fx:id="recherche" layoutX="71.0" layoutY="68.0" prefHeight="25.0" prefWidth="290.0" promptText="Rechercher.." style="-fx-background-radius: 50;" />
+      <Button fx:id="retour" layoutX="71.0" layoutY="374.0" mnemonicParsing="false" onAction="#retour" style="-fx-background-radius: 50;" text="Retour" />
+      <Button fx:id="bt_reserver" layoutX="483.0" layoutY="374.0" mnemonicParsing="false" onAction="#reserver" style="-fx-background-radius: 50;" text="Réserver" />
+   </children>
+</AnchorPane>

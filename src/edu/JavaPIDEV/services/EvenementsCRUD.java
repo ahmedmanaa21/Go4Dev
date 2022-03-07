@@ -22,26 +22,28 @@ import java.util.logging.Logger;
  */
 public class EvenementsCRUD {
     
-    public void ajouterEvenements(){
-        try {
-            String requete="INSERT INTO evenement (nom,description,date_deb,date_fin) VALUES('Camping mahboul','Ijew aamlou jaw maana','22-02-25','22-02-27')";
-            Statement st=new MyConnection().getCnx().createStatement();
-            st.executeUpdate(requete); 
-            System.out.println("Evénement ajouté");
-        } catch (SQLException ex) {
-            System.err.println(ex.getMessage());
-        }
-           
-    }
+//    public void ajouterEvenements(){
+//        try {
+//            String requete="INSERT INTO evenement (nom,description,date_deb,date_fin) VALUES('Camping mahboul','Ijew aamlou jaw maana','22-02-25','22-02-27')";
+//            Statement st=new MyConnection().getCnx().createStatement();
+//            st.executeUpdate(requete); 
+//            System.out.println("Evénement ajouté");
+//        } catch (SQLException ex) {
+//            System.err.println(ex.getMessage());
+//        }
+//           
+//    }
     public void ajouterEvenements2(Evenements e) {
         
         try {
-            String requete="INSERT INTO evenement (nom,description,date_deb,date_fin) VALUES(?,?,STR_TO_DATE('"+e.getDate_deb()+"','%d-%m-%Y'),STR_TO_DATE('"+e.getDate_fin()+"','%d-%m-%Y'))";
+//            String requete="INSERT INTO evenement (nom,description,date_deb,date_fin) VALUES(?,?,STR_TO_DATE('"+e.getDate_deb()+"','%d-%m-%Y'),STR_TO_DATE('"+e.getDate_fin()+"','%d-%m-%Y'))";
+            String requete="INSERT INTO evenement (nom,description,date_deb,date_fin,image) VALUES(?,?,?,?,?)";
             PreparedStatement pst=new MyConnection().getCnx().prepareStatement(requete);
             pst.setString(1, e.getNom());
             pst.setString(2, e.getDescription());
-//            pst.setString(3, e.getDate_deb());
-//            pst.setString(4, e.getDate_fin());
+            pst.setDate(3, e.getDate_deb());
+            pst.setDate(4, e.getDate_fin());
+            pst.setString(5, e.getImage());
             
             pst.executeUpdate();
             System.out.println("l'evenement est ajouté!");
@@ -64,8 +66,10 @@ public class EvenementsCRUD {
                 e.setId(res.getInt(1));
                 e.setNom(res.getString(2));
                 e.setDescription(res.getString(3));
-                e.setDate_deb(res.getString(4));
-                e.setDate_fin(res.getString(5));
+                e.setDate_deb(res.getDate(4));
+                e.setDate_fin(res.getDate(5));
+                e.setImage("file:C:\\xampp\\htdocs\\images\\"+res.getString(6));
+                
 
                 myList.add(e);
             }
@@ -77,7 +81,7 @@ public class EvenementsCRUD {
     
     public void modifierEvenements(Evenements e) {
         try {
-            String requete = "UPDATE evenement SET nom='" + e.getNom() +"',description='" + e.getDescription() + "',date_deb='" + e.getDate_deb()+ "',date_fin='" + e.getDate_fin() + "' WHERE id=" + e.getId();
+            String requete = "UPDATE evenement SET nom='" + e.getNom() +"',description='" + e.getDescription() + "',date_deb='" + e.getDate_deb()+ "',date_fin='" + e.getDate_fin() + "',Image='" + e.getImage() + "' WHERE id=" + e.getId();
             Statement st = new MyConnection().getCnx().createStatement();
             st.executeUpdate(requete);
             System.out.println("Evenement modifé !");
@@ -97,7 +101,7 @@ public class EvenementsCRUD {
         }
     }
     
-    
+
 
 
     

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="483.0" prefWidth="1256.0" style="-fx-background-color: #BCCAE6;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.JavaPIDEV.GUI.GestionEvenementClientController">
+   <children>
+      <TableView fx:id="tabevC" layoutX="94.0" layoutY="106.0" prefHeight="299.0" prefWidth="513.0">
+        <columns>
+          <TableColumn fx:id="collnom" prefWidth="100.0" text="Nom" />
+          <TableColumn fx:id="colldescription" prefWidth="101.0" text="Description" />
+            <TableColumn fx:id="colldateDeb" prefWidth="94.0" text="Date début" />
+            <TableColumn fx:id="colldateFin" prefWidth="92.0" text="Date Fin" />
+            <TableColumn fx:id="collAffiche" prefWidth="125.0" text="Affiche" />
+        </columns>
+      </TableView>
+      <Button fx:id="bt_participer" layoutX="542.0" layoutY="432.0" mnemonicParsing="false" onAction="#formulaire" style="-fx-background-radius: 50;" text="Participer" />
+      <Button fx:id="bt_retour" layoutX="94.0" layoutY="432.0" mnemonicParsing="false" onAction="#retour" style="-fx-background-radius: 50;" text="Retour" />
+      <TextField fx:id="recherche" layoutX="94.0" layoutY="74.0" prefHeight="25.0" prefWidth="304.0" promptText="Rechercher.." style="-fx-background-radius: 50;" />
+      <Label layoutX="222.0" layoutY="22.0" text="Liste des événements" textFill="#302b70">
+         <font>
+            <Font name="Impact" size="26.0" />
+         </font>
+      </Label>
+      <Button fx:id="bt_qr" layoutX="471.0" layoutY="432.0" mnemonicParsing="false" onAction="#qrCode" style="-fx-background-radius: 50;" text="QR code" />
+      <HBox layoutX="619.0" layoutY="107.0" prefHeight="299.0" prefWidth="560.0">
+         <children>
+            <ScrollPane fx:id="scroll" prefHeight="299.0" prefWidth="362.0">
+               <content>
+                  <GridPane fx:id="grid">
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                  </GridPane>
+               </content>
+            </ScrollPane>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label fx:id="even" alignment="CENTER" prefHeight="77.0" prefWidth="205.0" text="Evenement" textAlignment="CENTER" textFill="#302b70">
+                     <font>
+                        <Font size="20.0" />
+                     </font></Label>
+                  <ImageView fx:id="evenaffiche" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                  <Label fx:id="description" text="Description" textFill="#302b70">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

@@ -10,7 +10,7 @@ package edu.JavaPIDEV.entities;
  * @author melki
  */
 public class ZoneCamping {
-    private int id ; 
+    private int id ;
     private String region ;
     private String delegation ;
     private String nom_centre ; 
@@ -19,6 +19,14 @@ public class ZoneCamping {
     private String description ; 
 
     public ZoneCamping() {
+    }
+
+    public ZoneCamping(int id, String region, String delegation, String nom_centre, String description) {
+        this.id = id;
+        this.region = region;
+        this.delegation = delegation;
+        this.nom_centre = nom_centre;
+        this.description = description;
     }
 
     public ZoneCamping(int id, String region, String delegation, String nom_centre, double latitude, double longitude, String description) {

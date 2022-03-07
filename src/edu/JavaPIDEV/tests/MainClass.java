@@ -10,6 +10,8 @@ import edu.JavaPIDEV.entities.ZoneCamping;
 import edu.JavaPIDEV.services.EvenementsCRUD;
 import edu.JavaPIDEV.services.ZoneCampingCRUD;
 import edu.JavaPIDEV.utils.MyConnection;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 /**
@@ -23,10 +25,26 @@ public class MainClass {
         
         System.out.println("*********************   Evenements   ************************");
         EvenementsCRUD ecd=new EvenementsCRUD(); 
-//        Evenements e= new Evenements("Bni mtir", "Camping", "12-02-2022", "15-02-2022");
+        
+        
+        java.util.Date AjoutDate = new java.util.Date("2022/05/31");
+        java.sql.Date sqldate1 = new java.sql.Date(AjoutDate.getTime());
+        java.util.Date AjoutDate2 = new java.util.Date("2022/06/20");
+        java.sql.Date sqldate2 = new java.sql.Date(AjoutDate2.getTime());
+//        Evenements e= new Evenements("Camp3", "join us!!", sqldate1, sqldate2,"image");
+        
 //        ecd.ajouterEvenements2(e);
 
 //        ecd.ajouterEvenements();
+
+
+       
+//        ecd.modifierEvenements(new Evenements(16, "Tozeur", "camping", sqldate1, sqldate2,"image.jpg"));
+
+        
+        
+//        ecd.supprimerEvenements(new Evenements(17));
+
         System.out.println("****** afficher la liste des évenements ********");
         List<Evenements>listEvenements=ecd.affichageEvenements() ;
         for(Evenements ev:listEvenements)
@@ -34,10 +52,7 @@ public class MainClass {
             System.out.println(ev); 
         }
         
-//        ecd.modifierEvenements(new Evenements(12, "ain drahem", "camp", "15-12-22  ", "17-12-22"));
-        
-        
-        ecd.supprimerEvenements(new Evenements(12));
+
 
 
 //                   *************   Zone de camping   *****************

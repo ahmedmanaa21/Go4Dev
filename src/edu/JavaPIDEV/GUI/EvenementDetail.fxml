@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17" fx:controller="edu.JavaPIDEV.GUI.EvenementDetailController">
+   <children>
+      <HBox layoutX="10.0" layoutY="126.0" prefHeight="214.0" prefWidth="576.0">
+         <children>
+            <VBox alignment="CENTER" prefHeight="214.0" prefWidth="187.0">
+               <children>
+                  <ImageView fx:id="img" fitHeight="150.0" fitWidth="172.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../../../Pictures/Camera%20Roll/sboui.JPG" />
+                     </image>
+                  </ImageView>
+               </children>
+            </VBox>
+            <VBox prefHeight="214.0" prefWidth="392.0">
+               <children>
+                  <Pane prefHeight="24.0" prefWidth="391.0" />
+                  <Label fx:id="nameLabel" prefHeight="32.0" prefWidth="110.0" text="Cannes" />
+                  <Pane prefHeight="27.0" prefWidth="391.0" />
+                  <Label fx:id="descriptionLabel" prefHeight="17.0" prefWidth="190.0" text="Description...................................." />
+                  <Pane prefHeight="59.0" prefWidth="391.0" />
+                  <Label fx:id="prixLabel" text="100DT" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

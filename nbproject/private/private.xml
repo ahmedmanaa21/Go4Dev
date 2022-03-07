@@ -3,13 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/melki/Documents/NetBeansProjects/JavaPIDEV/src/javapidev/JavaPIDEV.java</file>
-            <file>file:/C:/Users/melki/Documents/NetBeansProjects/JavaPIDEV/src/edu/JavaPIDEV/utils/MyConnection.java</file>
-            <file>file:/C:/Users/melki/Documents/NetBeansProjects/JavaPIDEV/src/edu/JavaPIDEV/services/ZoneCampingCRUD.java</file>
-            <file>file:/C:/Users/melki/Documents/NetBeansProjects/JavaPIDEV/src/edu/JavaPIDEV/entities/ZoneCamping.java</file>
-            <file>file:/C:/Users/melki/Documents/NetBeansProjects/JavaPIDEV/src/edu/JavaPIDEV/tests/MainClass.java</file>
-            <file>file:/C:/Users/melki/Documents/NetBeansProjects/JavaPIDEV/src/edu/JavaPIDEV/entities/Evenements.java</file>
-            <file>file:/C:/Users/melki/Documents/NetBeansProjects/JavaPIDEV/src/edu/JavaPIDEV/services/EvenementsCRUD.java</file>
+            <file>file:/C:/Users/melki/Documents/NetBeansProjects/JavaPIDEV/src/edu/JavaPIDEV/GUI/main.java</file>
+            <file>file:/C:/Users/melki/Documents/NetBeansProjects/JavaPIDEV/src/edu/JavaPIDEV/GUI/QRcode.fxml</file>
+            <file>file:/C:/Users/melki/Documents/NetBeansProjects/JavaPIDEV/src/edu/JavaPIDEV/GUI/GestionEvenementClient.fxml</file>
+            <file>file:/C:/Users/melki/Documents/NetBeansProjects/JavaPIDEV/src/edu/JavaPIDEV/GUI/GestionEvenementClientController.java</file>
+            <file>file:/C:/Users/melki/Documents/NetBeansProjects/JavaPIDEV/src/edu/JavaPIDEV/GUI/QRcodeController.java</file>
+            <file>file:/C:/Users/melki/Documents/NetBeansProjects/JavaPIDEV/src/edu/JavaPIDEV/Interfaces/MylistenerE.java</file>
         </group>
     </open-files>
 </project-private>

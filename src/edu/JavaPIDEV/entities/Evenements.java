@@ -15,30 +15,35 @@ public class Evenements {
     private int id ; 
     private String nom ;
     private String description ;
-    private String date_deb ; 
-    private String date_fin ; 
+    private Date date_deb ; 
+    private Date date_fin ; 
+    private String image ; 
 
     public Evenements() {
-    }
-
-    public Evenements(String nom, String description, String date_deb, String date_fin) {
-        this.nom = nom;
-        this.description = description;
-        this.date_deb = date_deb;
-        this.date_fin = date_fin;
-    }
-
-    public Evenements(int id, String nom, String description, String date_deb, String date_fin) {
-        this.id = id;
-        this.nom = nom;
-        this.description = description;
-        this.date_deb = date_deb;
-        this.date_fin = date_fin;
     }
 
     public Evenements(int id) {
         this.id = id;
     }
+
+    public Evenements(int id, String nom, String description, Date date_deb, Date date_fin, String image) {
+        this.id = id;
+        this.nom = nom;
+        this.description = description;
+        this.date_deb = date_deb;
+        this.date_fin = date_fin;
+        this.image = image;
+    }
+
+    public Evenements(String nom, String description, Date date_deb, Date date_fin, String image) {
+        this.nom = nom;
+        this.description = description;
+        this.date_deb = date_deb;
+        this.date_fin = date_fin;
+        this.image = image;
+    }
+
+  
     
     
 
@@ -54,14 +59,18 @@ public class Evenements {
         return description;
     }
 
-    public String getDate_deb() {
+    public Date getDate_deb() {
         return date_deb;
     }
 
-    public String getDate_fin() {
+    public Date getDate_fin() {
         return date_fin;
     }
 
+    public String getImage() {
+        return image;
+    }
+    
     public void setId(int id) {
         this.id = id;
     }
@@ -74,18 +83,26 @@ public class Evenements {
         this.description = description;
     }
 
-    public void setDate_deb(String date_deb) {
+    public void setDate_deb(Date date_deb) {
         this.date_deb = date_deb;
     }
 
-    public void setDate_fin(String date_fin) {
+    public void setDate_fin(Date date_fin) {
         this.date_fin = date_fin;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     @Override
     public String toString() {
-        return "Evenements{" + "id=" + id + ", nom=" + nom + ", description=" + description + ", date_deb=" + date_deb + ", date_fin=" + date_fin + '}';
+        return "Evenements{" + "id=" + id + ", nom=" + nom + ", description=" + description + ", date_deb=" + date_deb + ", date_fin=" + date_fin + ", image=" + image + '}';
     }
+    
+   
+
+  
 
  
     
