@@ -37,6 +37,9 @@
             <ImageView fx:id="checkSurnom" fitHeight="26.0" fitWidth="24.0" layoutX="534.0" layoutY="346.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="checkEmail" fitHeight="26.0" fitWidth="24.0" layoutX="534.0" layoutY="387.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="checkAdresse" fitHeight="26.0" fitWidth="24.0" layoutX="534.0" layoutY="506.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="checkSexe" fitHeight="26.0" fitWidth="24.0" layoutX="534.0" layoutY="555.0" pickOnBounds="true" preserveRatio="true" />
+            <Label layoutX="221.0" layoutY="559.0" text="Sexe :" />
+            <TextField fx:id="fxsexe" layoutX="343.0" layoutY="555.0" style="-fx-background-radius: 30;" />
          </children>
       </AnchorPane>
       <Label layoutX="518.0" layoutY="280.0" text="CIN :" />

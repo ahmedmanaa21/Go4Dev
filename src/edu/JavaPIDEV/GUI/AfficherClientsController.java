@@ -5,11 +5,14 @@
  */
 package edu.JavaPIDEV.GUI;
 
+import com.itextpdf.text.DocumentException;
 import static edu.JavaPIDEV.GUI.NewFXMain.Userconnected;
 import static edu.JavaPIDEV.GUI.NewFXMain.UserconnectedC;
 import edu.JavaPIDEV.entities.Client;
 import edu.JavaPIDEV.services.ClientCRUD;
+import edu.JavaPIDEV.services.pdfBackup;
 import edu.JavaPIDEV.utils.MyConnection;
+import java.io.FileNotFoundException;
 
 import java.net.URL;
 import java.io.IOException;
@@ -50,6 +53,10 @@ import javafx.stage.Stage;
 public class AfficherClientsController implements Initializable {
     
     Connection cnx;
+    @FXML
+    private TableColumn<?, ?> txtsexe;
+    @FXML
+    private Button btnPDF;
     public AfficherClientsController(){
         cnx = MyConnection.getInstance().getCnx();
     }
@@ -82,8 +89,6 @@ public class AfficherClientsController implements Initializable {
     private Button btnajouter;
 
     public ObservableList<Client> dataClient = FXCollections.observableArrayList();
-    @FXML
-    private Button btnretour;
     @FXML
     private TextField txtrecherche;
     @FXML
@@ -137,13 +142,6 @@ public class AfficherClientsController implements Initializable {
 //        txtadresse.setCellValueFactory(new PropertyValueFactory<>("adresse"));
 //        txtimage.setCellValueFactory(new PropertyValueFactory<>("image"));
 //        table.setItems(dataClient);
-
-        txtcin.setSortType(TableColumn.SortType.DESCENDING);
-        txtnom.setSortType(TableColumn.SortType.DESCENDING);
-        txtsurnom.setSortType(TableColumn.SortType.DESCENDING);
-        txtemail.setSortType(TableColumn.SortType.DESCENDING);
-        txtdate.setSortType(TableColumn.SortType.DESCENDING);
-        txtadresse.setSortType(TableColumn.SortType.DESCENDING);
 
     }
 
@@ -202,6 +200,7 @@ public class AfficherClientsController implements Initializable {
         txtcin.setCellValueFactory(new PropertyValueFactory<>("cin"));
         txtnom.setCellValueFactory(new PropertyValueFactory<>("nomPrenom"));
         txtsurnom.setCellValueFactory(new PropertyValueFactory<>("surnom"));
+        txtsexe.setCellValueFactory(new PropertyValueFactory<>("Sexe"));
         txtemail.setCellValueFactory(new PropertyValueFactory<>("email"));
 //    txtmdp.setCellValueFactory(new PropertyValueFactory<>("mdp"));
         txtdate.setCellValueFactory(new PropertyValueFactory<>("dateNaissance"));
@@ -225,6 +224,7 @@ public class AfficherClientsController implements Initializable {
                     Mcc.setData(table.getSelectionModel().getSelectedItem().getCin(),
                              table.getSelectionModel().getSelectedItem().getNomPrenom(),
                              table.getSelectionModel().getSelectedItem().getSurnom(),
+                             table.getSelectionModel().getSelectedItem().getSexe(),
                              table.getSelectionModel().getSelectedItem().getEmail(),
                              table.getSelectionModel().getSelectedItem().getMdp(),
                              table.getSelectionModel().getSelectedItem().getDateNaissance(),
@@ -264,6 +264,7 @@ public class AfficherClientsController implements Initializable {
         txtsurnom.setCellValueFactory(new PropertyValueFactory<>("surnom"));
         txtemail.setCellValueFactory(new PropertyValueFactory<>("email"));
         txtadresse.setCellValueFactory(new PropertyValueFactory<>("adresse"));
+        txtsexe.setCellValueFactory(new PropertyValueFactory<>("Sexe"));
 
         table.setItems(dataClient);
 
@@ -282,6 +283,9 @@ public class AfficherClientsController implements Initializable {
                     return true;
                 }
                 if (cli.getEmail().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                    return true;
+                }
+                if (cli.getSexe().toLowerCase().indexOf(lowerCaseFilter) != -1) {
                     return true;
                 }
                 if (cli.getAdresse().toLowerCase().indexOf(lowerCaseFilter) != -1) {
@@ -370,5 +374,19 @@ public class AfficherClientsController implements Initializable {
 
     @FXML
     private void changeScreenPanier(ActionEvent event) {
+    }
+
+    @FXML
+    private void PDF(ActionEvent event) throws FileNotFoundException, DocumentException {
+         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation de création du PDF");
+        alert.setHeaderText("Etes vous sur de vouloir créer un PDF qui contient la liste des Clients ?");
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK) {
+        pdfBackup pdfbackup= new pdfBackup();
+        pdfbackup.PdfBackupClient();
+        }
+        
     }
 }

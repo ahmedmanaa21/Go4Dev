@@ -211,6 +211,12 @@
                            </font>
                         </Label>
                         <Label fx:id="txtnom" layoutX="397.0" layoutY="241.0" prefHeight="18.0" prefWidth="216.0" />
+                        <Label layoutX="334.0" layoutY="464.0" text="Sexe :">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="txtsexe" layoutX="397.0" layoutY="464.0" prefHeight="18.0" prefWidth="216.0" />
                      </children>
                   </AnchorPane>
                </children>

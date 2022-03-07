@@ -105,6 +105,8 @@
                   <Insets top="55.0" />
                </padding>
             </VBox>
+            <Label layoutX="528.0" layoutY="680.0" text="Sexe :" />
+            <TextField fx:id="fxsexe" layoutX="648.0" layoutY="676.0" />
          </children>
       </AnchorPane>
    </children>

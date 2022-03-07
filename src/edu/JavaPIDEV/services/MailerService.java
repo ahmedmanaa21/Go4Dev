@@ -7,6 +7,7 @@ import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
+
 import javax.mail.Transport;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
@@ -17,6 +18,52 @@ import javax.mail.internet.MimeMessage;
  * @author majdi
  */
 public class MailerService {
+    public static void sendMail(String recepteur,String codeCnx) throws Exception{
+        System.out.println("sending mail ...");
+        
+        final String username = "testahmedahmed210@gmail.com";
+        final String password = "CampersDen210";
+
+        Properties prop = new Properties();
+        prop.put("mail.smtp.host", "smtp.gmail.com");
+        prop.put("mail.smtp.port", "587");
+        prop.put("mail.smtp.auth", "true");
+        prop.put("mail.smtp.starttls.enable", "true"); //TLS
+        
+        
+        Session session = Session.getInstance(
+            prop,
+            new javax.mail.Authenticator() {
+                    @Override
+                    protected PasswordAuthentication getPasswordAuthentication() {
+                        return new PasswordAuthentication(username, password);
+                    }
+                }
+        );
+        System.out.println("aaaa");
+
+        try {
+
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress("from@gmail.com"));
+            message.setRecipients(
+                    Message.RecipientType.TO,
+                    InternetAddress.parse(recepteur)
+            );
+            
+            message.setSubject("code connection ");
+            message.setText("ceci votre code de connection,"
+                    +codeCnx+"");
+
+            Transport.send(message);
+
+            System.out.println("Done");
+
+        } catch (MessagingException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
 //    /**public static void sendEmail(String address, String subject, String message) throws Exception{
 //                        
 //            String from="testahmedahmed210@gmail.com";
@@ -97,60 +144,62 @@ public class MailerService {
 //            }
 //            
 //        }
-        public void replyMail(String mail ,String Username , String Description) {
-        String from = "testahmedahmed210@gmail.com";
-        String pass = "CampersDen210";
-        String[] to = {""+ mail}; // list of recipient email addresses
-        String subject = "AIDE REPLY";
-        String body = Description ;
-        MailService.sendFromGMail(from,pass,to,subject,body);
-    }
-    public static void sendFromGMail(String from, String pass, String[] to, String subject, String body) {
-        Properties props = System.getProperties();
-        String host = "smtp.gmail.com";
-
-        props.put("mail.smtp.starttls.enable", "true");
-
-        props.put("mail.smtp.ssl.trust", host);
-        props.put("mail.smtp.user", from);
-        props.put("mail.smtp.password", pass);
-        props.put("mail.smtp.port", "587");
-        props.put("mail.smtp.auth", "true");
-
-
-        Session session = Session.getInstance(props, new javax.mail.Authenticator() {
-
-            @Override
-            protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(from, pass);
-            }
-        });
-        MimeMessage message = new MimeMessage(session);
-
-        try {
-            message.setFrom(new InternetAddress(from));
-            InternetAddress[] toAddress = new InternetAddress[to.length];
-            // To get the array of addresses
-            for( int i = 0; i < to.length; i++ ) {
-                toAddress[i] = new InternetAddress(to[i]);
-            }
-            for (InternetAddress toAddres : toAddress) {
-                message.addRecipient(Message.RecipientType.TO, toAddres);
-            }
-
-            message.setSubject(subject);
-            message.setText(body);
-            Transport transport = session.getTransport("smtp");
-            transport.connect(host, from, pass);
-            transport.sendMessage(message, message.getAllRecipients());
-            transport.close();
-
-        }
-        catch (AddressException ae) {
-        }
-        catch (MessagingException me) {
-        }
-    }
+//        public void replyMail(String mail ,String Username , String Description) {
+//        String from = "testahmedahmed210@gmail.com";
+//        String pass = "CampersDen210";
+//        String to = ""+mail ; // list of recipient email addresses
+//        String subject = "AIDE REPLY";
+//        String body = Description ;
+//        //String Username = "User";
+//        MailService.sendFromGMail(from,pass,to,subject,body);
+//    }
+//        public static void sendFromGMail(String from, String pass, String to, String subject, String body) {
+//        Properties props = System.getProperties();
+//        String host = "smtp.gmail.com";
+//
+//        props.put("mail.smtp.starttls.enable", "true");
+//
+//        props.put("mail.smtp.ssl.trust", host);
+//        props.put("mail.smtp.host", host);
+//        props.put("mail.smtp.user", from);
+//        props.put("mail.smtp.password", pass);
+//        props.put("mail.smtp.port", "587");
+//        props.put("mail.smtp.auth", "true");
+//
+//
+//        Session session = Session.getInstance(props, new javax.mail.Authenticator() {
+//
+//            @Override
+//            protected PasswordAuthentication getPasswordAuthentication() {
+//                return new PasswordAuthentication(from, pass);
+//            }
+//        });
+//        MimeMessage message = new MimeMessage(session);
+//
+//        try {
+////            message.setFrom(new InternetAddress(from));
+////            InternetAddress[] toAddress = new InternetAddress[to.length];
+////            // To get the array of addresses
+////            for( int i = 0; i < to.length; i++ ) {
+////                toAddress[i] = new InternetAddress(to[i]);
+////            }
+////            for (InternetAddress toAddres : toAddress) {
+////                message.addRecipient(Message.RecipientType.TO, toAddres);
+////            }
+//
+//            message.setSubject(subject);
+//            message.setText(body);
+//            Transport transport = session.getTransport("smtp");
+//            transport.connect(host, from, pass);
+//            transport.sendMessage(message, message.getAllRecipients());
+//            transport.close();
+//
+//        }
+//        catch (AddressException ae) {
+//        }
+//        catch (MessagingException me) {
+//        }
+//    }
 
 public String getPassword()
     {

@@ -7,6 +7,7 @@ package edu.JavaPIDEV.GUI;
 
 import static edu.JavaPIDEV.GUI.PswoubController.cc;
 import edu.JavaPIDEV.services.AdminCRUD;
+import edu.JavaPIDEV.services.ClientCRUD;
 import edu.JavaPIDEV.utils.MyConnection;
 import java.io.IOException;
 import java.net.URL;
@@ -68,7 +69,7 @@ public class ChangerpwdController implements Initializable {
         String p1 = pass1.getText();
         String p2 = pass2.getText();
 
-        AdminCRUD crud = new AdminCRUD();
+        ClientCRUD crud = new ClientCRUD();
 
         if (p1.equals(p2)) {
 
@@ -80,7 +81,7 @@ public class ChangerpwdController implements Initializable {
             alert.show();
 
             try {
-                Parent page1 = FXMLLoader.load(getClass().getResource("Menu.fxml"));
+                Parent page1 = FXMLLoader.load(getClass().getResource("Login.fxml"));
                 Scene scene = new Scene(page1);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 //stage.setTitle("Inscription");

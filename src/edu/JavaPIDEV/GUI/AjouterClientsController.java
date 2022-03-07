@@ -43,6 +43,10 @@ import org.apache.commons.io.FileUtils;
 public class AjouterClientsController implements Initializable {
     
     Connection cnx;
+    @FXML
+    private ImageView checkSexe;
+    @FXML
+    private TextField fxsexe;
     public AjouterClientsController(){
         cnx = MyConnection.getInstance().getCnx();
     }
@@ -108,10 +112,11 @@ public class AjouterClientsController implements Initializable {
         String nom = fxnom.getText();
         String surnom = fxsurnom.getText();
         String email = fxemail.getText();
+        String sexe = fxsexe.getText();
         String mdp = fxmdp.getText();
         java.sql.Date date = java.sql.Date.valueOf(fxdate.getValue());
         String adresse = fxadresse.getText();
-        Client C = new Client(cin,nom,surnom,email,mdp,date,adresse,path);
+        Client C = new Client(cin,nom,surnom,sexe,email,mdp,date,adresse,path);
         ClientCRUD pc = new ClientCRUD();
         pc.ajouterClient(C);
         if (selectedFile != null) {

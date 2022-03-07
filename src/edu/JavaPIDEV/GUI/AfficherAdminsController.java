@@ -5,14 +5,17 @@
  */
 package edu.JavaPIDEV.GUI;
 
+import com.itextpdf.text.DocumentException;
 import static edu.JavaPIDEV.GUI.NewFXMain.Userconnected;
 import static edu.JavaPIDEV.GUI.NewFXMain.UserconnectedC;
 import edu.JavaPIDEV.entities.Admin;
 import edu.JavaPIDEV.services.AdminCRUD;
+import edu.JavaPIDEV.services.pdfBackup;
 
 import java.net.URL;
 import java.sql.Connection;
 import edu.JavaPIDEV.utils.MyConnection;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -48,9 +51,18 @@ import javafx.stage.Stage;
  * @author dell
  */
 public class AfficherAdminsController implements Initializable {
-    
+
     Connection cnx;
-    public AfficherAdminsController(){
+    @FXML
+    private Button btnstat;
+    @FXML
+    private ImageView refresh;
+    @FXML
+    private ImageView stat;
+    @FXML
+    private Button btnsupprimer1;
+
+    public AfficherAdminsController() {
         cnx = MyConnection.getInstance().getCnx();
     }
 
@@ -78,8 +90,6 @@ public class AfficherAdminsController implements Initializable {
 
     public ObservableList<Admin> dataAdmin = FXCollections.observableArrayList();
     @FXML
-    private Button btnretour;
-    @FXML
     private AnchorPane displayArea;
     @FXML
     private TextField idm;
@@ -95,6 +105,8 @@ public class AfficherAdminsController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         fxlogo.setImage(new Image("file:C:\\Users\\MSI\\Desktop\\CampersDen\\src\\Images\\logo.png"));
         fxlogout.setImage(new Image("file:C:\\Users\\MSI\\Desktop\\CampersDen\\src\\Images\\logout.png"));
+        refresh.setImage(new Image("file:C:\\Users\\MSI\\Desktop\\CampersDen\\src\\Images\\reload.png"));
+        stat.setImage(new Image("file:C:\\Users\\MSI\\Desktop\\CampersDen\\src\\Images\\bar-chart.png"));
 
         loadData();
         searchAdmin();
@@ -188,11 +200,11 @@ public class AfficherAdminsController implements Initializable {
                     }
                     ModifierAdminsController Mdc = Loader.getController();
                     Mdc.setData(table.getSelectionModel().getSelectedItem().getId(),
-                             table.getSelectionModel().getSelectedItem().getNom(),
-                             table.getSelectionModel().getSelectedItem().getPrenom(),
-                             table.getSelectionModel().getSelectedItem().getEmail(),
-                             table.getSelectionModel().getSelectedItem().getMdp(),
-                             table.getSelectionModel().getSelectedItem().getNumtel());
+                            table.getSelectionModel().getSelectedItem().getNom(),
+                            table.getSelectionModel().getSelectedItem().getPrenom(),
+                            table.getSelectionModel().getSelectedItem().getEmail(),
+                            table.getSelectionModel().getSelectedItem().getMdp(),
+                            table.getSelectionModel().getSelectedItem().getNumtel());
 
                     Parent p = Loader.getRoot();
                     Stage stage = new Stage();
@@ -219,21 +231,19 @@ public class AfficherAdminsController implements Initializable {
 
     }
 
-    
     void searchAdmin() {
         Admin ad = new Admin();
-        
+
         txtnom.setCellValueFactory(new PropertyValueFactory<>("nom"));
         txtprenom.setCellValueFactory(new PropertyValueFactory<>("prenom"));
         txtemail.setCellValueFactory(new PropertyValueFactory<>("email"));
         txtmdp.setCellValueFactory(new PropertyValueFactory<>(""));
         txtnum.setCellValueFactory(new PropertyValueFactory<>("numtel"));
-        
-       
+
         table.setItems(dataAdmin);
-       
+
         FilteredList<Admin> filteredData = new FilteredList<>(dataAdmin, b -> true);
-       
+
         txtrecherche.textProperty().addListener((observable, oldValue, newValue) -> {
             filteredData.setPredicate((Admin adm) -> {
                 if (newValue == null || newValue.isEmpty()) {
@@ -241,42 +251,40 @@ public class AfficherAdminsController implements Initializable {
                 }
                 String lowerCaseFilter = newValue.toLowerCase();
 
-                if (adm.getNom().toLowerCase().indexOf(lowerCaseFilter) != -1 ) {
-					return true; // Filter matches first name.
-				} else if (adm.getPrenom().toLowerCase().indexOf(lowerCaseFilter) != -1) {
-					return true; // Filter matches last name.
-				}
-                                if (adm.getEmail().toLowerCase().indexOf(lowerCaseFilter) != -1 ) {
-					return true; // Filter matches first name.
-				}
-                                                         
-				     else  
-				    	 return false; // Does not match.
-			});
-		});
+                if (adm.getNom().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                    return true; // Filter matches first name.
+                } else if (adm.getPrenom().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                    return true; // Filter matches last name.
+                }
+                if (adm.getEmail().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                    return true; // Filter matches first name.
+                } else {
+                    return false; // Does not match.
+                }
+            });
+        });
         SortedList<Admin> sortedData = new SortedList<>(filteredData);
         sortedData.comparatorProperty().bind(table.comparatorProperty());
         table.setItems(sortedData);
-   }
+    }
 
     @FXML
     private void changeScreenAdmin(ActionEvent event) throws IOException {
-        Parent tableViewParent=FXMLLoader.load(getClass().getResource("afficherAdmins.fxml"));
-        Scene tableViewScene= new Scene(tableViewParent);
-        Stage window =(Stage)((Node)event.getSource()).getScene().getWindow();
+        Parent tableViewParent = FXMLLoader.load(getClass().getResource("afficherAdmins.fxml"));
+        Scene tableViewScene = new Scene(tableViewParent);
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(tableViewScene);
         window.show();
     }
 
     @FXML
     private void changeScreenClient(ActionEvent event) throws IOException {
-        Parent tableViewParent=FXMLLoader.load(getClass().getResource("afficherClients.fxml"));
-        Scene tableViewScene= new Scene(tableViewParent);
-        Stage window =(Stage)((Node)event.getSource()).getScene().getWindow();
+        Parent tableViewParent = FXMLLoader.load(getClass().getResource("afficherClients.fxml"));
+        Scene tableViewScene = new Scene(tableViewParent);
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(tableViewScene);
         window.show();
     }
-
 
     @FXML
     private void changeScreenZoneCamp(ActionEvent event) {
@@ -334,5 +342,28 @@ public class AfficherAdminsController implements Initializable {
 
     @FXML
     private void changeScreenPanier(ActionEvent event) {
+    }
+
+    @FXML
+    private void stat(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("chartsSexe.fxml"));
+        Stage mainStage = new Stage();
+        Scene scene = new Scene(root);
+        mainStage.setScene(scene);
+        mainStage.show();
+    }
+
+    @FXML
+    private void PDF(ActionEvent event) throws FileNotFoundException, DocumentException {
+         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation de création du PDF");
+        alert.setHeaderText("Etes vous sur de vouloir créer un PDF qui contient la liste des Admins ?");
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK) {
+             pdfBackup pdfbackup= new pdfBackup();
+        pdfbackup.PdfBackup();
+        }
+        
     }
 }

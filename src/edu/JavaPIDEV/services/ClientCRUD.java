@@ -22,24 +22,25 @@ import java.util.List;
 public class ClientCRUD {
 
     Connection cnx;
-    
-    public ClientCRUD(){
+
+    public ClientCRUD() {
         cnx = MyConnection.getInstance().getCnx();
     }
 
     public void ajouterClient(Client C) {
 
         try {
-            String requete = "INSERT INTO client (cin,nomPrenom,surnom,email,mdp,dateNaissance,adresse,image) VALUES (?,?,?,?,?,?,?,?)";
+            String requete = "INSERT INTO client (cin,nomPrenom,surnom,Sexe,email,mdp,dateNaissance,adresse,image) VALUES (?,?,?,?,?,?,?,?,?)";
             PreparedStatement pst = MyConnection.getInstance().getCnx().prepareStatement(requete);
             pst.setInt(1, C.getCin());
             pst.setString(2, C.getNomPrenom());
             pst.setString(3, C.getSurnom());
-            pst.setString(4, C.getEmail());
-            pst.setString(5, C.getMdp());
-            pst.setDate(6, C.getDateNaissance());
-            pst.setString(7, C.getAdresse());
-            pst.setString(8, C.getImage());
+            pst.setString(4, C.getSexe());
+            pst.setString(5, C.getEmail());
+            pst.setString(6, C.getMdp());
+            pst.setDate(7, C.getDateNaissance());
+            pst.setString(8, C.getAdresse());
+            pst.setString(9, C.getImage());
 
             pst.executeUpdate();
             System.out.println("Client ajoutée!");
@@ -60,11 +61,12 @@ public class ClientCRUD {
                 C.setCin(res.getInt(1));
                 C.setNomPrenom(res.getString(2));
                 C.setSurnom(res.getString(3));
-                C.setEmail(res.getString(4));
-                C.setMdp(res.getString(5));
-                C.setDateNaissance(res.getDate(6));
-                C.setAdresse(res.getString(7));
-                C.setImage("file:C:\\xampp\\htdocs\\images\\" + res.getString(8));
+                C.setSexe(res.getString(4));
+                C.setEmail(res.getString(5));
+                C.setMdp(res.getString(6));
+                C.setDateNaissance(res.getDate(7));
+                C.setAdresse(res.getString(8));
+                C.setImage("file:C:\\xampp\\htdocs\\images\\" + res.getString(9));
                 myList.add(C);
             }
         } catch (SQLException ex) {
@@ -77,7 +79,7 @@ public class ClientCRUD {
 
     public void modifierClient(Client C) {
         try {
-            String req = "UPDATE client SET nomPrenom='" + C.getNomPrenom() + "', surnom='" + C.getSurnom() + "', email='" + C.getEmail() + "', mdp='" + C.getMdp() + "', dateNaissance='" + C.getDateNaissance() + "', adresse='" + C.getAdresse() + "', image='" + C.getImage() + "' WHERE cin=" + C.getCin();
+            String req = "UPDATE client SET nomPrenom='" + C.getNomPrenom() + "', surnom='" + C.getSurnom() +"', Sexe='" + C.getSexe() + "', email='" + C.getEmail() + "', mdp='" + C.getMdp() + "', dateNaissance='" + C.getDateNaissance() + "', adresse='" + C.getAdresse() + "', image='" + C.getImage() + "' WHERE cin=" + C.getCin();
             Statement st = cnx.createStatement();
             st.executeUpdate(req);
             System.out.println("Client modifée !");
@@ -126,6 +128,50 @@ public class ClientCRUD {
         }
         return true;
 
+    }
+
+    public Boolean VerifyClientByEmail(String email) throws SQLException {
+        Client u = new Client();
+        //Boolean found = false;  Statement stm = conn.createStatement();
+        Statement stm = cnx.createStatement();
+
+        String query = "select * from client where email = '" + email + "'";
+        try {
+            ResultSet rst = stm.executeQuery(query);
+            if (rst.next()) {
+                return true;
+            }
+        } catch (SQLException ex) {
+            System.out.println("erreur" + ex.getMessage());
+        }
+        return false;
+    }
+
+    public void updatemdp(String email, String mdp) throws SQLException {
+        Statement stm = cnx.createStatement();
+        String query = "UPDATE client SET mdp= '" + mdp + "' WHERE email='" + email + "'";
+        stm.executeUpdate(query);
+
+    }
+
+    public int countMen() throws SQLException {
+        int count = 0;
+        Statement stmt3 = cnx.createStatement();
+        ResultSet rs3 = stmt3.executeQuery("SELECT COUNT(*) FROM client WHERE `Sexe` = \"Homme\"");
+        while (rs3.next()) {
+            count = rs3.getInt(1);
+        }
+        return count;
+    }
+
+    public int countWomen() throws SQLException {
+        int count = 0;
+        Statement stmt3 = cnx.createStatement();
+        ResultSet rs3 = stmt3.executeQuery("SELECT COUNT(*) FROM client WHERE `Sexe` = \"Femme\"");
+        while (rs3.next()) {
+            count = rs3.getInt(1);
+        }
+        return count;
     }
 
 }

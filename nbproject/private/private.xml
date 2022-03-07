@@ -5,14 +5,7 @@
         <group>
             <file>file:/C:/Users/MSI/Desktop/CampersDen/src/edu/JavaPIDEV/GUI/AfficherAdminsController.java</file>
             <file>file:/C:/Users/MSI/Desktop/CampersDen/src/edu/JavaPIDEV/GUI/ModifierAdminsController.java</file>
-            <file>file:/C:/Users/MSI/Desktop/CampersDen/src/edu/JavaPIDEV/GUI/FrontAccController.java</file>
-            <file>file:/C:/Users/MSI/Desktop/CampersDen/src/edu/JavaPIDEV/GUI/AfficherClientsController.java</file>
-            <file>file:/C:/Users/MSI/Desktop/CampersDen/src/edu/JavaPIDEV/utils/MyConnection.java</file>
-            <file>file:/C:/Users/MSI/Desktop/CampersDen/src/edu/JavaPIDEV/services/MailerService.java</file>
-            <file>file:/C:/Users/MSI/Desktop/CampersDen/src/edu/JavaPIDEV/GUI/changerpwd.fxml</file>
-            <file>file:/C:/Users/MSI/Desktop/CampersDen/nbproject/build-impl.xml</file>
             <file>file:/C:/Users/MSI/Desktop/CampersDen/src/edu/JavaPIDEV/GUI/ModifierClientsController.java</file>
-            <file>file:/C:/Users/MSI/Desktop/CampersDen/src/edu/JavaPIDEV/GUI/pswoub.fxml</file>
             <file>file:/C:/Users/MSI/Desktop/CampersDen/src/edu/JavaPIDEV/GUI/LoginController.java</file>
             <file>file:/C:/Users/MSI/Desktop/CampersDen/src/edu/JavaPIDEV/GUI/AjouterAdminsController.java</file>
             <file>file:/C:/Users/MSI/Desktop/CampersDen/src/edu/JavaPIDEV/GUI/ChangerpwdController.java</file>
@@ -20,12 +13,20 @@
             <file>file:/C:/Users/MSI/Desktop/CampersDen/src/edu/JavaPIDEV/services/MailService.java</file>
             <file>file:/C:/Users/MSI/Desktop/CampersDen/src/edu/JavaPIDEV/tests/MainClass.java</file>
             <file>file:/C:/Users/MSI/Desktop/CampersDen/src/edu/JavaPIDEV/GUI/AjouterClientsController.java</file>
-            <file>file:/C:/Users/MSI/Desktop/CampersDen/src/edu/JavaPIDEV/services/ClientCRUD.java</file>
             <file>file:/C:/Users/MSI/Desktop/CampersDen/src/edu/JavaPIDEV/GUI/MenuController.java</file>
             <file>file:/C:/Users/MSI/Desktop/CampersDen/src/edu/JavaPIDEV/GUI/PswoubController.java</file>
             <file>file:/C:/Users/MSI/Desktop/CampersDen/src/edu/JavaPIDEV/GUI/ProfileController.java</file>
             <file>file:/C:/Users/MSI/Desktop/CampersDen/src/edu/JavaPIDEV/services/AdminCRUD.java</file>
             <file>file:/C:/Users/MSI/Desktop/CampersDen/src/edu/JavaPIDEV/GUI/jdbcLogin.java</file>
+            <file>file:/C:/Users/MSI/Desktop/CampersDen/src/edu/JavaPIDEV/GUI/FrontAccController.java</file>
+            <file>file:/C:/Users/MSI/Desktop/CampersDen/src/edu/JavaPIDEV/GUI/AfficherClientsController.java</file>
+            <file>file:/C:/Users/MSI/Desktop/CampersDen/src/edu/JavaPIDEV/services/MailerService.java</file>
+            <file>file:/C:/Users/MSI/Desktop/CampersDen/src/edu/JavaPIDEV/GUI/changerpwd.fxml</file>
+            <file>file:/C:/Users/MSI/Desktop/CampersDen/nbproject/build-impl.xml</file>
+            <file>file:/C:/Users/MSI/Desktop/CampersDen/src/edu/JavaPIDEV/GUI/pswoub.fxml</file>
+            <file>file:/C:/Users/MSI/Desktop/CampersDen/src/edu/JavaPIDEV/GUI/ChartsSexeController.java</file>
+            <file>file:/C:/Users/MSI/Desktop/CampersDen/src/edu/JavaPIDEV/entities/Admin.java</file>
+            <file>file:/C:/Users/MSI/Desktop/CampersDen/src/edu/JavaPIDEV/services/ClientCRUD.java</file>
             <file>file:/C:/Users/MSI/Desktop/CampersDen/src/edu/JavaPIDEV/GUI/NewFXMain.java</file>
         </group>
     </open-files>

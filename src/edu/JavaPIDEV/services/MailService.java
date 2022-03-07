@@ -11,16 +11,16 @@ import javax.mail.internet.MimeMessage;
 
 
 public class MailService {
-    public void replyMail(String mail ,String Username , String Description) {
-        String from = "testahmedahmed210@gmail.com";
-        String pass = "CampersDen210";
-        String[] to = {"" + mail}; // list of recipient email addresses
-        String subject = "AIDE REPLY";
-        String body = Description ;
-        MailService serv = new MailService();
-        serv.sendFromGMail(from,pass,to,subject,body);
-    }
-    public static void sendFromGMail(String from, String pass, String[] to, String subject, String body) {
+//    public void replyMail(String mail ,String Username , String Description) {
+//        String from = "testahmedahmed210@gmail.com";
+//        String pass = "CampersDen210";
+//        String[] to = {"" + mail}; // list of recipient email addresses
+//        String subject = "AIDE REPLY";
+//        String body = Description ;
+//        MailService serv = new MailService();
+//        serv.sendFromGMail(from,pass,to,subject,body);
+//    }
+    public static void sendFromGMail(String from, String pass, String to, String subject, String body) {
         Properties props = System.getProperties();
         String host = "smtp.gmail.com";
 
@@ -37,15 +37,15 @@ public class MailService {
         MimeMessage message = new MimeMessage(session);
 
         try {
-            message.setFrom(new InternetAddress(from));
-            InternetAddress[] toAddress = new InternetAddress[to.length];
-            // To get the array of addresses
-            for( int i = 0; i < to.length; i++ ) {
-                toAddress[i] = new InternetAddress(to[i]);
-            }
-            for (InternetAddress toAddres : toAddress) {
-                message.addRecipient(Message.RecipientType.TO, toAddres);
-            }
+//            message.setFrom(new InternetAddress(from));
+//            InternetAddress[] toAddress = new InternetAddress[to.length];
+//            // To get the array of addresses
+//            for( int i = 0; i < to.length; i++ ) {
+//                toAddress[i] = new InternetAddress(to[i]);
+//            }
+//            for (InternetAddress toAddres : toAddress) {
+//                message.addRecipient(Message.RecipientType.TO, toAddres);
+//            }
 
             message.setSubject(subject);
             message.setText(body);

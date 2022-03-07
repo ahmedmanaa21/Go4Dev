@@ -21,10 +21,10 @@
       </AnchorPane>
       <AnchorPane id="AnchorPane" prefHeight="906.0" prefWidth="1335.0" stylesheets="@../../../CSS/style.css">
          <children>
-            <Button fx:id="btnmodifier" layoutX="1132.0" layoutY="655.0" mnemonicParsing="false" onAction="#Refresh" style="-fx-background-radius: 30;" text="Refresh" />
-            <Button fx:id="btnsupprimer" layoutX="728.0" layoutY="655.0" mnemonicParsing="false" onAction="#supprimerClients" style="-fx-background-radius: 30;" text="Supprimer" />
+            <Button fx:id="btnmodifier" layoutX="1137.0" layoutY="718.0" mnemonicParsing="false" onAction="#Refresh" style="-fx-background-radius: 30;" text="Refresh" />
+            <Button fx:id="btnsupprimer" layoutX="733.0" layoutY="718.0" mnemonicParsing="false" onAction="#supprimerClients" style="-fx-background-radius: 30;" text="Supprimer" />
             <TextField fx:id="txtrecherche" layoutX="448.0" layoutY="316.0" prefHeight="26.0" prefWidth="200.0" promptText="Recherche :" style="-fx-background-radius: 50;" />
-            <TableView fx:id="table" layoutX="448.0" layoutY="366.0" prefHeight="279.0" prefWidth="740.0">
+            <TableView fx:id="table" layoutX="448.0" layoutY="366.0" prefHeight="342.0" prefWidth="859.0">
                <columns>
                   <TableColumn fx:id="txtcin" prefWidth="75.0" text="Cin" />
                   <TableColumn fx:id="txtnom" prefWidth="97.60003662109375" text="Nom Complet" />
@@ -34,9 +34,10 @@
                   <TableColumn fx:id="txtdate" minWidth="8.800048828125" prefWidth="98.39990234375" text="Date de naissance" />
                   <TableColumn fx:id="txtadresse" minWidth="8.800048828125" prefWidth="98.39990234375" text="Adresse" />
                   <TableColumn fx:id="txtimage" minWidth="8.800048828125" prefWidth="98.39990234375" text="Image" />
+                  <TableColumn fx:id="txtsexe" minWidth="8.800048828125" prefWidth="98.39990234375" text="Sexe" />
                </columns>
             </TableView>
-            <Button fx:id="btnajouter" layoutX="558.0" layoutY="655.0" mnemonicParsing="false" onAction="#ajouterClients" prefHeight="26.0" prefWidth="150.0" style="-fx-background-radius: 30;" text="Ajouter Clients" />
+            <Button fx:id="btnajouter" layoutX="563.0" layoutY="718.0" mnemonicParsing="false" onAction="#ajouterClients" prefHeight="26.0" prefWidth="150.0" style="-fx-background-radius: 30;" text="Ajouter Clients" />
             <Label layoutX="755.0" layoutY="256.0" text="Gestion des Clients">
                <font>
                   <Font name="Impact" size="22.0" />
@@ -103,6 +104,7 @@
                   </ImageView>
                </graphic>
             </Button>
+            <Button fx:id="btnPDF" layoutX="1210.0" layoutY="253.0" mnemonicParsing="false" onAction="#PDF" prefHeight="34.0" prefWidth="71.0" style="-fx-background-radius: 30;" text="PDF" />
          </children>
       </AnchorPane>
    </children>

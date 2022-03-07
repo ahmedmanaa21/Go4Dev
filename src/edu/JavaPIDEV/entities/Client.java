@@ -18,6 +18,9 @@ public class Client {
     private int cin;
     private String nomPrenom;
     private String surnom;
+    private String sexe;
+
+    
     private String mdp;
     private String email;
     private Date dateNaissance;
@@ -27,10 +30,11 @@ public class Client {
     public Client() {
     }
     
-    public Client(int cin, String nomPrenom, String surnom,String email ,String mdp, Date dateNaissance, String adresse,String image) {
+    public Client(int cin, String nomPrenom, String surnom,String sexe,String email ,String mdp, Date dateNaissance, String adresse,String image) {
         this.cin = cin;
         this.nomPrenom = nomPrenom;
         this.surnom = surnom;
+        this.sexe = sexe;
         this.email = email;        
         this.mdp = mdp;
         this.dateNaissance = dateNaissance;
@@ -38,9 +42,10 @@ public class Client {
         this.image = image;
     }
     
-    public Client(String nomPrenom, String surnom, String email, String mdp, Date dateNaissance, String adresse,String image) {
+    public Client(String nomPrenom, String surnom,String sexe, String email, String mdp, Date dateNaissance, String adresse,String image) {
         this.nomPrenom = nomPrenom;
         this.surnom = surnom;
+        this.sexe = sexe;
         this.email = email;        
         this.mdp = mdp;
         this.dateNaissance = dateNaissance;
@@ -60,6 +65,10 @@ public class Client {
 
     public String getSurnom() {
         return surnom;
+    }
+    
+    public String getSexe() {
+        return sexe;
     }
     
     public String getEmail() {
@@ -94,6 +103,10 @@ public class Client {
         this.surnom = surnom;
     }
     
+    public void setSexe(String sexe) {
+        this.sexe = sexe;
+    }
+    
     public void setEmail(String email) {
         this.email = email;
     }
@@ -116,7 +129,7 @@ public class Client {
 
     @Override
     public String toString() {
-        return "Client{" + "cin=" + cin + ", nomPrenom=" + nomPrenom + ", surnom=" + surnom + ", mdp=" + mdp + ", email=" + email + ", dateNaissance=" + dateNaissance + ", adresse=" + adresse + ", image=" + image + '}';
+        return "Client{" + "cin=" + cin + ", nomPrenom=" + nomPrenom + ", surnom=" + surnom +", sexe=" + sexe + ", mdp=" + mdp + ", email=" + email + ", dateNaissance=" + dateNaissance + ", adresse=" + adresse + ", image=" + image + '}';
     }
    
     

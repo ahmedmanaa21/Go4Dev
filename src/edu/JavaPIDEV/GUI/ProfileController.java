@@ -46,6 +46,8 @@ import org.apache.commons.io.FileUtils;
 public class ProfileController implements Initializable {
 
     Connection cnx;
+    @FXML
+    private TextField fxsexe;
 
     public ProfileController() {
         cnx = MyConnection.getInstance().getCnx();
@@ -89,14 +91,14 @@ public class ProfileController implements Initializable {
         logo.setImage(new Image("file:C:\\Users\\MSI\\Desktop\\CampersDen\\src\\Images\\logo.png"));
         fximage.setImage(new Image("file:C:\\Users\\MSI\\Desktop\\CampersDen\\src\\Images\\import.gif"));
 
+        fxcin.setText(String.valueOf(UserconnectedC.getCin()));
         fxnom.setText(UserconnectedC.getNomPrenom());
+        fxsurnom.setText(UserconnectedC.getSurnom());
+        fxsexe.setText(UserconnectedC.getSexe());
         fxemail.setText(UserconnectedC.getEmail());
         fxmdp.setText(UserconnectedC.getMdp());
-        fxcin.setText(String.valueOf(UserconnectedC.getCin()));
-        fxsurnom.setText(UserconnectedC.getSurnom());
         fxadresse.setText(UserconnectedC.getAdresse());
 //        fximage.setImage(UserconnectedC.getImage());
-        System.out.println(UserconnectedC.getEmail());
 
     }
 
@@ -117,6 +119,7 @@ public class ProfileController implements Initializable {
         UserconnectedC.setCin(0);
         UserconnectedC.setNomPrenom("");
         UserconnectedC.setSurnom("");
+        UserconnectedC.setSexe("");
         UserconnectedC.setEmail("");
         UserconnectedC.setMdp("");
         UserconnectedC.setAdresse("");
@@ -141,6 +144,7 @@ public class ProfileController implements Initializable {
         int cin = Integer.valueOf(fxcin.getText());
         String nomPrenom = fxnom.getText();
         String surnom = fxsurnom.getText();
+        String sexe = fxsexe.getText();
         String email = fxemail.getText();
         String mdp = fxmdp.getText();
         java.sql.Date date = java.sql.Date.valueOf(fxdate.getValue());
@@ -157,9 +161,9 @@ public class ProfileController implements Initializable {
             ModifyClientAlert.setContentText("Voulez-vous vraiment modifier votre prfile ?");
             Optional<ButtonType> optionModifyBookAlert = ModifyClientAlert.showAndWait();
             if (optionModifyBookAlert.get() == ButtonType.OK) {
-                Client c = new Client(cin, nomPrenom, surnom, email, mdp, date, adresse, path);
+                Client c = new Client(cin, nomPrenom, surnom, sexe, email, mdp, date, adresse, path);
                 ClientCRUD ad = new ClientCRUD();
-                ad.modifierClient(new Client(cin, nomPrenom, surnom, email, mdp, date, adresse, path));
+                ad.modifierClient(new Client(cin, nomPrenom, surnom, sexe, email, mdp, date, adresse, path));
                 if (selectedFile != null) {
                     try {
                         File source = new File(selectedFile.toString());

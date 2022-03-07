@@ -69,7 +69,7 @@
       <AnchorPane id="AnchorPane" fx:id="displayArea" layoutX="286.0" layoutY="1.0" prefHeight="912.0" prefWidth="1050.0" stylesheets="@../../../CSS/style.css">
          <children>
             <TextField fx:id="idm" layoutX="-22.0" layoutY="170.0" prefHeight="31.0" prefWidth="26.0" visible="false" />
-            <Button fx:id="btnsupprimer" layoutX="547.0" layoutY="557.0" mnemonicParsing="false" onAction="#supprimerAdmins" style="-fx-background-radius: 30;" text="Supprimer" />
+            <Button fx:id="btnsupprimer" layoutX="466.0" layoutY="558.0" mnemonicParsing="false" onAction="#supprimerAdmins" prefHeight="34.0" prefWidth="71.0" style="-fx-background-radius: 30;" text="Supprimer" />
             <TextField fx:id="txtrecherche" layoutX="233.0" layoutY="212.0" prefHeight="26.0" prefWidth="208.0" promptText="Rechercher :" style="-fx-background-radius: 50;" />
             <TableView fx:id="table" layoutX="233.0" layoutY="262.0" prefHeight="279.0" prefWidth="538.0">
                <columns>
@@ -80,8 +80,15 @@
                   <TableColumn fx:id="txtnum" minWidth="8.800048828125" prefWidth="122.39996337890625" text="Numero Tel" />
                </columns>
             </TableView>
-            <Button fx:id="btnref" layoutX="673.0" layoutY="558.0" mnemonicParsing="false" onAction="#Refresh" prefHeight="26.0" prefWidth="98.0" style="-fx-background-radius: 30;" text="Refresh" />
-            <Button fx:id="btnajouter" layoutX="388.0" layoutY="557.0" mnemonicParsing="false" onAction="#ajouterAdmins" prefHeight="26.0" prefWidth="141.0" style="-fx-background-radius: 30;" text="Ajouter Admins" />
+            <Button fx:id="btnref" layoutX="673.0" layoutY="558.0" mnemonicParsing="false" onAction="#Refresh" prefHeight="26.0" prefWidth="98.0" style="-fx-background-radius: 30;" text="Refresh">
+               <graphic>
+                  <ImageView fx:id="refresh" fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../Images/reload.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+            <Button fx:id="btnajouter" layoutX="233.0" layoutY="558.0" mnemonicParsing="false" onAction="#ajouterAdmins" prefHeight="34.0" prefWidth="142.0" style="-fx-background-radius: 30;" text="Ajouter Admins" />
             <Label layoutX="413.0" layoutY="153.0" text="Gestion des Admins">
                <font>
                   <Font name="Impact" size="22.0" />
@@ -96,6 +103,16 @@
                   </ImageView>
                </graphic>
             </Button>
+            <Button fx:id="btnstat" layoutX="935.0" layoutY="152.0" mnemonicParsing="false" onAction="#stat">
+               <graphic>
+                  <ImageView fx:id="stat" fitHeight="21.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../Images/bar-chart.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="btnsupprimer1" layoutX="918.0" layoutY="208.0" mnemonicParsing="false" onAction="#PDF" prefHeight="34.0" prefWidth="71.0" style="-fx-background-radius: 30;" text="PDF" />
          </children>
       </AnchorPane>
    </children>

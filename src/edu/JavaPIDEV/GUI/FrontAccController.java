@@ -59,6 +59,8 @@ public class FrontAccController implements Initializable {
     private Button btnoffre;
     @FXML
     private Button btnrec;
+    @FXML
+    private Label txtsexe;
 
     /**
      * Initializes the controller class.
@@ -75,7 +77,9 @@ public class FrontAccController implements Initializable {
         txtdate.setText(String.valueOf(UserconnectedC.getDateNaissance()));
         txtsurnom.setText(UserconnectedC.getSurnom());
         txtadresse.setText(UserconnectedC.getAdresse());
-        System.out.println(UserconnectedC.getEmail());
+        txtsexe.setText(UserconnectedC.getSexe());
+        
+        
     }    
 
     @FXML
@@ -88,6 +92,7 @@ public class FrontAccController implements Initializable {
         UserconnectedC.setMdp("");
         UserconnectedC.setAdresse("");
         UserconnectedC.setImage("");
+        UserconnectedC.setSexe("");
 
         FXMLLoader LOADER = new FXMLLoader(getClass().getResource("login.fxml"));
         try {

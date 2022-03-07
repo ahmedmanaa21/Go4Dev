@@ -46,6 +46,8 @@ import org.apache.commons.io.FileUtils;
 public class ModifierClientsController implements Initializable {
     
     Connection cnx;
+    @FXML
+    private TextField fxsexe;
     public ModifierClientsController(){
         cnx = MyConnection.getInstance().getCnx();
     }
@@ -98,6 +100,7 @@ public class ModifierClientsController implements Initializable {
         int cin = Integer.valueOf(fxcin.getText());
         String nomPrenom = fxnom.getText();
         String surnom = fxsurnom.getText();
+        String sexe = fxsexe.getText();
         String email = fxemail.getText();
         String mdp = fxmdp.getText();
         java.sql.Date date = java.sql.Date.valueOf(fxdate.getValue());
@@ -114,9 +117,9 @@ public class ModifierClientsController implements Initializable {
             ModifyClientAlert.setContentText("Voulez-vous vraiment modifier cet Client ?");
             Optional<ButtonType> optionModifyBookAlert = ModifyClientAlert.showAndWait();
             if (optionModifyBookAlert.get() == ButtonType.OK) {
-                Client c = new Client(cin, nomPrenom, surnom, email, mdp, date, adresse, path);
+                Client c = new Client(cin, nomPrenom, sexe, surnom, email, mdp, date, adresse, path);
                 ClientCRUD ad = new ClientCRUD();
-                ad.modifierClient(new Client(cin, nomPrenom, surnom, email, mdp, date, adresse, path));
+                ad.modifierClient(new Client(cin, nomPrenom, surnom, sexe, email, mdp, date, adresse, path));
                 if (selectedFile != null) {
                     try {
                         File source = new File(selectedFile.toString());
@@ -139,11 +142,12 @@ public class ModifierClientsController implements Initializable {
 
     }
 
-    public void setData(int cin, String nomPrenom, String surnom, String email, String mdp, Date date, String adresse, String image) {
+    public void setData(int cin, String nomPrenom, String surnom, String sexe, String email, String mdp, Date date, String adresse, String image) {
 
         fxcin.setText("" + cin);
         fxnom.setText("" + nomPrenom);
         fxsurnom.setText("" + surnom);
+        fxsexe.setText("" + sexe);
         fxemail.setText("" + email);
         fxmdp.setText("" + mdp);
 //        java.sql.Date.valueOf(fxdate.getValue());
@@ -181,6 +185,7 @@ public class ModifierClientsController implements Initializable {
         UserconnectedC.setCin(0);
         UserconnectedC.setNomPrenom("");
         UserconnectedC.setSurnom("");
+        UserconnectedC.setSexe("");
         UserconnectedC.setEmail("");
         UserconnectedC.setMdp("");
         UserconnectedC.setAdresse("");

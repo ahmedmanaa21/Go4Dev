@@ -73,11 +73,12 @@ public class LoginController {
                 UserconnectedC.setCin(rs.getInt(1));
                 UserconnectedC.setNomPrenom(rs.getString(2));
                 UserconnectedC.setSurnom(rs.getString(3));
-                UserconnectedC.setEmail(rs.getString(4));
-                UserconnectedC.setMdp(rs.getString(5));
-                UserconnectedC.setDateNaissance(rs.getDate(6));
-                UserconnectedC.setAdresse(rs.getString(7));
-                UserconnectedC.setImage(rs.getString(8));
+                UserconnectedC.setSexe(rs.getString(4));
+                UserconnectedC.setEmail(rs.getString(5));
+                UserconnectedC.setMdp(rs.getString(6));
+                UserconnectedC.setDateNaissance(rs.getDate(7));
+                UserconnectedC.setAdresse(rs.getString(8));
+                UserconnectedC.setImage(rs.getString(9));
                 btnconn.getScene().getWindow().hide();
                 Parent root = FXMLLoader.load(getClass().getResource("FrontAcc.fxml"));
                 Stage mainStage = new Stage();
@@ -150,30 +151,11 @@ public class LoginController {
         }
     }
 
-//    public static Admin FindUserPassword(String email) {
-//    
-//    Connection cnx = new MyConnection().getCnx();
-//    Admin user = new Admin();
-//    try {
-//      PreparedStatement stmt = cnx.prepareStatement("Select password from admin where email=?");
-//      stmt.setString(1, email);
-//      ResultSet rs = stmt.executeQuery();
-//      if (rs.next()) {
-//        
-//        user.setMdp(rs.getString("mdp"));
-//      }
-//    } catch (Exception e) {
-//      // TODO Auto-generated catch block
-//      e.printStackTrace();
-//    }
-//    return user;
-//    
-//  }
     @FXML
     private void mdpoub(ActionEvent event) {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("pswoub.fxml"));
-            Scene scene = new Scene(root, 1100, 650);
+            Scene scene = new Scene(root, 840, 615);
             Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             appStage.setScene(scene);
             appStage.show();

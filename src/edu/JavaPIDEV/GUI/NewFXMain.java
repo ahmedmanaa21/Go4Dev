@@ -25,8 +25,8 @@ public class NewFXMain extends Application {
         Parent root;
         try {
 
-            root = FXMLLoader.load(getClass().getResource("login.fxml"));
-            Scene scene = new Scene(root, 1335, 909);
+            root = FXMLLoader.load(getClass().getResource("afficherAdmins.fxml"));
+            Scene scene = new Scene(root, 840, 615);
             primaryStage.setTitle("CamperDen");
             primaryStage.getIcons().add(new Image("file:C:\\Users\\MSI\\Desktop\\CampersDen\\src\\Images\\logo.png"));
             primaryStage.setScene(scene);

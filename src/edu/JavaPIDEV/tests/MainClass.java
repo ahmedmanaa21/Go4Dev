@@ -9,6 +9,7 @@ import edu.JavaPIDEV.entities.Admin;
 import edu.JavaPIDEV.entities.Client;
 import edu.JavaPIDEV.services.AdminCRUD;
 import edu.JavaPIDEV.services.ClientCRUD;
+import edu.JavaPIDEV.services.MailerService;
 import edu.JavaPIDEV.utils.MyConnection;
 import java.time.Period;
 import java.util.List;
@@ -19,12 +20,12 @@ import java.util.List;
  */
 public class MainClass {
 
-    public static void main(String[] args) {
-        System.out.println("***********   Connection BDD   ***************");
-        MyConnection m1 = MyConnection.getInstance();
-        System.out.println("***********   Gestion Admins   ***************");
-        AdminCRUD ad = new AdminCRUD();
-        Admin A1 = new Admin("jihed","melki","jihed@esprit.tn","mdp21",22225678);
+    public static void main(String[] args) throws Exception {
+//        System.out.println("***********   Connection BDD   ***************");
+//        MyConnection m1 = MyConnection.getInstance();
+//        System.out.println("***********   Gestion Admins   ***************");
+//        AdminCRUD ad = new AdminCRUD();
+//        Admin A1 = new Admin("jihed","melki","jihed@esprit.tn","mdp21",22225678);
 //        ad.ajouterAdmin(A1);
 //        List<Admin> listAdmin = ad.affichageAdmin();
 //        for (Admin equ : listAdmin) {
@@ -32,11 +33,11 @@ public class MainClass {
 //        }
 //        ad.updateAdmin("test","test","test@esprit.tn","nyest",131212,7); 
 //        ad.supprimerAdmin(10);
-        System.out.println("***********   Gestion Clients   ***************");
-        ClientCRUD cl = new ClientCRUD();
-        java.util.Date AjoutDate = new java.util.Date("2022/01/10");
-        java.sql.Date sqldate = new java.sql.Date(AjoutDate.getTime());
-        Client C1 = new Client(1112345,"jasser manaa","ahmed12","ahmed@esprit.tn","mdp1",sqldate,"ghazela","image");
+//        System.out.println("***********   Gestion Clients   ***************");
+//        ClientCRUD cl = new ClientCRUD();
+//        java.util.Date AjoutDate = new java.util.Date("2022/01/10");
+//        java.sql.Date sqldate = new java.sql.Date(AjoutDate.getTime());
+//        Client C1 = new Client(1112345,"jasser manaa","ahmed12","ahmed@esprit.tn","mdp1",sqldate,"ghazela","image");
 //        Client C2 = new Client(11345677,"bbb manaa","ab12","tss@esprit.tn","mdp1","1998/07/17","ghazela");
 //        Client C3 = new Client(17345677,"jihed","jii12","nes11","nessrine@esprit.tn",1999/01/21,"Ariana");
 //        cl.ajouterClient(C1);

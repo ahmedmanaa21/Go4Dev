@@ -6,12 +6,16 @@
 package edu.JavaPIDEV.GUI;
 
 import edu.JavaPIDEV.services.AdminCRUD;
+import edu.JavaPIDEV.services.ClientCRUD;
 import edu.JavaPIDEV.services.MailerService;
+//import edu.JavaPIDEV.services.MailerService;
 import edu.JavaPIDEV.utils.MyConnection;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.Properties;
+import java.util.Random;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -25,6 +29,12 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javax.mail.Message;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+import javax.swing.JOptionPane;
 
 
 
@@ -40,6 +50,9 @@ public class PswoubController implements Initializable {
         cnx = MyConnection.getInstance().getCnx();
     }
     
+    Random rand = new Random();
+    int randomcode = rand.nextInt(9999999);
+    String code = String.valueOf(randomcode);
     MailerService email = new MailerService();
     public static String c;
     public static String cc;
@@ -51,8 +64,7 @@ public class PswoubController implements Initializable {
     private TextField em;
     @FXML
     private Button envoyer;
-    public static String code;
-    AdminCRUD crud =new AdminCRUD();
+    ClientCRUD crud =new ClientCRUD();
     @FXML
     private Button ret;
     /**
@@ -66,27 +78,49 @@ public class PswoubController implements Initializable {
         // TODO    
     }    
  @FXML
-    private void envouyercode(ActionEvent event) throws SQLException, Exception {
-        cc = em.getText();
-//        code = email.getPassword();
-        code = "A1Z2E" ;
-        if (crud.VerifyUserByEmail(cc)){
-        String nom = "User";
-        String message = "Bonjour Mr/Mme " + nom + "votre code est : "  + code + "\n Bonne Journée! ";
-        email.replyMail(cc, nom, message);
-//        email.sendEmail(cc, code);
-        Alert alert = new Alert(AlertType.INFORMATION);
-        alert.setTitle("Information Dialog");
-        alert.setHeaderText(null);
-        alert.setContentText("Check Your Email !!!");
-        alert.show();
-             
+    private void envouyercode(ActionEvent event) throws SQLException {
+        cc=em.getText();
+        if (crud.VerifyClientByEmail(cc)){
+        try {
+            
+            String host = "smtp.gmail.com";
+            String user = "testahmedahmed210@gmail.com";
+            String pass = "CampersDen210";
+            String to = em.getText();
+            String subject = "Initialisation Code";
+
+            String message = "Your reset code is " + randomcode;
+            boolean sessionDebug = false;
+            Properties pros = System.getProperties();
+            pros.put("mail.smtp.starttls.enable", "true");
+            pros.put("mail.smtp.host", "host");
+            pros.put("mail.smtp.port", "587");
+            pros.put("mail.smtp.auth", "true");
+            pros.put("mail.smtp.starttls.required", "true");
+            pros.put("mail.smtp.ssl.trust", "smtp.gmail.com");
+            Session mailSession = Session.getDefaultInstance(pros, null);
+            mailSession.setDebug(sessionDebug);
+            Message msg = new MimeMessage(mailSession);
+            msg.setFrom(new InternetAddress(user));
+            InternetAddress[] address = {new InternetAddress(to)};
+            msg.setRecipients(Message.RecipientType.TO, address);
+            msg.setSubject(subject);
+            msg.setText(message);
+            Transport transport = mailSession.getTransport("smtp");
+            transport.connect(host, user, pass);
+            transport.sendMessage(msg, msg.getAllRecipients());
+            transport.close();
+            JOptionPane.showMessageDialog(null, "Code envoyé");
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
         }else{
             
         Alert alert = new Alert(AlertType.INFORMATION);
         alert.setTitle("Information Dialog");
         alert.setHeaderText(null);
-        alert.setContentText("You Don't Have Account !!!");
+        alert.setContentText("Vous n'avez pas de compte, veuillez vous inscrire !");
         alert.show();
             
         }
@@ -97,8 +131,8 @@ public class PswoubController implements Initializable {
         c = codeclient.getText();
         if(code.equals(c)){
             try {
-                Parent page1 = FXMLLoader.load(getClass().getResource("changerpwd.fxml"));
-                Scene scene = new Scene(page1);
+                Parent root = FXMLLoader.load(getClass().getResource("changerpwd.fxml"));
+                Scene scene = new Scene(root, 840, 615);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 //stage.setTitle("Inscription");
                 stage.setScene(scene);
