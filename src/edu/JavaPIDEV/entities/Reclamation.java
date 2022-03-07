@@ -18,17 +18,37 @@ public class Reclamation {
     private Date date_rec;
     private int cin;
     private String screenshot;
-    private String status;
+    private String mail;
+    
+    
     public Reclamation(){}
 
-    public Reclamation(int id_rec, String type_rec, String description_rec, Date date_rec, int cin, String screenshot, String status) {
+    public Reclamation(int id_rec, String type_rec, String description_rec, Date date_rec, int cin, String screenshot,String mail) {
         this.id_rec = id_rec;
         this.type_rec = type_rec;
         this.description_rec = description_rec;
         this.date_rec = date_rec;
         this.cin = cin;
         this.screenshot = screenshot;
-        this.status = status;
+        this.mail=mail;
+      
+    }
+
+    public Reclamation(String type_rec, String description_rec, Date date_rec, String screenshot) {
+        this.type_rec = type_rec;
+        this.description_rec = description_rec;
+        this.date_rec = date_rec;
+        this.screenshot = screenshot;
+    }
+
+  
+
+    public Reclamation(int id_rec, String type_rec, String description_rec, Date date_rec, int cin) {
+        this.id_rec = id_rec;
+        this.type_rec = type_rec;
+        this.description_rec = description_rec;
+        this.date_rec = date_rec;
+        this.cin = cin;
     }
 
    
@@ -37,12 +57,30 @@ public class Reclamation {
         this.id_rec = id_rec;
     }
 
+    public Reclamation(String type_rec, String description_rec, Date date_rec, String screenshot, String mail) {
+        this.type_rec = type_rec;
+        this.description_rec = description_rec;
+        this.date_rec = date_rec;
+        this.screenshot = screenshot;
+        this.mail = mail;
+    }
+
     public Reclamation(int id_rec, String type_rec, String description_rec, Date date_rec) {
         this.id_rec = id_rec;
         this.type_rec = type_rec;
         this.description_rec = description_rec;
         this.date_rec = date_rec;
     }
+
+    public Reclamation(String type_rec, String description_rec, Date date_rec, int cin, String screenshot, String mail) {
+        this.type_rec = type_rec;
+        this.description_rec = description_rec;
+        this.date_rec = date_rec;
+        this.cin = cin;
+        this.screenshot = screenshot;
+        this.mail = mail;
+    }
+    
 
    
 
@@ -94,23 +132,29 @@ public class Reclamation {
     public String getScreenshot() {
         return screenshot;
     }
+    
 
     public void setScreenshot(String screenshot) {
         this.screenshot = screenshot;
     }
 
-    public String getStatus() {
-        return status;
+    public String getMail() {
+        return mail;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setMail(String mail) {
+        this.mail = mail;
     }
 
     @Override
     public String toString() {
-        return "Reclamation{" + "id_rec=" + id_rec + ", type_rec=" + type_rec + ", description_rec=" + description_rec + ", date_rec=" + date_rec + ", cin=" + cin + ", screenshot=" + screenshot + ", status=" + status + '}';
+        return "Reclamation{" + "id_rec=" + id_rec + ", type_rec=" + type_rec + ", description_rec=" + description_rec + ", date_rec=" + date_rec + ", cin=" + cin + ", screenshot=" + screenshot + ", mail=" + mail + '}';
     }
+
+    
+    
+
+    
 
 
    

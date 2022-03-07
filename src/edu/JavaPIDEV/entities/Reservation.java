@@ -5,6 +5,10 @@
  */
 package edu.JavaPIDEV.entities;
 
+import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
+import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
+import java.sql.Date;
+
 /**
  *
  * @author Jasser BOUKRAYA
@@ -12,26 +16,26 @@ package edu.JavaPIDEV.entities;
 public class Reservation {
     private int id_res;
     private int cin;
-    private String date_res;
+    private Date date_res;
     private int id_zoneCamping;
     private int nrbPersonne;
-    private int id_ev;
 
     public Reservation() {
     }
 
-    public Reservation(int id_res, int cin, String date_res, int id_zoneCamping, int nrbPersonne, int id_ev) {
+
+    public Reservation(int id_res, int cin, Date date_res, int id_zoneCamping, int nrbPersonne) {
         this.id_res = id_res;
         this.cin = cin;
         this.date_res = date_res;
         this.id_zoneCamping = id_zoneCamping;
         this.nrbPersonne = nrbPersonne;
-        this.id_ev = id_ev;
     }
+    
 
     
 
-    public Reservation(int id_res, String date_res, int nrbPersonne) {
+    public Reservation(int id_res, Date date_res, int nrbPersonne) {
         this.id_res = id_res;
         this.date_res = date_res;
         this.nrbPersonne = nrbPersonne;
@@ -41,13 +45,6 @@ public class Reservation {
         this.id_res = id_res;
     }
 
-    public int getId_ev() {
-        return id_ev;
-    }
-
-    public void setId_ev(int id_ev) {
-        this.id_ev = id_ev;
-    }
 
     
     public int getId_res() {
@@ -66,11 +63,11 @@ public class Reservation {
         this.cin = cin;
     }
 
-    public String getDate_res() {
+    public Date getDate_res() {
         return date_res;
     }
 
-    public void setDate_res(String date_res) {
+    public void setDate_res(Date date_res) {
         this.date_res = date_res;
     }
 
@@ -92,9 +89,12 @@ public class Reservation {
 
     @Override
     public String toString() {
-        return "Reservation{" + "id_res=" + id_res + ", cin=" + cin + ", date_res=" + date_res + ", id_zoneCamping=" + id_zoneCamping + ", nrbPersonne=" + nrbPersonne + ", id_ev=" + id_ev + '}';
+        return "Reservation{" + "id_res=" + id_res + ", cin=" + cin + ", date_res=" + date_res + ", id_zoneCamping=" + id_zoneCamping + ", nrbPersonne=" + nrbPersonne + '}';
     }
 
+   
+
+  
     
         
     

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #BCCAE6;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.JavaPIDEV.GUI.MenuController">
+   <children>
+      <Button fx:id="afficher" layoutX="28.0" layoutY="301.0" mnemonicParsing="false" onAction="#listerReclamation" prefHeight="74.0" prefWidth="220.0" style="-fx-background-radius: 50;" text="Lister Reclamation Admin" textFill="#302b70">
+         <font>
+            <Font size="16.0" />
+         </font></Button>
+      <Button fx:id="envRec" layoutX="28.0" layoutY="71.0" mnemonicParsing="false" onAction="#envoyerReclamation" prefHeight="74.0" prefWidth="220.0" style="-fx-background-radius: 50;" text="Passer une Reclamation C" textFill="#302b70">
+         <font>
+            <Font size="16.0" />
+         </font></Button>
+      <Button fx:id="passerRerservation" layoutX="357.0" layoutY="72.0" mnemonicParsing="false" onAction="#envoyerReservation" prefHeight="74.0" prefWidth="220.0" style="-fx-background-radius: 50;" text="Passer une Reservation C" textFill="#302b70">
+         <font>
+            <Font size="16.0" />
+         </font></Button>
+      <Button fx:id="ListerRerservation" layoutX="370.0" layoutY="301.0" mnemonicParsing="false" onAction="#ListerRerservation" prefHeight="74.0" prefWidth="201.0" style="-fx-background-radius: 50;" text="Lister Reservation Admin " textFill="#302b70">
+         <font>
+            <Font size="16.0" />
+         </font></Button>
+      <Line endX="100.0" layoutX="138.0" layoutY="51.0" startX="-100.0" />
+      <Line endX="100.0" layoutX="466.0" layoutY="53.0" startX="-100.0" />
+      <Text fill="#302b70" layoutX="75.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reclamation">
+         <font>
+            <Font name="Impact" size="23.0" />
+         </font>
+      </Text>
+      <Text fill="#302b70" layoutX="412.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reservation">
+         <font>
+            <Font name="Impact" size="23.0" />
+         </font>
+      </Text>
+      <Button fx:id="afficherClient" layoutX="28.0" layoutY="163.0" mnemonicParsing="false" onAction="#listerReclamationClient" prefHeight="74.0" prefWidth="220.0" style="-fx-background-radius: 50;" text="Lister Reclamation Client" textFill="#302b70">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <Line endX="100.0" layoutX="137.0" layoutY="272.0" startX="-100.0" />
+      <Line endX="100.0" layoutX="466.0" layoutY="272.0" startX="-100.0" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="650.0" style="-fx-background-color: #BCCAE6;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.JavaPIDEV.GUI.AjouterReclamationController">
+   <children>
+      <Label layoutX="6.0" layoutY="119.0" text="Type reclamation" />
+      <Label layoutX="19.0" layoutY="254.0" text="description" />
+      <Label layoutX="14.0" layoutY="212.0" text="Date" />
+      <Label layoutX="17.0" layoutY="170.0" text="CIN" />
+      <TextField fx:id="cin" layoutX="142.0" layoutY="166.0" />
+      <Button fx:id="image" layoutX="446.0" layoutY="84.0" mnemonicParsing="false" onAction="#image" text="Importer une image " />
+      <DatePicker fx:id="date_rec" layoutX="142.0" layoutY="208.0" />
+      <TextArea fx:id="description" layoutX="142.0" layoutY="254.0" prefHeight="74.0" prefWidth="227.0" />
+      <Button fx:id="AjouterRec" layoutX="498.0" layoutY="347.0" mnemonicParsing="false" onAction="#AddRec" prefHeight="30.0" prefWidth="91.0" style="-fx-background-radius: 50;" text="Passer" />
+      <ImageView fx:id="screenshot" fitHeight="150.0" fitWidth="200.0" layoutX="408.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true" />
+      <ComboBox fx:id="type_rec" layoutX="142.0" layoutY="115.0" prefHeight="26.0" prefWidth="200.0" />
+      <ImageView fx:id="checkDES" fitHeight="26.0" fitWidth="36.0" layoutX="328.0" layoutY="298.0" pickOnBounds="true" preserveRatio="true" />
+      <Button fx:id="retour" layoutX="19.0" layoutY="348.0" mnemonicParsing="false" onAction="#retour" prefHeight="30.0" prefWidth="91.0" style="-fx-background-radius: 50;" text="Retourner" />
+      <Text fill="#302b70" layoutX="189.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Passer une Reclamation">
+         <font>
+            <Font name="Impact" size="25.0" />
+         </font>
+      </Text>
+      <TextField fx:id="email" layoutX="141.0" layoutY="71.0" prefHeight="30.0" prefWidth="175.0" />
+      <Label layoutX="12.0" layoutY="79.0" text="Email" />
+      <ImageView fx:id="checkmail" fitHeight="26.0" fitWidth="36.0" layoutX="324.0" layoutY="73.0" pickOnBounds="true" preserveRatio="true" />
+   </children>
+</AnchorPane>

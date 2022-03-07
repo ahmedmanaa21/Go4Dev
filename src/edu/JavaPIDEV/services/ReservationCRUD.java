@@ -7,6 +7,7 @@ package edu.JavaPIDEV.services;
 
 import edu.JavaPIDEV.entities.Reservation;
 import edu.JavaPIDEV.utils.MyConnection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -24,14 +25,13 @@ public class ReservationCRUD {
       public void ajouterReservation(Reservation r){
     
      try {
-            String requete = "INSERT INTO reservation (id_reservation,cin,date_reservation,id_zoneCamping,id_ev,nbrPersonne) VALUES (?,?,?,?,?,?)";
+            String requete = "INSERT INTO reservation (id_reservation,cin,date_reservation,id_zoneCamping,nbrPersonne) VALUES (?,?,?,?,?)";
             PreparedStatement pst =MyConnection.getInstance().getCnx().prepareStatement(requete);
             pst.setShort(1, (short) r.getId_res());
             pst.setShort(2, (short) r.getCin());
-            pst.setString(3,r.getDate_res());
+            pst.setDate(3,r.getDate_res());
             pst.setShort(4,(short) r.getId_zoneCamping());
-            pst.setShort(5,(short) r.getId_ev()); 
-            pst.setShort(6, (short) r.getNrbPersonne() );
+            pst.setShort(5, (short) r.getNrbPersonne() );
             
                     
             pst.executeUpdate();
@@ -53,10 +53,9 @@ public class ReservationCRUD {
                 Reservation r = new Reservation();
                 r.setId_res(res.getInt(1));
                 r.setCin(res.getInt(2));
-                r.setDate_res(res.getString(3));
+                r.setDate_res(res.getDate(3));
                 r.setId_zoneCamping(res.getInt(4));
-                r.setId_ev(res.getInt(5));
-                r.setNrbPersonne(res.getInt(6));
+                r.setNrbPersonne(res.getInt(5));
 
                 myList.add(r);
             }
@@ -75,6 +74,27 @@ public class ReservationCRUD {
             System.out.println(ex.getMessage());
         }
     }
+    public boolean modifierRes(int id_res, Date date_res,int nrbPersonne)
+     {
+          String req = "UPDATE reservation SET date_reservation='" + date_res +"',nbrPersonne='" + nrbPersonne +"' WHERE id_reservation=" + id_res;
+
+          try {
+            Statement st = MyConnection.getInstance().getCnx().createStatement();
+               st.executeUpdate(req);
+            System.out.println("Réservation est bien modifiée");
+                return true;
+            
+
+        } catch (SQLException ex) {
+            System.out.println("error en modification de Réservation");
+            System.out.println(ex.getMessage());
+            
+        }
+        return false;
+     
+     }
+    
+    
     
        public void supprimerReservation(Reservation r) {
         try {

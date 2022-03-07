@@ -23,10 +23,10 @@ import java.util.List;
  */
 public class ReclamationCRUD {
     
-    public void ajouterReclamation(Reclamation r,java.sql.Timestamp dateDispo){
+    public void ajouterReclamation(Reclamation r){
     
      try {
-            String requete = "INSERT INTO reclamation (id_rec,type_rec,description_rec,date_rec,cin,screenshot,status) VALUES (?,?,?,?,?,?,?)";
+            String requete = "INSERT INTO reclamation (id_rec,type_rec,description_rec,date_rec,cin,screenshot,email) VALUES (?,?,?,?,?,?,?)";
             PreparedStatement pst =MyConnection.getInstance().getCnx().prepareStatement(requete);
             pst.setShort(1, (short) r.getId_rec());
             pst.setString(2, r.getType_rec());
@@ -34,7 +34,9 @@ public class ReclamationCRUD {
             pst.setDate(4,r.getDate_rec());
             pst.setInt(5, (short) r.getCin());
             pst.setString(6, r.getScreenshot());
-            pst.setString(7, r.getStatus());
+            pst.setString(7, r.getMail());
+
+           
             
 
             pst.executeUpdate();
@@ -45,66 +47,10 @@ public class ReclamationCRUD {
     
     }
     
-    
-    
-    public void ajouterReclamation3(Reclamation R, java.sql.Timestamp dateDispo) {
-        // java.util.Date date_util = new java.util.Date();
-        // java.sql.Date date_sql = new java.sql.Date(Calendar.getInstance().getTime().getTime());
-        java.sql.Timestamp date_sql = new java.sql.Timestamp(Calendar.getInstance().getTime().getTime());
-
-        try { // LES var declaré dans le try ne sont vue que dans le try, et inversement pour en dhors du try
-            if (R.getRef_compte() != 0 && R.getId_author() != 0) {
-                String requete = "INSERT INTO reclamation(ref_compte,description,objet,date_creation,date_traitement,status,priorite,screenshot,nom,prenom,email,numero_mobile,date_disponibilite,id_author)  VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-                PreparedStatement pst = MyConnection.getInstance().getCnx().prepareStatement(requete); // import java.sql.Statement
-                pst.setInt(1, R.getRef_compte());
-                pst.setString(2, R.getDescription());
-                pst.setString(3, R.getObjet());
-                pst.setObject(4, date_sql);
-                pst.setDate(5, R.getDate_traitement());
-                pst.setString(6, R.getStatus());
-                pst.setInt(7, R.getPriorite());
-                pst.setString(8, R.getScreenshot());
-                pst.setString(9, R.getNom());
-                pst.setString(10, R.getPrenom());//prenom
-                pst.setString(11, R.getEmail());//email
-                pst.setInt(12, R.getNumero_mobile());
-                pst.setObject(13, dateDispo);
-//            pst.setDate(13, R.getDate_disponibilite());
-                pst.setInt(14, R.getId_author());
-                pst.executeUpdate();
-            } else  {
-                String requete = "INSERT INTO reclamation(ref_compte,description,objet,date_creation,date_traitement,status,priorite,screenshot,nom,prenom,email,numero_mobile,date_disponibilite)  VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
-                PreparedStatement pst = MyConnection.getInstance().getCnx().prepareStatement(requete); // import java.sql.Statement
-                pst.setInt(1, R.getRef_compte());
-                pst.setString(2, R.getDescription());
-                pst.setString(3, R.getObjet());
-                pst.setObject(4, date_sql);
-                pst.setDate(5, R.getDate_traitement());
-                pst.setString(6, R.getStatus());
-                pst.setInt(7, R.getPriorite());
-                pst.setString(8, R.getScreenshot());
-                pst.setString(9, R.getNom());
-                pst.setString(10, R.getPrenom());//prenom
-                pst.setString(11, R.getEmail());//email
-                pst.setInt(12, R.getNumero_mobile());
-                pst.setObject(13, dateDispo);
-//            pst.setDate(13, R.getDate_disponibilite());
-                pst.executeUpdate();
-
-            System.out.println("Reclamation Ajouté");
-
-        } catch (SQLException ex) {
-            System.err.println("SQLException: " + ex.getMessage());
-            System.err.println("SQLSTATE: " + ex.getSQLState());
-            System.err.println("VnedorError: " + ex.getErrorCode());
-
-        }
-
-    }}
     public List<Reclamation> affichageReclamation() {
         List<Reclamation> myList = new ArrayList();
         try {
-            String requete = "SELECT * FROM reclamation";
+            String requete = "SELECT id_rec, type_rec, description_rec, date_rec, cin, screenshot, email  FROM reclamation ";
             Statement st = MyConnection.getInstance().getCnx().createStatement();
             ResultSet res = st.executeQuery(requete);
 
@@ -115,6 +61,10 @@ public class ReclamationCRUD {
                 r.setDescription_rec(res.getString(3));
                 r.setDate_rec(res.getDate(4));
                 r.setCin(res.getInt(5));
+                r.setScreenshot("file:J:\\xampp\\htdocs\\images\\"+res.getString("screenshot"));
+                r.setMail(res.getString("email"));
+
+               
 
                 myList.add(r);
             }
@@ -123,9 +73,10 @@ public class ReclamationCRUD {
         }
         return myList;
     }
+    
     public void modifierReclamation(Reclamation r) {
         try {
-            String req = "UPDATE reclamation SET type_rec='" + r.getType_rec() +"',description_rec='" + r.getDescription_rec() + "',date_rec='" + r.getDate_rec()+ "' WHERE id_rec=" + r.getId_rec();
+            String req = "UPDATE reclamation SET type_rec='" + r.getType_rec() +"',description_rec='" + r.getDescription_rec() + "',date_rec='" + r.getDate_rec()+ "',screenshot='" + r.getScreenshot()+"',email='" + r.getMail()+ "' WHERE id_rec=" + r.getId_rec();
             Statement st = MyConnection.getInstance().getCnx().createStatement();
             st.executeUpdate(req);
             System.out.println("Réclamation modifée !");
@@ -133,6 +84,25 @@ public class ReclamationCRUD {
             System.out.println(ex.getMessage());
         }
     }
+    public boolean modifierRec(int Id_rec, String Type_rec, String description_rec, Date date_rec,String Screenshot,String email) {
+        String req = "UPDATE reclamation SET type_rec='" + Type_rec +"',description_rec='" + description_rec + "',date_rec='" +date_rec+ "',screenshot='" +Screenshot+"',email='" +email+ "' WHERE id_rec=" +Id_rec;
+                    
+        try {
+            Statement st = MyConnection.getInstance().getCnx().createStatement();
+               st.executeUpdate(req);
+            System.out.println("REclamation est bien modifiée");
+                return true;
+            
+
+        } catch (SQLException ex) {
+            System.out.println("error en modification de reclamation");
+            System.out.println(ex.getMessage());
+            
+        }
+        return false;
+ 
+    }
+    
     
        public void supprimerReclamation(Reclamation r) {
         try {
@@ -158,7 +128,7 @@ public class ReclamationCRUD {
         //archivage aprés 7 jours de la création du reclamation
 
         listeReclamation.stream()
-                .filter(r -> r.getDate_rec().getDate() - currentDate.getDate() < 7)
+                .filter(r -> r.getDate_rec().getDate() - currentDate.getDate() > 7)
                 .forEach((P) -> {
                     String requete = null;
                     try {
@@ -173,5 +143,44 @@ public class ReclamationCRUD {
                     }
                 });
     }
+      public List<Reclamation> SearchEV(String recherche) {
+        List<Reclamation> myList = new ArrayList();
+
+        try {
+            String requete3 = "SELECT * \n"
+                    + "FROM Reclamation AS r,reclamation \n"
+                    + " WHERE  r.type_rec LIKE '%" + recherche + "%' OR\n"
+                    + "         r.email LIKE '%" + recherche + "%' OR\n"
+                    + "           r.description_rec LIKE '%" + recherche + "%'";
+          
+
+            
+                Statement st = MyConnection.getInstance().getCnx().createStatement();
+             ResultSet rs=st.executeQuery(requete3);
+            while (rs.next()) {
+
+                Reclamation r = new Reclamation();
+
+                rs.next();
+                r.setId_rec(rs.getInt(1));
+                r.setType_rec(rs.getString(2));
+                r.setDescription_rec(rs.getString(3));
+                r.setDate_rec(rs.getDate(4));
+                r.setCin(rs.getInt(5));
+                r.setScreenshot("file:J:\\xampp\\htdocs\\images\\"+rs.getString("screenshot"));
+                r.setMail(rs.getString("email"));
+            
+                myList.add(r);
+
+            }
+
+        } catch (SQLException ex) {
+            System.err.println("erreur de trouver ");
+            System.out.println(ex.getMessage());
+        }
+        return myList;
+    }
+
+
       
 }

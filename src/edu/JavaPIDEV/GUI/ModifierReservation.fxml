@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #BCCAE6;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.JavaPIDEV.GUI.ModifierReservationController">
+   <children>
+      <Label layoutX="25.0" layoutY="124.0" text="ID reclamation" />
+      <TextField fx:id="Mid_res" layoutX="157.0" layoutY="120.0" prefHeight="26.0" prefWidth="124.0" />
+      <Label layoutX="25.0" layoutY="226.0" text="Nombre des personnes" />
+      <TextField fx:id="Mnbr_res" layoutX="157.0" layoutY="222.0" prefHeight="26.0" prefWidth="124.0" />
+      <Label layoutX="25.0" layoutY="176.0" text="CIN" />
+      <TextField fx:id="Mcin_res" layoutX="157.0" layoutY="172.0" prefHeight="26.0" prefWidth="124.0" />
+      <DatePicker fx:id="Mdate_res" layoutX="456.0" layoutY="174.0" prefHeight="26.0" prefWidth="140.0" />
+      <Label layoutX="316.0" layoutY="124.0" text="ID Zone de Camping" />
+      <TextField fx:id="MidZ_res" layoutX="456.0" layoutY="119.0" prefHeight="26.0" prefWidth="124.0" />
+      <Label layoutX="316.0" layoutY="178.0" prefHeight="18.0" prefWidth="110.0" text="Date de Reservation" />
+      <Button fx:id="MRES" layoutX="486.0" layoutY="339.0" mnemonicParsing="false" onAction="#MODIFRes" prefHeight="26.0" prefWidth="90.0" style="-fx-background-radius: 50;" text="Modifier" />
+      <Text fill="#610909" layoutX="177.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Modifier une Reservation">
+         <font>
+            <Font name="Impact" size="25.0" />
+         </font>
+      </Text>
+      <ImageView fx:id="NBRCheckMark" fitHeight="18.0" fitWidth="20.0" layoutX="253.0" layoutY="226.0" pickOnBounds="true" preserveRatio="true" />
+   </children>
+</AnchorPane>

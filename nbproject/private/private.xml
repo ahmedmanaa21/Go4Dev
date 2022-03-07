@@ -3,10 +3,32 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Jasser%20BOUKRAYA/Documents/NetBeansProjects/JavaPIDEV/src/edu/JavaPIDEV/utils/MyConnection.java</file>
+            <file>file:/C:/Users/Jasser%20BOUKRAYA/Documents/NetBeansProjects/JavaPIDEV/src/edu/JavaPIDEV/GUI/ChartController.java</file>
+            <file>file:/C:/Users/Jasser%20BOUKRAYA/Documents/NetBeansProjects/JavaPIDEV/src/edu/JavaPIDEV/GUI/AjouterReclamationController.java</file>
+            <file>file:/C:/Users/Jasser%20BOUKRAYA/Documents/NetBeansProjects/JavaPIDEV/src/edu/JavaPIDEV/GUI/MenuController.java</file>
+            <file>file:/C:/Users/Jasser%20BOUKRAYA/Documents/NetBeansProjects/JavaPIDEV/src/edu/JavaPIDEV/GUI/ModifierReservation.fxml</file>
+            <file>file:/C:/Users/Jasser%20BOUKRAYA/Documents/NetBeansProjects/JavaPIDEV/src/edu/JavaPIDEV/GUI/AfficherClinetRECController.java</file>
+            <file>file:/C:/Users/Jasser%20BOUKRAYA/Documents/NetBeansProjects/JavaPIDEV/src/edu/JavaPIDEV/GUI/AjouterReclamation.fxml</file>
+            <file>file:/C:/Users/Jasser%20BOUKRAYA/Documents/NetBeansProjects/JavaPIDEV/src/edu/JavaPIDEV/GUI/AfficherReservationController.java</file>
+            <file>file:/C:/Users/Jasser%20BOUKRAYA/Documents/NetBeansProjects/JavaPIDEV/src/edu/JavaPIDEV/GUI/ModifierClientRECController.java</file>
+            <file>file:/C:/Users/Jasser%20BOUKRAYA/Documents/NetBeansProjects/JavaPIDEV/src/edu/JavaPIDEV/GUI/ModifRECclient.fxml</file>
             <file>file:/C:/Users/Jasser%20BOUKRAYA/Documents/NetBeansProjects/JavaPIDEV/src/edu/JavaPIDEV/entities/Reclamation.java</file>
-            <file>file:/C:/Users/Jasser%20BOUKRAYA/Documents/NetBeansProjects/JavaPIDEV/src/edu/JavaPIDEV/services/ReclamationCRUD.java</file>
+            <file>file:/C:/Users/Jasser%20BOUKRAYA/Documents/NetBeansProjects/JavaPIDEV/src/edu/JavaPIDEV/GUI/AfficherReservation.fxml</file>
+            <file>file:/C:/Users/Jasser%20BOUKRAYA/Documents/NetBeansProjects/JavaPIDEV/src/edu/JavaPIDEV/services/ReservationCRUD.java</file>
+            <file>file:/C:/Users/Jasser%20BOUKRAYA/Documents/NetBeansProjects/JavaPIDEV/src/edu/JavaPIDEV/GUI/AfficherReclamationController.java</file>
+            <file>file:/C:/Users/Jasser%20BOUKRAYA/Documents/NetBeansProjects/JavaPIDEV/src/edu/JavaPIDEV/GUI/RepondreREC.fxml</file>
+            <file>file:/C:/Users/Jasser%20BOUKRAYA/Documents/NetBeansProjects/JavaPIDEV/src/edu/JavaPIDEV/GUI/ModifierReservationController.java</file>
+            <file>file:/C:/Users/Jasser%20BOUKRAYA/Documents/NetBeansProjects/JavaPIDEV/src/edu/JavaPIDEV/entities/Reservation.java</file>
+            <file>file:/C:/Users/Jasser%20BOUKRAYA/Documents/NetBeansProjects/JavaPIDEV/src/edu/JavaPIDEV/GUI/Menu.fxml</file>
             <file>file:/C:/Users/Jasser%20BOUKRAYA/Documents/NetBeansProjects/JavaPIDEV/src/edu/JavaPIDEV/tests/MainClass.java</file>
+            <file>file:/C:/Users/Jasser%20BOUKRAYA/Documents/NetBeansProjects/JavaPIDEV/src/edu/JavaPIDEV/GUI/ModifRECclientController.java</file>
+            <file>file:/C:/Users/Jasser%20BOUKRAYA/Documents/NetBeansProjects/JavaPIDEV/src/edu/JavaPIDEV/GUI/AjouterReservartionController.java</file>
+            <file>file:/C:/Users/Jasser%20BOUKRAYA/Documents/NetBeansProjects/JavaPIDEV/src/edu/JavaPIDEV/GUI/AfficherClinetREC.fxml</file>
+            <file>file:/C:/Users/Jasser%20BOUKRAYA/Documents/NetBeansProjects/JavaPIDEV/src/edu/JavaPIDEV/GUI/AfficherReclamation.fxml</file>
+            <file>file:/C:/Users/Jasser%20BOUKRAYA/Documents/NetBeansProjects/JavaPIDEV/src/edu/JavaPIDEV/GUI/Chart.fxml</file>
+            <file>file:/C:/Users/Jasser%20BOUKRAYA/Documents/NetBeansProjects/JavaPIDEV/src/edu/JavaPIDEV/GUI/NewFXMain.java</file>
+            <file>file:/C:/Users/Jasser%20BOUKRAYA/Documents/NetBeansProjects/JavaPIDEV/src/edu/JavaPIDEV/GUI/AjouterReservartion.fxml</file>
+            <file>file:/C:/Users/Jasser%20BOUKRAYA/Documents/NetBeansProjects/JavaPIDEV/src/edu/JavaPIDEV/services/ReclamationCRUD.java</file>
         </group>
     </open-files>
 </project-private>

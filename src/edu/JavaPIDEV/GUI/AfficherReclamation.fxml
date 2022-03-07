@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: #BCCAE6;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.JavaPIDEV.GUI.AfficherReclamationController">
+   <children>
+      <TableView fx:id="list" layoutX="29.0" layoutY="145.0" prefHeight="210.0" prefWidth="742.0">
+        <columns>
+          <TableColumn fx:id="typeColumn" prefWidth="75.0" text="TYPE" />
+            <TableColumn fx:id="descColumn" prefWidth="97.60003662109375" text="DESCRIPTION" />
+            <TableColumn fx:id="dateColumn" prefWidth="101.5999755859375" text="DATE" />
+            <TableColumn fx:id="cinColumn" prefWidth="75.0" text="CIN" />
+            <TableColumn fx:id="imageColumn" prefWidth="75.0" text="IMAGE" />
+            <TableColumn fx:id="email" prefWidth="75.0" text="EMAIL" />
+        </columns>
+      </TableView>
+      <Button fx:id="refresh" alignment="CENTER" layoutX="337.0" layoutY="441.0" mnemonicParsing="false" onAction="#Refresh" style="-fx-background-radius: 50;" text="Actualiser" />
+      <Button fx:id="supp" alignment="TOP_RIGHT" layoutX="656.0" layoutY="441.0" mnemonicParsing="false" onAction="#supprimer" style="-fx-background-radius: 50;" text="Supprimer" />
+      <Button fx:id="retour" alignment="TOP_LEFT" layoutX="14.0" layoutY="441.0" mnemonicParsing="false" onAction="#retour" style="-fx-background-radius: 50;" text="Retourner" />
+      <Text fill="#302b70" layoutX="253.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Liste des reclamations ">
+         <font>
+            <Font name="Impact" size="25.0" />
+         </font>
+      </Text>
+      <TextField fx:id="Rechercher" layoutX="29.0" layoutY="83.0" prefHeight="38.0" prefWidth="368.0" promptText="Rechercher par TYPE" />
+   </children>
+   <effect>
+      <Blend />
+   </effect>
+</AnchorPane>

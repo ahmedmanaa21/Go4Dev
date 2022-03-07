@@ -22,13 +22,13 @@ public class MainClass {
        
       java.util.Date AjoutDate = new java.util.Date("10/10/2009");
 java.sql.Date sqlDate = new java.sql.Date(AjoutDate.getTime());
-       /////////////reclamation////////////////
+//       /////////////reclamation////////////////
         ReclamationCRUD rec = new ReclamationCRUD();
-      // Reclamation r1 = new Reclamation(15,"reservation","reservation  4004!!!!",sqlDate, 99);
-       // Reclamation r2 = new Reclamation(16,"financier","mes argents  404!!!!",sqlDate, 90);
-       
-        System.out.println("****** ajout ********");
-     // rec.ajouterReclamation(r1);
+ //Reclamation r1 = new Reclamation(15,"reservation","reservation  4004!!!!",sqlDate, 99, "jdhb");
+//       // Reclamation r2 = new Reclamation(16,"financier","mes argents  404!!!!",sqlDate, 90);
+//       
+//        System.out.println("****** ajout ********");
+ //rec.ajouterReclamation(r1);
        
       System.out.println("****** afficher ********");
         List<Reclamation>listReclamation=rec.affichageReclamation();
@@ -37,13 +37,13 @@ java.sql.Date sqlDate = new java.sql.Date(AjoutDate.getTime());
             System.out.println(reec); 
        }
          
-       System.out.println("****** modifier ********");
-java.util.Date modifDate = new java.util.Date("02/02/2022");
-java.sql.Date MsqlDate = new java.sql.Date(modifDate.getTime());
+      // System.out.println("****** modifier ********");
+////java.util.Date modifDate = new java.util.Date("02/02/2022");
+////java.sql.Date MsqlDate = new java.sql.Date(modifDate.getTime());
 
-      rec.modifierReclamation(new Reclamation(16,"financier","mes argents  5555404!!!!",MsqlDate, 90) );
+     // rec.modifierReclamation(new Reclamation(16,"financier","mes argents  5555404!!!!",MsqlDate, 90) );
         
-      rec.archiverReclamation();
+     // rec.archiverReclamation();
 //        System.out.println("****** afficher aprés modifier ********");
 //        List<Reclamation>listReclamation2=rec.affichageReclamation();
 //        for(Reclamation reec:listReclamation)
