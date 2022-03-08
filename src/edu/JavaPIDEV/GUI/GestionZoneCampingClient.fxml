@@ -5,6 +5,8 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -26,5 +28,24 @@
       <TextField fx:id="recherche" layoutX="71.0" layoutY="68.0" prefHeight="25.0" prefWidth="290.0" promptText="Rechercher.." style="-fx-background-radius: 50;" />
       <Button fx:id="retour" layoutX="71.0" layoutY="374.0" mnemonicParsing="false" onAction="#retour" style="-fx-background-radius: 50;" text="Retour" />
       <Button fx:id="bt_reserver" layoutX="483.0" layoutY="374.0" mnemonicParsing="false" onAction="#reserver" style="-fx-background-radius: 50;" text="Réserver" />
+      <Button layoutX="511.0" layoutY="69.0" mnemonicParsing="false" onAction="#Refresh" prefHeight="25.0" prefWidth="30.0" style="-fx-background-radius: 50;">
+         <graphic>
+            <ImageView fitHeight="19.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../image/icons8-refresh-64.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button layoutX="412.0" layoutY="374.0" mnemonicParsing="false" onAction="#qrCode" style="-fx-background-radius: 50;" text="QR code" />
+      <Button layoutX="470.0" layoutY="68.0" mnemonicParsing="false" onAction="#Gerermap" prefHeight="28.0" prefWidth="27.0" style="-fx-background-radius: 50;">
+         <graphic>
+            <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../image/World.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
    </children>
 </AnchorPane>

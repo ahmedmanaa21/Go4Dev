@@ -58,6 +58,7 @@ import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import javax.mail.Message;
@@ -213,6 +214,7 @@ notificationBuilder.showInformation();
 
 }
 Refresh();
+search_ZoneCamping();
 }           
 //    private void SupprimerZoneCamping(){
 //        
@@ -264,6 +266,7 @@ Refresh();
             notificationBuilder.showInformation();
         }
         Refresh();
+        search_ZoneCamping();
     }    
 
     private void ModifierZonecamping(ActionEvent event) {
@@ -308,6 +311,7 @@ Refresh();
             notificationBuilder.showInformation();
         }
       Refresh();
+      search_ZoneCamping();
     }
     
  
@@ -572,6 +576,7 @@ private void ExportPDF() throws DocumentException {
             System.err.println(ex.getMessage());
         }
     }
+    @FXML
     private void Refresh() {
         data.clear();
         ZoneCampingCRUD zc = new ZoneCampingCRUD();
@@ -579,7 +584,9 @@ private void ExportPDF() throws DocumentException {
         zc.affichageZoneCamping();
 
         tabzc.setItems(data);
+        search_ZoneCamping();
     }
+
     
     
     

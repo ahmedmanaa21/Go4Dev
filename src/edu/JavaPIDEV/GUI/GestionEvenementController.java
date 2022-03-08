@@ -250,7 +250,6 @@ return cnx ;
                  }
             public void AfficherEvenement(){
 ObservableList<Evenements> list=getEvenementList();
-
 //collid.setCellValueFactory(new PropertyValueFactory<Evenements, Integer>("id"));
 collnom.setCellValueFactory(new PropertyValueFactory<Evenements, String>("Nom"));
 colldescription.setCellValueFactory(new PropertyValueFactory<Evenements, String>("Description"));
@@ -301,6 +300,7 @@ notificationBuilder.showInformation();
 
 }
 Refresh();
+search_Event();
 }           
    
     private void SupprimerEvenement(ActionEvent event) {
@@ -345,6 +345,7 @@ Refresh();
             notificationBuilder.showInformation();
         } 
         Refresh();
+        search_Event();
     }    
     
     private void ModifierEvenement(ActionEvent event) {
@@ -390,6 +391,7 @@ Refresh();
             notificationBuilder.showInformation();
         }
         Refresh();
+        search_Event();
     }    
 
 //    @FXML
@@ -667,6 +669,7 @@ void search_Event() {
         ev.affichageEvenements();
 
         tabev.setItems(data);
+        search_Event();
     }   
 
 

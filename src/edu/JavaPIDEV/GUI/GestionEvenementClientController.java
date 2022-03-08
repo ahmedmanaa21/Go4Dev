@@ -29,6 +29,7 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -71,17 +72,7 @@ public class GestionEvenementClientController implements Initializable {
     ObservableList<Evenements> data = FXCollections.observableArrayList(evc.affichageEvenements());
     @FXML
     private Button bt_qr;
-    @FXML
-    private ImageView evenaffiche;
-    @FXML
-    private Label even;
     private MylistenerE myListener;
-    @FXML
-    private ScrollPane scroll;
-    @FXML
-    private GridPane grid;
-    @FXML
-    private Label description;
 
     /**
      * Initializes the controller class.
@@ -200,12 +191,31 @@ public class GestionEvenementClientController implements Initializable {
 //    }  
     @FXML
     private void qrCode(ActionEvent event) throws SQLException  {
+        if (tabevC.getSelectionModel().getSelectedItem() != null) {
           QRcodeController q=new QRcodeController();
-       q.ini(tabevC.getSelectionModel().getSelectedItem());
+       q.ini(tabevC.getSelectionModel().getSelectedItem());}
+        else {
+                Alert selectEventAlert = new Alert(Alert.AlertType.WARNING);
+                selectEventAlert.setTitle("Selectionez un événement");
+                selectEventAlert.setHeaderText(null);
+                selectEventAlert.setContentText("Vous devez selectionner un événement !");
+                selectEventAlert.showAndWait();          
+            }
     }
     @FXML
     private void formulaire(ActionEvent event) {
         
+    }
+
+    @FXML
+    private void Refresh(ActionEvent event) {
+        data.clear();
+        EvenementsCRUD ev = new EvenementsCRUD();
+        data.addAll(ev.affichageEvenements());
+        ev.affichageEvenements();
+
+        tabevC.setItems(data);
+        search_Event();
     }
     
 }

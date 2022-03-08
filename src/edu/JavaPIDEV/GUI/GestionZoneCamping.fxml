@@ -74,7 +74,7 @@
          </graphic></Button>
       <TextField fx:id="recherchezc" layoutX="449.0" layoutY="172.0" prefHeight="25.0" prefWidth="429.0" promptText="Rechercher.." style="-fx-background-radius: 50; -fx-background-color: #6D7A94;" />
       <Button fx:id="btnretour" layoutX="173.0" layoutY="500.0" mnemonicParsing="false" onAction="#retour" style="-fx-background-radius: 50;" text="Retour" />
-      <Button layoutX="1001.0" layoutY="173.0" mnemonicParsing="false" style="-fx-background-radius: 50;">
+      <Button layoutX="1001.0" layoutY="173.0" mnemonicParsing="false" onAction="#Refresh" style="-fx-background-radius: 50;">
          <graphic>
             <ImageView fitHeight="90.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                <image>

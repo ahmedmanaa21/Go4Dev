@@ -25,12 +25,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 /**
@@ -44,8 +46,6 @@ public class GestionZoneCampingClientController implements Initializable {
     private TableView<ZoneCamping> tabzcC;
     @FXML
     private TextField recherche;
-    @FXML
-    private Button refresh;
     @FXML
     private Button retour;
     @FXML
@@ -161,9 +161,41 @@ public class GestionZoneCampingClientController implements Initializable {
         }
     }
     
-
+    @FXML
+    private void qrCode(ActionEvent event) throws SQLException  {
+        if (tabzcC.getSelectionModel().getSelectedItem() != null) {
+          QRcode2Controller q=new QRcode2Controller();
+       q.ini(tabzcC.getSelectionModel().getSelectedItem());}
+        else {
+                Alert selectEventAlert = new Alert(Alert.AlertType.WARNING);
+                selectEventAlert.setTitle("Selectionez une zone de camping");
+                selectEventAlert.setHeaderText(null);
+                selectEventAlert.setContentText("Vous devez selectionner une zone de camping !");
+                selectEventAlert.showAndWait();          
+            }
+    }
     @FXML
     private void reserver(ActionEvent event) {
+    }
+
+    @FXML
+    private void Refresh(ActionEvent event) {
+        data.clear();
+        ZoneCampingCRUD zc = new ZoneCampingCRUD();
+        data.addAll(zc.affichageZoneCamping());
+        zc.affichageZoneCamping();
+
+        tabzcC.setItems(data);
+        search_ZoneCamping();
+    }
+        @FXML
+    void Gerermap(ActionEvent event) throws IOException {
+       AnchorPane newLoadedPane = FXMLLoader.load(getClass().getResource("map.FXML"));
+        Scene scene = new Scene(newLoadedPane);
+        Stage stage = new Stage();
+        stage.setTitle("Interface ");
+        stage.setScene(scene);
+        stage.show();
     }
     
 }

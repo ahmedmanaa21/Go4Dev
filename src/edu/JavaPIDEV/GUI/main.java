@@ -26,7 +26,7 @@ public class main extends Application {
         try {
             
 //            root = FXMLLoader.load(getClass().getResource("AjouterEvenement.fxml"));
-            root = FXMLLoader.load(getClass().getResource("menu.fxml"));
+            root = FXMLLoader.load(getClass().getResource("GestionZoneCampingClient.fxml"));
 //            root = FXMLLoader.load(getClass().getResource("GestionEvenement.fxml"));
 
 
