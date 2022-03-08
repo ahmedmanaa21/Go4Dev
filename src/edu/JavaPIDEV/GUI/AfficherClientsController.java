@@ -57,6 +57,10 @@ public class AfficherClientsController implements Initializable {
     private TableColumn<?, ?> txtsexe;
     @FXML
     private Button btnPDF;
+    @FXML
+    private Button btnstat;
+    @FXML
+    private ImageView stat;
     public AfficherClientsController(){
         cnx = MyConnection.getInstance().getCnx();
     }
@@ -109,6 +113,7 @@ public class AfficherClientsController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         fxlogo.setImage(new Image("file:C:\\Users\\MSI\\Desktop\\CampersDen\\src\\Images\\logo.png"));
         fxlogout.setImage(new Image("file:C:\\Users\\MSI\\Desktop\\CampersDen\\src\\Images\\logout.png"));
+        stat.setImage(new Image("file:C:\\Users\\MSI\\Desktop\\CampersDen\\src\\Images\\bar-chart.png"));
         loadData();
         searchAdmin();
         /**
@@ -319,7 +324,21 @@ public class AfficherClientsController implements Initializable {
     }
 
     @FXML
-    private void changeScreenReclamations(ActionEvent event) {
+    private void changeScreenReclamations(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("AfficherReclamation.fxml"));
+        Stage mainStage = new Stage();
+        Scene scene = new Scene(root);
+        mainStage.setScene(scene);
+        mainStage.show();
+    }
+    
+    @FXML
+    private void stat(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("chartsSexe.fxml"));
+        Stage mainStage = new Stage();
+        Scene scene = new Scene(root);
+        mainStage.setScene(scene);
+        mainStage.show();
     }
 
     @FXML

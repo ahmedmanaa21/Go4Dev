@@ -105,6 +105,15 @@
                </graphic>
             </Button>
             <Button fx:id="btnPDF" layoutX="1210.0" layoutY="253.0" mnemonicParsing="false" onAction="#PDF" prefHeight="34.0" prefWidth="71.0" style="-fx-background-radius: 30;" text="PDF" />
+            <Button fx:id="btnstat" layoutX="1226.0" layoutY="189.0" mnemonicParsing="false" onAction="#stat">
+               <graphic>
+                  <ImageView fx:id="stat" fitHeight="21.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../Images/bar-chart.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
          </children>
       </AnchorPane>
    </children>

@@ -61,6 +61,14 @@ public class FrontAccController implements Initializable {
     private Button btnrec;
     @FXML
     private Label txtsexe;
+    @FXML
+    private Button btnrec1;
+    @FXML
+    private Button btnpanier;
+    @FXML
+    private Button btnrec11;
+    @FXML
+    private Button btnrec111;
 
     /**
      * Initializes the controller class.
@@ -126,27 +134,84 @@ public class FrontAccController implements Initializable {
     }
 
     @FXML
-    private void changeScreenViewEquip(ActionEvent event) {
+    private void changeScreenViewEquip(ActionEvent event) throws IOException {
+        Parent tableViewParent=FXMLLoader.load(getClass().getResource("frontequipement.fxml"));
+        Scene tableViewScene= new Scene(tableViewParent);
+        Stage window =(Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(tableViewScene);
+        window.show();
     }
 
     @FXML
-    private void changeScreenViewOffre(ActionEvent event) {
+    private void changeScreenViewOffre(ActionEvent event) throws IOException {
+        Parent tableViewParent=FXMLLoader.load(getClass().getResource("offrefront.fxml"));
+        Scene tableViewScene= new Scene(tableViewParent);
+        Stage window =(Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(tableViewScene);
+        window.show();
     }
 
     @FXML
-    private void changeScreenViewRec(ActionEvent event) {
+    private void changeScreenViewRec(ActionEvent event) throws IOException {
+        Parent tableViewParent=FXMLLoader.load(getClass().getResource("MenuRec.fxml"));
+        Scene tableViewScene= new Scene(tableViewParent);
+        Stage window =(Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(tableViewScene);
+        window.show();
     }
 
     @FXML
-    private void changeScreenViewProd(MouseEvent event) {
-    }
-
-    @FXML
-    private void changeScreenViewProm(MouseEvent event) {
+    private void changeScreenViewProm(MouseEvent event) throws IOException {
+        Parent tableViewParent=FXMLLoader.load(getClass().getResource("offrefront.fxml"));
+        Scene tableViewScene= new Scene(tableViewParent);
+        Stage window =(Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(tableViewScene);
+        window.show();
     }
 
     @FXML
     private void changeScreenViewReclam(MouseEvent event) {
+    }
+
+    @FXML
+    private void changeScreenViewResev(ActionEvent event) throws IOException {
+        Parent tableViewParent=FXMLLoader.load(getClass().getResource("MenuReserv.fxml"));
+        Scene tableViewScene= new Scene(tableViewParent);
+        Stage window =(Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(tableViewScene);
+        window.show();
+    }
+
+
+    @FXML
+    private void goToPanier(ActionEvent event) throws IOException {
+        Parent tableViewParent=FXMLLoader.load(getClass().getResource("Panier.fxml"));
+        Scene tableViewScene= new Scene(tableViewParent);
+        Stage window =(Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(tableViewScene);
+        window.show();
+    }
+
+    @FXML
+    private void changeScreenViewZone(ActionEvent event) throws IOException {
+        Parent tableViewParent=FXMLLoader.load(getClass().getResource("GestionZoneCampingClient.fxml"));
+        Scene tableViewScene= new Scene(tableViewParent);
+        Stage window =(Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(tableViewScene);
+        window.show();
+    }
+
+    @FXML
+    private void changeScreenViewEvent(ActionEvent event) throws IOException {
+        Parent tableViewParent=FXMLLoader.load(getClass().getResource("GestionEvenementClient.fxml"));
+        Scene tableViewScene= new Scene(tableViewParent);
+        Stage window =(Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(tableViewScene);
+        window.show();
+    }
+
+    @FXML
+    private void changeScreenViewProd(MouseEvent event) {
     }
     
 }

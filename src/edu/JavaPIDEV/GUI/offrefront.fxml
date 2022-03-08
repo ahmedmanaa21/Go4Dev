@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="909.0" prefWidth="1335.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.JavaPIDEV.GUI.OffrefrontController">
+   <children>
+      <AnchorPane layoutX="375.0" layoutY="202.0" prefHeight="636.0" prefWidth="882.0" stylesheets="@../../../CSS/style.css">
+         <children>
+            <TableView fx:id="offre" layoutX="109.0" layoutY="108.0" prefHeight="442.0" prefWidth="727.0">
+               <columns>
+                  <TableColumn fx:id="id" minWidth="2.400146484375" prefWidth="20.0" text="id" visible="false" />
+                  <TableColumn fx:id="nom" prefWidth="75.0" text="nom" />
+                  <TableColumn fx:id="prix" prefWidth="107.20001220703125" text="prix" />
+                  <TableColumn fx:id="dated" prefWidth="172.0" text="date debut promotion" />
+                  <TableColumn fx:id="datef" prefWidth="182.4000244140625" text="date fin promotion" />
+                  <TableColumn fx:id="pourcentage" prefWidth="182.39996337890625" text="pourcentage promotion" />
+                  <TableColumn fx:id="txtref" minWidth="0.0" prefWidth="0.0" text="ref equipement" />
+               </columns>
+            </TableView>
+            <TextField fx:id="searchb" layoutX="142.0" layoutY="550.0" onAction="#filtrer" prefHeight="26.0" prefWidth="180.0" promptText="search" />
+            <Button fx:id="fxretour" layoutX="348.0" layoutY="550.0" mnemonicParsing="false" onAction="#retour" style="-fx-background-radius: 50;" text="Retour" />
+            <Button fx:id="btnpanier" layoutX="22.0" layoutY="37.0" mnemonicParsing="false" onAction="#goToPanier" style="-fx-background-color: white;" text="Panier">
+               <graphic>
+                  <ImageView fitHeight="93.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../Images/panier.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </AnchorPane>
+      <VBox alignment="CENTER" layoutX="10.0" layoutY="152.0" prefHeight="761.0" prefWidth="299.0" spacing="72.0" style="-fx-background-color: #ffffff;">
+         <children>
+            <HBox alignment="CENTER" prefHeight="71.0" prefWidth="236.0">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="71.0" prefWidth="71.0">
+                     <children>
+                        <ImageView fitHeight="31.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../Images/acceuil.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </HBox>
+                  <Button fx:id="btnacc" mnemonicParsing="false" onAction="#changeScreenViewAcc" prefHeight="51.0" prefWidth="278.0" style="-fx-background-color: white;" text="Acceuil" textFill="#205072">
+                     <graphic>
+                        <ImageView fitHeight="26.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../Images/logout.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="Arial Bold" size="27.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" onMouseClicked="#changeScreenViewProd" prefHeight="71.0" prefWidth="236.0">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="71.0" prefWidth="71.0">
+                     <children>
+                        <ImageView fitHeight="31.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../Images/article.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </HBox>
+                  <Button fx:id="btnequip" mnemonicParsing="false" onAction="#changeScreenViewEquip" prefHeight="51.0" prefWidth="278.0" style="-fx-background-color: white;" text="Equipment" textFill="#205072">
+                     <graphic>
+                        <ImageView fitHeight="26.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../Images/logout.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="Arial Bold" size="27.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" onMouseClicked="#changeScreenViewProm" prefHeight="71.0" prefWidth="236.0">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="71.0" prefWidth="71.0">
+                     <children>
+                        <ImageView fitHeight="31.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../Images/coupon.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </HBox>
+                  <Button fx:id="btnoffre" mnemonicParsing="false" onAction="#changeScreenViewOffre" prefHeight="51.0" prefWidth="278.0" style="-fx-background-color: white;" text="Offre" textFill="#205072">
+                     <graphic>
+                        <ImageView fitHeight="26.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../Images/logout.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="Arial Bold" size="27.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="10.0" layoutY="441.0" onMouseClicked="#changeScreenViewReclam" prefHeight="71.0" prefWidth="236.0">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="71.0" prefWidth="71.0">
+                     <children>
+                        <ImageView fitHeight="31.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../Images/claim.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </HBox>
+                  <Button fx:id="btnrec" mnemonicParsing="false" onAction="#changeScreenViewRec" prefHeight="51.0" prefWidth="278.0" style="-fx-background-color: white;" text="Réclamation" textFill="#205072">
+                     <graphic>
+                        <ImageView fitHeight="26.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../Images/logout.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="Arial Bold" size="27.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" onMouseClicked="#changeScreenViewReclam" prefHeight="71.0" prefWidth="236.0">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="71.0" prefWidth="71.0">
+                     <children>
+                        <ImageView fitHeight="31.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../Images/claim.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </HBox>
+                  <Button fx:id="btnrec1" mnemonicParsing="false" onAction="#changeScreenViewResev" prefHeight="51.0" prefWidth="278.0" style="-fx-background-color: white;" text="Reservation" textFill="#205072">
+                     <graphic>
+                        <ImageView fitHeight="26.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../Images/logout.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="Arial Bold" size="27.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="228.0" prefWidth="360.0">
+               <children>
+                  <Button layoutX="52.0" layoutY="14.0" mnemonicParsing="false" onAction="#logout" prefHeight="51.0" prefWidth="195.0" style="-fx-background-color: white;" text="Déconnexion" textFill="#205072">
+                     <graphic>
+                        <ImageView fitHeight="26.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../Images/logout.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="Arial Bold" size="14.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+         </children>
+      </VBox>
+      <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="142.0" prefWidth="377.0" style="-fx-background-color: white;">
+         <children>
+            <ImageView fx:id="logo" fitHeight="150.0" fitWidth="200.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../Images/logo.png" />
+               </image>
+            </ImageView>
+         </children>
+      </HBox>
+      <Separator layoutX="480.0" layoutY="48.0" maxHeight="-Infinity" orientation="VERTICAL" prefHeight="61.0" prefWidth="69.0" />
+      <TextField fx:id="SearchBar" alignment="TOP_LEFT" layoutX="600.0" layoutY="65.0" prefHeight="31.0" prefWidth="481.0" promptText="Rechercher..." style="-fx-background-radius: 50; -fx-background-color: #E5E7E9;" />
+   </children>
+</AnchorPane>

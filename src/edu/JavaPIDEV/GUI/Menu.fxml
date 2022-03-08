@@ -5,30 +5,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="559.0" prefWidth="919.0" style="-fx-background-color: #BCCAE6;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.JavaPIDEV.GUI.MenuController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #BCCAE6;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.JavaPIDEV.GUI.MenuController">
    <children>
-      <Button fx:id="gstadmins" layoutX="343.0" layoutY="197.0" mnemonicParsing="false" onAction="#gestionAdmins" prefHeight="80.0" prefWidth="233.0" style="-fx-background-radius: 30; -fx-background-color: #302B70;" text="Gestion des Admins" textFill="#fcfcfc">
+      <Button fx:id="fxge" layoutX="177.0" layoutY="123.0" mnemonicParsing="false" onAction="#Gevent" prefHeight="88.0" prefWidth="246.0" style="-fx-background-radius: 50; -fx-background-color: #302B70;" text="Gestion des événements" textFill="WHITE" />
+      <Button fx:id="fxgz" layoutX="177.0" layoutY="242.0" mnemonicParsing="false" onAction="#Gcamping" prefHeight="88.0" prefWidth="246.0" style="-fx-background-radius: 50; -fx-background-color: #302B70;" text="Gestion des zones de camping" textFill="WHITE" />
+      <Label layoutX="167.0" layoutY="28.0" prefHeight="43.0" prefWidth="267.0" text="Choisir votre gestion" textFill="#302b70">
          <font>
-            <Font name="Impact" size="12.0" />
-         </font></Button>
-      <Button fx:id="gstclients" layoutX="343.0" layoutY="338.0" mnemonicParsing="false" onAction="#gestionClients" prefHeight="80.0" prefWidth="233.0" style="-fx-background-radius: 30; -fx-background-color: #302B70;" text="Gestion des Clients" textFill="WHITE">
-         <font>
-            <Font name="Impact" size="12.0" />
-         </font></Button>
-      <Label layoutX="362.0" layoutY="130.0" text="Gestion des utilisateurs">
-         <font>
-            <Font name="Impact" size="20.0" />
+            <Font name="Impact" size="29.0" />
          </font>
       </Label>
-      <Label layoutX="323.0" layoutY="58.0" text="Bienvenue à CampersDen">
-         <font>
-            <Font name="Impact" size="26.0" />
-         </font>
-      </Label>
-      <Button fx:id="btnlogout" layoutX="404.0" layoutY="488.0" mnemonicParsing="false" onAction="#Logout" prefHeight="34.0" prefWidth="111.0" style="-fx-background-radius: 30; -fx-background-color: #302B70;" text="Logout" textFill="WHITE">
-         <font>
-            <Font name="Impact" size="12.0" />
-         </font>
-      </Button>
    </children>
 </AnchorPane>

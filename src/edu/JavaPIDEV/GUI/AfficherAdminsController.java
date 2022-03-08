@@ -54,11 +54,7 @@ public class AfficherAdminsController implements Initializable {
 
     Connection cnx;
     @FXML
-    private Button btnstat;
-    @FXML
     private ImageView refresh;
-    @FXML
-    private ImageView stat;
     @FXML
     private Button btnsupprimer1;
 
@@ -106,11 +102,10 @@ public class AfficherAdminsController implements Initializable {
         fxlogo.setImage(new Image("file:C:\\Users\\MSI\\Desktop\\CampersDen\\src\\Images\\logo.png"));
         fxlogout.setImage(new Image("file:C:\\Users\\MSI\\Desktop\\CampersDen\\src\\Images\\logout.png"));
         refresh.setImage(new Image("file:C:\\Users\\MSI\\Desktop\\CampersDen\\src\\Images\\reload.png"));
-        stat.setImage(new Image("file:C:\\Users\\MSI\\Desktop\\CampersDen\\src\\Images\\bar-chart.png"));
 
         loadData();
         searchAdmin();
-        /**
+        /** 
          *
          *
          */
@@ -287,11 +282,21 @@ public class AfficherAdminsController implements Initializable {
     }
 
     @FXML
-    private void changeScreenZoneCamp(ActionEvent event) {
+    private void changeScreenZoneCamp(ActionEvent event) throws IOException {
+        Parent tableViewParent = FXMLLoader.load(getClass().getResource("GestionZoneCamping.fxml"));
+        Scene tableViewScene = new Scene(tableViewParent);
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(tableViewScene);
+        window.show();
     }
 
     @FXML
-    private void changeScreenOfre(ActionEvent event) {
+    private void changeScreenOfre(ActionEvent event) throws IOException {
+        Parent tableViewParent = FXMLLoader.load(getClass().getResource("Ajouteroffre.fxml"));
+        Scene tableViewScene = new Scene(tableViewParent);
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(tableViewScene);
+        window.show();
     }
 
     @FXML
@@ -299,11 +304,21 @@ public class AfficherAdminsController implements Initializable {
     }
 
     @FXML
-    private void changeScreenEvent(ActionEvent event) {
+    private void changeScreenEvent(ActionEvent event) throws IOException {
+        Parent tableViewParent = FXMLLoader.load(getClass().getResource("GestionEvenement.fxml"));
+        Scene tableViewScene = new Scene(tableViewParent);
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(tableViewScene);
+        window.show();
     }
 
     @FXML
-    private void changeScreenEquip(ActionEvent event) {
+    private void changeScreenEquip(ActionEvent event) throws IOException {
+        Parent tableViewParent = FXMLLoader.load(getClass().getResource("Ajouterequipement.fxml"));
+        Scene tableViewScene = new Scene(tableViewParent);
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(tableViewScene);
+        window.show();
     }
 
     @FXML
@@ -337,20 +352,16 @@ public class AfficherAdminsController implements Initializable {
     }
 
     @FXML
-    private void changeScreenReclamations(ActionEvent event) {
-    }
-
-    @FXML
-    private void changeScreenPanier(ActionEvent event) {
-    }
-
-    @FXML
-    private void stat(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("chartsSexe.fxml"));
+    private void changeScreenReclamations(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("AfficherReclamation.fxml"));
         Stage mainStage = new Stage();
         Scene scene = new Scene(root);
         mainStage.setScene(scene);
         mainStage.show();
+    }
+
+    @FXML
+    private void changeScreenPanier(ActionEvent event) {
     }
 
     @FXML

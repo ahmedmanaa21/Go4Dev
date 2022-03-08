@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="890.0" prefWidth="1363.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.JavaPIDEV.GUI.AjouterReclamationController">
+   <children>
+      <AnchorPane layoutX="429.0" layoutY="227.0" prefHeight="463.0" prefWidth="658.0" stylesheets="@../../../CSS/style.css">
+         <children>
+            <Label layoutX="29.0" layoutY="173.0" text="Type reclamation" />
+            <Label layoutX="42.0" layoutY="308.0" text="description" />
+            <Label layoutX="37.0" layoutY="266.0" text="Date" />
+            <Label layoutX="40.0" layoutY="224.0" text="CIN" />
+            <TextField fx:id="cin" layoutX="165.0" layoutY="220.0" />
+            <Button fx:id="image" layoutX="469.0" layoutY="138.0" mnemonicParsing="false" onAction="#image" text="Importer une image " />
+            <DatePicker fx:id="date_rec" layoutX="165.0" layoutY="262.0" />
+            <TextArea fx:id="description" layoutX="165.0" layoutY="308.0" prefHeight="74.0" prefWidth="227.0" />
+            <Button fx:id="AjouterRec" layoutX="521.0" layoutY="401.0" mnemonicParsing="false" onAction="#AddRec" prefHeight="30.0" prefWidth="91.0" style="-fx-background-radius: 50;" text="Passer" />
+            <ImageView fx:id="screenshot" fitHeight="150.0" fitWidth="200.0" layoutX="431.0" layoutY="179.0" pickOnBounds="true" preserveRatio="true" />
+            <ComboBox fx:id="type_rec" layoutX="165.0" layoutY="169.0" prefHeight="26.0" prefWidth="200.0" />
+            <ImageView fx:id="checkDES" fitHeight="26.0" fitWidth="36.0" layoutX="351.0" layoutY="352.0" pickOnBounds="true" preserveRatio="true" />
+            <Button fx:id="retour" layoutX="42.0" layoutY="402.0" mnemonicParsing="false" onAction="#retour" prefHeight="30.0" prefWidth="91.0" style="-fx-background-radius: 50;" text="Retourner" />
+            <Text fill="#302b70" layoutX="212.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Passer une Reclamation">
+               <font>
+                  <Font name="Impact" size="25.0" />
+               </font>
+            </Text>
+            <TextField fx:id="email" editable="false" layoutX="164.0" layoutY="125.0" prefHeight="30.0" prefWidth="175.0" />
+            <Label layoutX="35.0" layoutY="133.0" text="Email" />
+            <ImageView fx:id="checkmail" fitHeight="26.0" fitWidth="36.0" layoutX="347.0" layoutY="127.0" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </AnchorPane>
+      <HBox alignment="CENTER" layoutY="7.0" prefHeight="142.0" prefWidth="377.0" style="-fx-background-color: white;">
+         <children>
+            <ImageView fx:id="logo" fitHeight="150.0" fitWidth="200.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../Images/logo.png" />
+               </image>
+            </ImageView>
+         </children>
+      </HBox>
+      <VBox alignment="CENTER" layoutY="149.0" prefHeight="761.0" prefWidth="299.0" spacing="72.0" style="-fx-background-color: #ffffff;">
+         <children>
+            <HBox alignment="CENTER" prefHeight="71.0" prefWidth="236.0">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="71.0" prefWidth="71.0">
+                     <children>
+                        <ImageView fitHeight="31.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../Images/acceuil.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </HBox>
+                  <Button fx:id="btnacc" mnemonicParsing="false" onAction="#changeScreenViewAcc" prefHeight="51.0" prefWidth="278.0" style="-fx-background-color: white;" text="Acceuil" textFill="#205072">
+                     <graphic>
+                        <ImageView fitHeight="26.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../Images/logout.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="Arial Bold" size="27.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" onMouseClicked="#changeScreenViewProd" prefHeight="71.0" prefWidth="236.0">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="71.0" prefWidth="71.0">
+                     <children>
+                        <ImageView fitHeight="31.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../Images/article.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </HBox>
+                  <Button fx:id="btnequip" mnemonicParsing="false" onAction="#changeScreenViewEquip" prefHeight="51.0" prefWidth="278.0" style="-fx-background-color: white;" text="Equipment" textFill="#205072">
+                     <graphic>
+                        <ImageView fitHeight="26.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../Images/logout.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="Arial Bold" size="27.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" onMouseClicked="#changeScreenViewProm" prefHeight="71.0" prefWidth="236.0">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="71.0" prefWidth="71.0">
+                     <children>
+                        <ImageView fitHeight="31.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../Images/coupon.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </HBox>
+                  <Button fx:id="btnoffre" mnemonicParsing="false" onAction="#changeScreenViewOffre" prefHeight="51.0" prefWidth="278.0" style="-fx-background-color: white;" text="Offre" textFill="#205072">
+                     <graphic>
+                        <ImageView fitHeight="26.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../Images/logout.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="Arial Bold" size="27.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="10.0" layoutY="441.0" onMouseClicked="#changeScreenViewReclam" prefHeight="71.0" prefWidth="236.0">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="71.0" prefWidth="71.0">
+                     <children>
+                        <ImageView fitHeight="31.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../Images/claim.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </HBox>
+                  <Button fx:id="btnrec" mnemonicParsing="false" onAction="#changeScreenViewRec" prefHeight="51.0" prefWidth="278.0" style="-fx-background-color: white;" text="Réclamation" textFill="#205072">
+                     <graphic>
+                        <ImageView fitHeight="26.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../Images/logout.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="Arial Bold" size="27.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="228.0" prefWidth="360.0">
+               <children>
+                  <Button layoutX="52.0" layoutY="14.0" mnemonicParsing="false" onAction="#logout" prefHeight="51.0" prefWidth="195.0" style="-fx-background-color: white;" text="Déconnexion" textFill="#205072">
+                     <graphic>
+                        <ImageView fitHeight="26.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../Images/logout.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="Arial Bold" size="14.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+         </children>
+      </VBox>
+      <Separator layoutX="408.0" layoutY="66.0" maxHeight="-Infinity" orientation="VERTICAL" prefHeight="61.0" prefWidth="69.0" />
+      <TextField fx:id="SearchBar" alignment="TOP_LEFT" layoutX="515.0" layoutY="81.0" prefHeight="31.0" prefWidth="481.0" promptText="Rechercher..." style="-fx-background-radius: 50; -fx-background-color: #E5E7E9;" />
+   </children>
+</AnchorPane>

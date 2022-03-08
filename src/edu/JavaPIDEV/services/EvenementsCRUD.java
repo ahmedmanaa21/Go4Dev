@@ -1,0 +1,114 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package edu.JavaPIDEV.services;
+
+import edu.JavaPIDEV.entities.Evenements;
+import edu.JavaPIDEV.utils.MyConnection;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+/**
+ *
+ * @author melki
+ */
+public class EvenementsCRUD {
+    Connection cnx;
+
+    public EvenementsCRUD() {
+        cnx = MyConnection.getInstance().getCnx();
+    }
+    
+//    public void ajouterEvenements(){
+//        try {
+//            String requete="INSERT INTO evenement (nom,description,date_deb,date_fin) VALUES('Camping mahboul','Ijew aamlou jaw maana','22-02-25','22-02-27')";
+//            Statement st=new MyConnection().getCnx().createStatement();
+//            st.executeUpdate(requete); 
+//            System.out.println("Evénement ajouté");
+//        } catch (SQLException ex) {
+//            System.err.println(ex.getMessage());
+//        }
+//           
+//    }
+    public void ajouterEvenements2(Evenements e) {
+        
+        try {
+//            String requete="INSERT INTO evenement (nom,description,date_deb,date_fin) VALUES(?,?,STR_TO_DATE('"+e.getDate_deb()+"','%d-%m-%Y'),STR_TO_DATE('"+e.getDate_fin()+"','%d-%m-%Y'))";
+            String requete="INSERT INTO evenement (nom,description,date_deb,date_fin,image) VALUES(?,?,?,?,?)";
+            PreparedStatement pst= cnx.prepareStatement(requete);
+            pst.setString(1, e.getNom());
+            pst.setString(2, e.getDescription());
+            pst.setDate(3, e.getDate_deb());
+            pst.setDate(4, e.getDate_fin());
+            pst.setString(5, e.getImage());
+            
+            pst.executeUpdate();
+            System.out.println("l'evenement est ajouté!");
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+            Logger.getLogger(EvenementsCRUD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    } 
+    
+    
+    public List<Evenements> affichageEvenements() {
+        List<Evenements> myList = new ArrayList();
+        try {
+            String requete = "SELECT * FROM evenement";
+            Statement st = MyConnection.getInstance().getCnx().createStatement();
+            ResultSet res = st.executeQuery(requete);
+
+            while (res.next()) {
+                Evenements e = new Evenements();
+                e.setId(res.getInt(1));
+                e.setNom(res.getString(2));
+                e.setDescription(res.getString(3));
+                e.setDate_deb(res.getDate(4));
+                e.setDate_fin(res.getDate(5));
+                e.setImage("file:C:\\xampp\\htdocs\\images\\"+res.getString(6));
+                
+
+                myList.add(e);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return myList;
+    }
+    
+    public void modifierEvenements(Evenements e) {
+        try {
+            String requete = "UPDATE evenement SET nom='" + e.getNom() +"',description='" + e.getDescription() + "',date_deb='" + e.getDate_deb()+ "',date_fin='" + e.getDate_fin() + "',Image='" + e.getImage() + "' WHERE id=" + e.getId();
+            Statement st = cnx.createStatement();
+            st.executeUpdate(requete);
+            System.out.println("Evenement modifé !");
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+    
+    public void supprimerEvenements(Evenements e) {
+        try {
+            String requete = "DELETE FROM evenement where id=" + e.getId();
+            Statement st = cnx.createStatement();
+            st.executeUpdate(requete);
+            System.out.println("Evenement supprimé !");
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+    
+
+
+
+    
+}

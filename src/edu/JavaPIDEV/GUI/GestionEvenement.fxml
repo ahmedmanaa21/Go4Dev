@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="909.0" prefWidth="1335.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.JavaPIDEV.GUI.GestionEvenementController">
+   <children>
+      <AnchorPane id="AnchorPane" fx:id="displayArea" layoutX="280.0" layoutY="11.0" prefHeight="912.0" prefWidth="1066.0" stylesheets="@../../../CSS/style.css">
+         <children>
+            <TextField fx:id="idm" layoutX="-22.0" layoutY="170.0" prefHeight="31.0" prefWidth="26.0" visible="false" />
+            <Button layoutX="872.0" layoutY="14.0" mnemonicParsing="false" onAction="#logout" prefHeight="31.0" prefWidth="164.0" stylesheets="@../../../CSS/style.css" text="Déconnexion">
+               <graphic>
+                  <ImageView fx:id="fxlogout" fitHeight="26.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../../Downloads/zero/src/Images/logout.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="bt_image" layoutX="93.0" layoutY="375.0" mnemonicParsing="false" onAction="#image" style="-fx-background-radius: 50;" text="Importer" />
+            <TableView fx:id="tabev" layoutX="286.0" layoutY="253.0" onMouseClicked="#handleMouseAction" prefHeight="405.0" prefWidth="678.0" style="-fx-background-color: #6D7A94;">
+              <columns>
+                <TableColumn fx:id="collnom" onEditCommit="#changenom" prefWidth="97.0" text="Nom" />
+                  <TableColumn fx:id="colldescription" onEditCommit="#editdescription" prefWidth="179.0" text="Description" />
+                  <TableColumn fx:id="colldateDeb" prefWidth="119.0" text="Date début" />
+                  <TableColumn fx:id="colldateFn" prefWidth="118.0" text="Date fin" />
+                  <TableColumn fx:id="collaffiche" prefWidth="164.0" text="Affiche" />
+              </columns>
+            </TableView>
+            <Button fx:id="bt_ajouter" layoutX="403.0" layoutY="672.0" mnemonicParsing="false" onAction="#handleButtonAction" style="-fx-background-radius: 50;" text="Ajouter" />
+            <Button fx:id="bt_modifier" layoutX="579.0" layoutY="672.0" mnemonicParsing="false" onAction="#handleButtonAction" style="-fx-background-radius: 50;" text="Modifier" />
+            <Button fx:id="bt_supprimer" layoutX="745.0" layoutY="672.0" mnemonicParsing="false" onAction="#handleButtonAction" style="-fx-background-radius: 50;" text="Supprimer" />
+            <Button fx:id="btnretour" layoutX="111.0" layoutY="676.0" mnemonicParsing="false" onAction="#retour" style="-fx-background-radius: 50;" text="Retour" />
+            <Button fx:id="pdf" layoutX="902.0" layoutY="191.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="32.0" prefWidth="70.0" style="-fx-background-radius: 50;" text="PDF">
+               <graphic>
+                  <ImageView fitHeight="21.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../image/PDF.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="refresh" layoutX="856.0" layoutY="191.0" mnemonicParsing="false" onAction="#Refresh" prefHeight="32.0" style="-fx-background-radius: 50;">
+               <graphic>
+                  <ImageView fitHeight="18.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../image/icons8-refresh-64.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </AnchorPane>
+      <Label layoutX="614.0" layoutY="129.0" text="Gestion des événements" textFill="#302b70">
+         <font>
+            <Font name="Impact" size="26.0" />
+         </font>
+      </Label>
+      <VBox layoutX="305.0" layoutY="444.0" spacing="23.0">
+         <children>
+            <Label text="Nom">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label text="Date début">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label text="Date fin">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label text="Desciption">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <Label layoutX="289.0" layoutY="281.0" text="Affiche">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="fx_image" fitHeight="149.0" fitWidth="153.0" layoutX="356.0" layoutY="216.0" pickOnBounds="true" preserveRatio="true" />
+      <VBox layoutX="393.0" layoutY="434.0" prefHeight="128.0" prefWidth="153.0" spacing="16.0">
+         <children>
+            <TextField fx:id="fx_nom" style="-fx-background-radius: 50; -fx-background-color: #6D7A94;" />
+            <DatePicker fx:id="fx_dateDeb" style="-fx-background-color: #6D7A94;" />
+            <DatePicker fx:id="fx_dateFin" style="-fx-background-color: #6D7A94;" />
+            <TextArea fx:id="fx_description" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #6D7A94;" />
+         </children>
+      </VBox>
+      <ImageView fx:id="checknom" fitHeight="25.0" fitWidth="31.0" layoutX="574.0" layoutY="439.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="checkdateDeb" fitHeight="25.0" fitWidth="31.0" layoutX="574.0" layoutY="478.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="checkdateFin" fitHeight="25.0" fitWidth="31.0" layoutX="574.0" layoutY="519.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="checkdescription" fitHeight="25.0" fitWidth="31.0" layoutX="574.0" layoutY="563.0" pickOnBounds="true" preserveRatio="true" />
+      <TextField fx:id="recherche" layoutX="614.0" layoutY="205.0" prefHeight="25.0" prefWidth="401.0" promptText="Rechercher.." style="-fx-background-radius: 50; -fx-background-color: #6D7A94;" />
+      <VBox alignment="TOP_CENTER" layoutX="-7.0" layoutY="-1.0" prefHeight="912.0" prefWidth="285.0" spacing="37.0" style="-fx-background-color: #05071F;">
+         <children>
+            <ImageView fx:id="fxlogo" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../PI%20DEV%20Project/logo.png" />
+               </image>
+            </ImageView>
+            <Button alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" mnemonicParsing="false" onAction="#changeScreenAdmin" prefHeight="42.0" prefWidth="258.0" stylesheets="@../../../CSS/style.css" text="Gestion des Admins" textFill="#e7e5e5" textOverrun="CLIP">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </Button>
+            <Button alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" mnemonicParsing="false" onAction="#changeScreenClient" prefHeight="42.0" prefWidth="258.0" stylesheets="@../../../CSS/style.css" text="Gestion des Clients" textOverrun="CLIP">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </Button>
+            <Button alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" mnemonicParsing="false" onAction="#changeScreenReclamations" prefHeight="42.0" prefWidth="258.0" stylesheets="@../../../CSS/style.css" text="Gestion des Réclamations" textOverrun="CLIP">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </Button>
+            <Button alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" mnemonicParsing="false" onAction="#changeScreenZoneCamp" prefHeight="42.0" prefWidth="258.0" stylesheets="@../../../CSS/style.css" text=" Gestion Zone de Camping" textOverrun="CLIP">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </Button>
+            <Button alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" mnemonicParsing="false" onAction="#changeScreenOfre" prefHeight="42.0" prefWidth="258.0" stylesheets="@../../../CSS/style.css" text="Gestion Offre" textOverrun="CLIP">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </Button>
+            <Button alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" mnemonicParsing="false" onAction="#changeScreenCommandes" prefHeight="42.0" prefWidth="258.0" stylesheets="@../../../CSS/style.css" text="Gestion Commandes" textOverrun="CLIP">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </Button>
+            <Button alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" mnemonicParsing="false" onAction="#changeScreenEvent" prefHeight="42.0" prefWidth="258.0" stylesheets="@../../../CSS/style.css" text="Gestion Evenement" textOverrun="CLIP">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </Button>
+            <Button alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" mnemonicParsing="false" onAction="#changeScreenEquip" prefHeight="42.0" prefWidth="258.0" stylesheets="@../../../CSS/style.css" text="Gestion des Equipements" textOverrun="CLIP" />
+            <Button alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" mnemonicParsing="false" onAction="#changeScreenPanier" prefHeight="42.0" prefWidth="258.0" stylesheets="@../../../CSS/style.css" text="Gestion Panier" textOverrun="CLIP" />
+         </children>
+         <padding>
+            <Insets top="55.0" />
+         </padding>
+      </VBox>
+   </children>
+</AnchorPane>
