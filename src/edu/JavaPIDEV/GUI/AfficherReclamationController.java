@@ -197,7 +197,7 @@ public class AfficherReclamationController implements Initializable {
                         ,list.getSelectionModel().getSelectedItem().getCin()
                         ,list.getSelectionModel().getSelectedItem().getScreenshot()
                 ,list.getSelectionModel().getSelectedItem().getMail());
-                
+                     
                 
              Parent p = Loader.getRoot();
                 Stage stage = new Stage();

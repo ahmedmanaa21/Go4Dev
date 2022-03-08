@@ -42,6 +42,8 @@ public class MenuController implements Initializable {
     private Button ListerRerservation;
     @FXML
     private Button afficherClient;
+    @FXML
+    private Button ListerRerservation1;
 
     /**
      * Initializes the controller class.
@@ -131,6 +133,19 @@ public class MenuController implements Initializable {
             ex.getMessage();
         }
           
+    }
+
+    @FXML
+    private void ListerRerservationAdmin(ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("AfficherReservationAdmin.fxml"));
+            Scene scene = new Scene(root, 800, 650);
+            Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            appStage.setScene(scene);
+            appStage.show();
+        } catch (IOException ex) {
+            ex.getMessage();
+        }
     }
 
 }

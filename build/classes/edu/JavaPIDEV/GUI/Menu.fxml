@@ -20,7 +20,7 @@
          <font>
             <Font size="16.0" />
          </font></Button>
-      <Button fx:id="ListerRerservation" layoutX="370.0" layoutY="301.0" mnemonicParsing="false" onAction="#ListerRerservation" prefHeight="74.0" prefWidth="201.0" style="-fx-background-radius: 50;" text="Lister Reservation Admin " textFill="#302b70">
+      <Button fx:id="ListerRerservation" layoutX="365.0" layoutY="178.0" mnemonicParsing="false" onAction="#ListerRerservation" prefHeight="74.0" prefWidth="201.0" style="-fx-background-radius: 50;" text="Lister Reservation Client " textFill="#302b70">
          <font>
             <Font size="16.0" />
          </font></Button>
@@ -43,5 +43,10 @@
       </Button>
       <Line endX="100.0" layoutX="137.0" layoutY="272.0" startX="-100.0" />
       <Line endX="100.0" layoutX="466.0" layoutY="272.0" startX="-100.0" />
+      <Button fx:id="ListerRerservation1" layoutX="375.0" layoutY="301.0" mnemonicParsing="false" onAction="#ListerRerservationAdmin" prefHeight="74.0" prefWidth="201.0" style="-fx-background-radius: 50;" text="Lister Reservation Admin " textFill="#302b70">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

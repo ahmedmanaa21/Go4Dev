@@ -143,44 +143,34 @@ public class ReclamationCRUD {
                     }
                 });
     }
-      public List<Reclamation> SearchEV(String recherche) {
-        List<Reclamation> myList = new ArrayList();
+    
+ public void SupprimerReclamationarchiver() {
+         List<Reclamation> listeReclamation = new ArrayList<Reclamation>();
+        listeReclamation = affichageReclamation();
+        Date date;
+        date = new Date();
 
-        try {
-            String requete3 = "SELECT * \n"
-                    + "FROM Reclamation AS r,reclamation \n"
-                    + " WHERE  r.type_rec LIKE '%" + recherche + "%' OR\n"
-                    + "         r.email LIKE '%" + recherche + "%' OR\n"
-                    + "           r.description_rec LIKE '%" + recherche + "%'";
-          
+        Timestamp currentDate = new Timestamp(date.getTime());
+       
+        listeReclamation.stream()
+                //si depasser akther men aam
+                 .filter(r -> r.getDate_rec().getDate() - currentDate.getDate() > 7)
+                .forEach((P) -> {
+                   
+                    try {
+                       
+                        String requete = "DELETE FROM reclamation WHERE archived = 1 ";
+                       
+                       Statement st = MyConnection.getInstance().getCnx().createStatement();
+                        st.executeUpdate(requete);
+                       
+                       
 
-            
-                Statement st = MyConnection.getInstance().getCnx().createStatement();
-             ResultSet rs=st.executeQuery(requete3);
-            while (rs.next()) {
-
-                Reclamation r = new Reclamation();
-
-                rs.next();
-                r.setId_rec(rs.getInt(1));
-                r.setType_rec(rs.getString(2));
-                r.setDescription_rec(rs.getString(3));
-                r.setDate_rec(rs.getDate(4));
-                r.setCin(rs.getInt(5));
-                r.setScreenshot("file:J:\\xampp\\htdocs\\images\\"+rs.getString("screenshot"));
-                r.setMail(rs.getString("email"));
-            
-                myList.add(r);
-
-            }
-
-        } catch (SQLException ex) {
-            System.err.println("erreur de trouver ");
-            System.out.println(ex.getMessage());
-        }
-        return myList;
+                    } catch (SQLException e) {
+                        System.out.println("erreur");
+                    }
+                });
     }
-
 
       
 }

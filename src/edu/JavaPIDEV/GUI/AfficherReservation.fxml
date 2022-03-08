@@ -26,6 +26,5 @@
             <TableColumn fx:id="nbrP" prefWidth="111.99997558593748" text="NBR de personne" />
         </columns>
       </TableView>
-      <Button fx:id="navigation" layoutX="685.0" layoutY="66.0" mnemonicParsing="false" onAction="#navigation" text="Statistique" />
    </children>
 </AnchorPane>

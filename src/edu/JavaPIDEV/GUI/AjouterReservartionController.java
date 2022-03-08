@@ -32,8 +32,6 @@ import javafx.stage.Stage;
 public class AjouterReservartionController implements Initializable {
 
     @FXML
-    private TextField id_res;
-    @FXML
     private TextField nbr_res;
     @FXML
     private TextField cin_res;
@@ -60,7 +58,7 @@ public class AjouterReservartionController implements Initializable {
     @FXML
     private void AddReservation(ActionEvent event) throws IOException {
         if(testSaisie()){ 
-        int ID = Integer.valueOf(id_res.getText());
+       // int ID = Integer.valueOf(id_res.getText());
         int CIN = Integer.valueOf(cin_res.getText());
         java.sql.Date date = java.sql.Date.valueOf(date_res.getValue());
          int IDZ = Integer.valueOf(idZ_res.getText());
@@ -70,7 +68,7 @@ public class AjouterReservartionController implements Initializable {
         
        
         
-        Reservation res =new Reservation(ID, CIN, date, IDZ, NBR);
+        Reservation res =new Reservation(CIN, date, IDZ, NBR);
         ReservationCRUD RS = new ReservationCRUD();
         RS.ajouterReservation(res);
         System.out.println("ajouté avec succes");

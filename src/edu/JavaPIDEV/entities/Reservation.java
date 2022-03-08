@@ -45,8 +45,15 @@ public class Reservation {
         this.id_res = id_res;
     }
 
+    public Reservation(int cin, Date date_res, int id_zoneCamping, int nrbPersonne) {
+        this.cin = cin;
+        this.date_res = date_res;
+        this.id_zoneCamping = id_zoneCamping;
+        this.nrbPersonne = nrbPersonne;
+    }
 
-    
+
+     
     public int getId_res() {
         return id_res;
     }

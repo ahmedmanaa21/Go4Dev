@@ -49,6 +49,9 @@ import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.control.Button;
 
 
 /**
@@ -62,6 +65,8 @@ public class ChartController implements Initializable {
     private AnchorPane chartNode;
 public static int numeroPDF = 0;
 Document doc = new Document() {};
+    @FXML
+    private Button retourner;
     /**
      * Initializes the controller class.
      */
@@ -177,6 +182,24 @@ Document doc = new Document() {};
             System.out.println(e.getMessage());
 
         }
+    }
+
+    @FXML
+    private void retourner(ActionEvent event) {
+          try {
+
+            Node node = (Node) event.getSource();
+            Stage stage = (Stage) node.getScene().getWindow();
+
+            stage.close();
+            Scene scene = new Scene(FXMLLoader.load(getClass().getResource("AfficherReservationAdmin.fxml")));
+            stage.setScene(scene);
+            stage.show();
+
+        } catch (IOException ex) {
+            System.err.println(ex.getMessage());
+        }
+        
     }
     
 }

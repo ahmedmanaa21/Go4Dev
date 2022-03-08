@@ -120,6 +120,7 @@ public class AfficherClinetRECController implements Initializable {
                                 ,list.getSelectionModel().getSelectedItem().getDate_rec()
                                 ,list.getSelectionModel().getSelectedItem().getScreenshot()
                                 ,list.getSelectionModel().getSelectedItem().getMail());
+                   
                     } catch (FileNotFoundException ex) {
                         Logger.getLogger(AfficherClinetRECController.class.getName()).log(Level.SEVERE, null, ex);
                     }

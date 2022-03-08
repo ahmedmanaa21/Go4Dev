@@ -93,6 +93,7 @@ public class AjouterReclamationController implements Initializable {
         ReclamationCRUD rec = new ReclamationCRUD();
         
         rec.archiverReclamation();
+       rec.SupprimerReclamationarchiver();
         // TODO
         screenshot.setOnDragOver(new EventHandler<DragEvent>() {
             @Override

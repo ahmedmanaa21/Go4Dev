@@ -75,7 +75,7 @@ private String path;
     private TextField MoidREC;
     @FXML
     private ImageView checkmail;
-
+private Reclamation R;
     /**
      * Initializes the controller class.
      */
@@ -137,12 +137,15 @@ private String path;
         Modescription.setText(""+description_rec);
        // Mcin.setText(""+cin);
         MoEmail.setText(""+email);
-//        InputStream Stream = new FileInputStream(screenshot);
-//        Image image= new Image(Stream);
-//        Moscreenshot.setImage(image);
         
        
     }
+    public void setData(Reclamation R) throws FileNotFoundException{
+     
+     InputStream Stream = new FileInputStream(R.getScreenshot());
+        Image image= new Image(Stream);
+        Moscreenshot.setImage(image);
+     }
 
     @FXML
     private void ModifImage(ActionEvent event) throws MalformedURLException {

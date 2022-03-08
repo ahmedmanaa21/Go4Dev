@@ -110,8 +110,8 @@ public class ModifierClientRECController implements Initializable {
             Random rand = new Random();
          //   int randomcode = rand.nextInt(9999);
             String host = "smtp.gmail.com";
-            String user = "jasser.boukraya@esprit.tn";
-            String pass = "191JFT2024";
+            String user = "testahmedahmed210@gmail.com";
+            String pass = "CampersDen210";
             String to = MEmail.getText();
             String subject = "Initialisation Code";
 

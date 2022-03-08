@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17" fx:controller="edu.JavaPIDEV.GUI.AfficherReservationAdminController">
+   <children>
+      <Button fx:id="update" layoutX="287.0" layoutY="342.0" mnemonicParsing="false" onAction="#Refresh" prefHeight="38.0" prefWidth="71.0" style="-fx-background-radius: 50;" text="Actualiser" />
+      <Button fx:id="delet" layoutX="551.0" layoutY="342.0" mnemonicParsing="false" onAction="#DELET" prefHeight="38.0" prefWidth="71.0" style="-fx-background-radius: 50;" text="Supprimer" />
+      <Button fx:id="retour" layoutY="342.0" mnemonicParsing="false" onAction="#retour" prefHeight="38.0" prefWidth="71.0" style="-fx-background-radius: 50;" text="Retourner" />
+      <Text fill="#302b70" layoutX="205.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="liste des reservations">
+         <font>
+            <Font name="Impact" size="25.0" />
+         </font>
+      </Text>
+      <TableView fx:id="listRES" layoutX="16.0" layoutY="69.0" prefHeight="246.0" prefWidth="581.0">
+         <columns>
+            <TableColumn fx:id="COLOid" prefWidth="113.5999755859375" text="ID_RESERVATION" />
+            <TableColumn fx:id="COLOcin" prefWidth="64.79998779296875" text="CIN" />
+            <TableColumn fx:id="COLOdate" prefWidth="75.20001220703125" text="Date" />
+            <TableColumn fx:id="zone" prefWidth="83.199951171875" text="ID zone" />
+            <TableColumn fx:id="nbrP" prefWidth="111.99997558593748" text="NBR de personne" />
+         </columns>
+      </TableView>
+      <Button fx:id="navigation" layoutX="605.0" layoutY="32.0" mnemonicParsing="false" onAction="#navigation" text="Statistique" />
+   </children>
+</AnchorPane>

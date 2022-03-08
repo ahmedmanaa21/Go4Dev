@@ -7,5 +7,6 @@
    <children>
       <AnchorPane fx:id="chartNode" layoutX="99.0" layoutY="36.0" prefHeight="294.0" prefWidth="402.0" />
       <Button layoutX="14.0" layoutY="360.0" mnemonicParsing="false" onAction="#convertirPDF" text="Convertir PDF" />
+      <Button fx:id="retourner" layoutX="514.0" layoutY="348.0" mnemonicParsing="false" onAction="#retourner" text="Retourner" />
    </children>
 </AnchorPane>
