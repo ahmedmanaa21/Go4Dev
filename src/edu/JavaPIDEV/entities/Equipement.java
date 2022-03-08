@@ -10,21 +10,37 @@ package edu.JavaPIDEV.entities;
  * @author dell
  */
 public class Equipement {
+
+   
   private int Ref_equipement;
   private String Nom_equipement;
   private String image ;
-  private  int Prix_equipement;
+  private  Double Prix_equipement;
   private String Description_equipement ; 
 
   public Equipement(){} 
 
-    public Equipement(int Ref_equipement, String Nom_equipement,String image, int Prix_equipement, String Description_equipement) {
+    public Equipement(int Ref_equipement, String Nom_equipement,String image, Double Prix_equipement, String Description_equipement) {
         this.Ref_equipement = Ref_equipement;
         this.image = image;
         this.Nom_equipement = Nom_equipement;
         this.Prix_equipement = Prix_equipement;
         this.Description_equipement = Description_equipement;
     }
+    public Equipement(String Nom_equipement,String image, Double Prix_equipement, String Description_equipement) {
+        this.image = image;
+        this.Nom_equipement = Nom_equipement;
+        this.Prix_equipement = Prix_equipement;
+        this.Description_equipement = Description_equipement;
+    }
+
+    public Equipement(Double Prix_equipement,String Nom_equipement) {
+        this.Prix_equipement = Prix_equipement;
+        this.Nom_equipement = Nom_equipement;
+    }
+   
+
+  
 
     public int getRef_equipement() {
         return Ref_equipement;
@@ -42,11 +58,11 @@ public class Equipement {
         this.Nom_equipement = Nom_equipement;
     }
 
-    public  int getPrix_equipement() {
+    public  Double getPrix_equipement() {
         return Prix_equipement;
     }
 
-    public void setPrix_equipement(int Prix_equipement) {
+    public void setPrix_equipement(Double Prix_equipement) {
         this.Prix_equipement = Prix_equipement;
     }
 

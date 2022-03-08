@@ -26,32 +26,35 @@ public class MainClass {
       MyConnection mc= new MyConnection(); 
      EquipementCRUD equ = new EquipementCRUD();
       
-     //equ.ajouterequipement();
+    //equ.ajouterequipement(new Equipement("maya","image",22.2,"descrii"));
       //List<Equipement>listEquipement=equ.affichageEquipement();
       //for (Equipement equi : listEquipement){
         //  System.out.println(equi);
      // }
       
       //equ.rechercherparnom("rass");
-    //  equ.modifierequipement(new Equipement (10,"cammm","image",50, "loisir bbbb")); 
+     //equ.modifierequipement(new Equipement (28,"cammm","image",50, "loisir bbbb")); 
     
       
       
       OffreCRUD off = new OffreCRUD();
-      //Offre o1 = new Offre(28,"30/30/222","85/55/2020","50%");
+   //   java.util.Date AjoutDate = new java.util.Date("2000/05/31");
+     //   java.sql.Date sqlDate = new java.sql.Date(AjoutDate.getTime());
+   //   java.util.Date AjoutDate1 = new java.util.Date("1999/05/30");
+    //    java.sql.Date sqlDate1 = new java.sql.Date(AjoutDate1.getTime());
+   //   Offre o1 = new Offre(28,sqlDate,sqlDate1,"50%");
       
       //Offre o2 = new Offre(11,11,"debut","fin");
       //Offre o = new Offre(15,"nnn","zz");
     //off.ajouteroffre(o1);
-      off.affichagepromotion();
-     
+      //off.affichagepromotion();
+    // off.promo(50);
       
-//      for (Offre Offr : listOffre){
-//          System.out.println(Offr);
-     // off.modifieroffre(new Offre (27,10,"50/25/225","50/50/500","96%",199.99,174.96)); 
-       //off.supprimeroffre(28);
-       //off.statistique();
-       //off.promo(123,"25%");
+    //  for (Offre Offr : listOffre){
+         System.out.println(off.affichagepromotion());
+    //  off.modifieroffre(new Offre (46,28,sqlDate,sqlDate1,"50%")); 
+       //off.supprimeroffre(46);
+  
        
        //Mailing.sendMail("maissa.choura@esprit.tn");
     }

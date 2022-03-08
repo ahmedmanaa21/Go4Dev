@@ -8,12 +8,15 @@ package edu.JavaPIDEV.services;
 import edu.JavaPIDEV.entities.Equipement;
 import edu.JavaPIDEV.entities.Offre;
 import edu.JavaPIDEV.utils.MyConnection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -32,8 +35,8 @@ public class OffreCRUD {
             PreparedStatement pst = new MyConnection().getCnx().prepareStatement(requete);
            //pst.setShort(1, (short) o.getId_promotion());
                pst.setShort(1, (short) o.getRef_equipement());
-               pst.setString(2, o.getDate_debutpromo());
-               pst.setString(3, o.getDate_finpromo());
+               pst.setDate(2, o.getDate_debutpromo());
+               pst.setDate(3, o.getDate_finpromo());
                pst.setString(4, o.getPourcentagepromo());
              
                
@@ -45,88 +48,72 @@ public class OffreCRUD {
 
       }
       
-      /*
-      public List <Offre> affichagepromotion(){
-       List<Offre>myList=new ArrayList();
-        try {
-            String requete ="SELECT Id_promotion ,Date_debutpromo,Date_finpromo,Pourcentagepromo + equipement.prix_equipement , offre.prix_equipement  FROM equipement,offre  WHERE offre.ref_equipement= equipement.ref_equipement ";
-            Statement st = new MyConnection().getCnx().createStatement();
-           ResultSet res =st.executeQuery(requete);
-          while (res.next()){
-          Offre O = new Offre();
-          O.setId_promotion(res.getInt(1));
-          O.setRef_equipement(res.getInt(2));
-          O.setDate_debutpromo(res.getString("Date_debutpromo")); //getint :tjib les donne li mawjoudine f column
-          O.setDate_finpromo(res.getString("Date_finpromo"));
-          O.setPourcentagepromo(res.getString("Pourcentagepromo"));
-           O.setPrix_equipement(res.getDouble("prix_equipement"));
-          //O.setPrix_aprespromotion(res.getDouble("Prix_aprespromotion"));
-     
-          myList.add(O);
-                  }
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-        
-   return myList;
-   }
-      */
       
       
+       public  ObservableList<Offre> affichagepromotion(){
       
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
- 
-      
-      
- public void  affichagepromotion(){
-      
-       
+        List<Offre>myList=new ArrayList();
        int prix;
         try {
             
-           // String requete ="SELECT * FROM Offre  ";
-             String requete ="SELECT a.prix_equipement as 'Prix' ,o.id_promotion,o.ref_equipement,o.date_debutpromo,o.date_finpromo,o.pourcentagepromo FROM equipement a ,offre o where a.ref_equipement=o.ref_equipement ";
+          
+             String requete ="SELECT a.Prix_equipement as 'Prix',a.nom_equipement as nom   ,o.id_promotion,o.ref_equipement,o.date_debutpromo,o.date_finpromo,o.pourcentagepromo FROM equipement a ,offre o where a.ref_equipement=o.ref_equipement ";
             
             
 
             Statement st = new MyConnection().getCnx().createStatement();
            ResultSet res =st.executeQuery(requete);
           while (res.next()){
-
-          prix = res.getInt(1);
-          int IDpromotion = res.getInt("id_promotion");
-          int Ref_equipement = res.getInt("ref_equipement");
-          String Date_debutpromo = res.getString("Date_debutpromo"); //getint :tjib les donne li mawjoudine f column
-          String Date_finpromo = res.getString("Date_finpromo");
-          String Pourcentagepromo = res.getString("Pourcentagepromo");
+              Offre off = new Offre();
+              off.setId_promotion(res.getInt("id_promotion"));
+              off.setPrix_equipement(res.getDouble("Prix"));
+              off.setNom_equipement(res.getString("nom"));
+              off.setRef_equipement(res.getInt("ref_equipement"));
+              off.setDate_debutpromo(res.getDate("Date_debutpromo"));
+            off.setDate_finpromo(res.getDate("Date_finpromo"));
+            off.setPourcentagepromo(res.getString("Pourcentagepromo"));
+        
           
-          System.out.println("Prix : "+prix+"\n"+"ID promotion:"+IDpromotion+"\n"+"reference equipement: "+Ref_equipement+"\n"+"Date debut promotion : "+Date_debutpromo+"\n");
-          
-          
-          
-         // Equipement a = new Equipement();
-     //   a.getprix_equipement(res.getInt(4));
-         // a.setPrix_equipement(res.getInt("prix_equipement"));
-         
-         
-         
+   myList.add(off);
                   }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
+        ObservableList<Offre>List=FXCollections.observableList(myList);
         
-   
+   return List;
    }
-
+       
+       
+       
+       
+       
+       
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+     
   public void modifieroffre(Offre O ) {
         try {
             String req = "UPDATE Offre SET Date_debutpromo='" + O.getDate_debutpromo() + "',Date_finpromo='" + O.getDate_finpromo() +"',Pourcentagepromo='" + O.getPourcentagepromo() + "' WHERE Id_promotion=" + O.getId_promotion();
@@ -152,17 +139,21 @@ public class OffreCRUD {
      
      
      /*
-       public void promo(int Prix_equipement,String pourcentagepromo){
-       
+       public void promo(int prix_equipement){
+       int total=0;
+       int b=50;
         try {
-            String requete =" SELECT a.Prix_equipement * o.pourcentagepromo FROM equipement a,Offre o where a.ref_equipement=o.ref_equipement ";
+            String requete =" SELECT a.prix_equipement * o.pourcentagepromo FROM equipement a,Offre o where a.ref_equipement=o.ref_equipement ";
             Statement st = new MyConnection().getCnx().createStatement();
            ResultSet res =st.executeQuery(requete);
           while (res.next()){
           Offre O = new Offre();
           Equipement a = new Equipement();
-         a.setPrix_equipement(res.getInt("Prix_equipement"));
+         a.setPrix_equipement(res.getInt("prix_equipement"));
           O.setPourcentagepromo(res.getString("Pourcentagepromo"));
+          total=prix_equipement *b;
+          System.out.println("le prix apres promo est "+total+"dinar");
+                  
                   }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -170,8 +161,8 @@ public class OffreCRUD {
         
    
    }
-     */
-       
+     
+    */   
      
     /* 
      public void promo(){

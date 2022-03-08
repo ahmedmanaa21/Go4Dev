@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #BCCAE6;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.JavaPIDEV.GUI.MenuController">
+   <children>
+      <Button fx:id="Garticle" layoutX="174.0" layoutY="92.0" mnemonicParsing="false" onAction="#gestionA" prefHeight="71.0" prefWidth="232.0" style="-fx-background-radius: 50;" text="Gestion des Equipements" />
+      <Button fx:id="Goffre" layoutX="174.0" layoutY="200.0" mnemonicParsing="false" onAction="#gestionO" prefHeight="71.0" prefWidth="232.0" style="-fx-background-radius: 50;" text="Gestion des Offres" />
+   </children>
+</AnchorPane>

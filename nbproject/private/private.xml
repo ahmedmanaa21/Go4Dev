@@ -3,11 +3,23 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/dell/Documents/NetBeansProjects/JavaPIDEV/src/edu/JavaPIDEV/entities/Equipement.java</file>
-            <file>file:/C:/Users/dell/Documents/NetBeansProjects/JavaPIDEV/src/edu/JavaPIDEV/tests/MainClass.java</file>
-            <file>file:/C:/Users/dell/Documents/NetBeansProjects/JavaPIDEV/src/edu/JavaPIDEV/entities/Mailing.java</file>
+            <file>file:/C:/Users/dell/Documents/NetBeansProjects/JavaPIDEV/src/edu/JavaPIDEV/GUI/Qrcode.fxml</file>
+            <file>file:/C:/Users/dell/Documents/NetBeansProjects/JavaPIDEV/src/edu/JavaPIDEV/GUI/main.java</file>
+            <file>file:/C:/Users/dell/Documents/NetBeansProjects/JavaPIDEV/src/edu/JavaPIDEV/GUI/affichagefront.fxml</file>
+            <file>file:/C:/Users/dell/Documents/NetBeansProjects/JavaPIDEV/src/edu/JavaPIDEV/GUI/AjouteroffreController.java</file>
+            <file>file:/C:/Users/dell/Documents/NetBeansProjects/JavaPIDEV/src/edu/JavaPIDEV/GUI/AfficherequipementController.java</file>
             <file>file:/C:/Users/dell/Documents/NetBeansProjects/JavaPIDEV/src/edu/JavaPIDEV/entities/Offre.java</file>
             <file>file:/C:/Users/dell/Documents/NetBeansProjects/JavaPIDEV/src/edu/JavaPIDEV/services/OffreCRUD.java</file>
+            <file>file:/C:/Users/dell/Documents/NetBeansProjects/JavaPIDEV/src/edu/JavaPIDEV/GUI/Afficherequipement.fxml</file>
+            <file>file:/C:/Users/dell/Documents/NetBeansProjects/JavaPIDEV/src/edu/JavaPIDEV/utils/cnst.java</file>
+            <file>file:/C:/Users/dell/Documents/NetBeansProjects/JavaPIDEV/src/edu/JavaPIDEV/entities/Equipement.java</file>
+            <file>file:/C:/Users/dell/Documents/NetBeansProjects/JavaPIDEV/src/edu/JavaPIDEV/utils/MyConnection.java</file>
+            <file>file:/C:/Users/dell/Documents/NetBeansProjects/JavaPIDEV/src/edu/JavaPIDEV/services/pdfequipement.java</file>
+            <file>file:/C:/Users/dell/Documents/NetBeansProjects/JavaPIDEV/src/edu/JavaPIDEV/GUI/AjouterequipementController.java</file>
+            <file>file:/C:/Users/dell/Documents/NetBeansProjects/JavaPIDEV/src/edu/JavaPIDEV/GUI/AffichagefrontController.java</file>
+            <file>file:/C:/Users/dell/Documents/NetBeansProjects/JavaPIDEV/src/edu/JavaPIDEV/GUI/QRcodeController.java</file>
+            <file>file:/C:/Users/dell/Documents/NetBeansProjects/JavaPIDEV/src/edu/JavaPIDEV/GUI/Ajouteroffre.fxml</file>
+            <file>file:/C:/Users/dell/Documents/NetBeansProjects/JavaPIDEV/src/edu/JavaPIDEV/utils/equipementutils.java</file>
             <file>file:/C:/Users/dell/Documents/NetBeansProjects/JavaPIDEV/src/edu/JavaPIDEV/services/EquipementCRUD.java</file>
         </group>
     </open-files>

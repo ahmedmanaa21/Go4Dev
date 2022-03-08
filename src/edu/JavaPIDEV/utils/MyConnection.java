@@ -14,10 +14,13 @@ import java.sql.SQLException;
  * @author dell
  */
 public class MyConnection {
-
+/*
     public static Object getInstance() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+*/
+    
+    
 
     //Design Patter - Singleton
     public String url = "jdbc:mysql://localhost:3306/PIDEVdb";
@@ -33,6 +36,11 @@ public class MyConnection {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
+    }
+    public static MyConnection getInstance() {
+        if(instance == null)
+            instance = new MyConnection();
+        return instance;
     }
 public Connection getCnx() {
 return cnx;}

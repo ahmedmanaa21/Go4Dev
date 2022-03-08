@@ -5,21 +5,28 @@
  */
 package edu.JavaPIDEV.entities;
 
+import java.sql.Date;
+import java.sql.Timestamp;
+import javafx.scene.control.TextField;
+
 /**
  *
  * @author dell
  */
-public class Offre {
+public class Offre extends Equipement{
    private int Id_promotion;
   private int ref_equipement ;
-  private String date_debutpromo ;
-  private String date_finpromo;
+  private Date date_debutpromo ;
+  private Date date_finpromo;
   private String Pourcentagepromo;
+  
  ;
   
-   public Offre(){}
+   public Offre(){
+   super();
+   }
 
-    public Offre( int ref_equipement, String date_debutpromo, String date_finpromo, String Pourcentagepromo) {
+    public Offre( int ref_equipement, Date date_debutpromo, Date date_finpromo, String Pourcentagepromo) {
        // this.Id_promotion = Id_promotion;
         this.ref_equipement = ref_equipement;
         this.date_debutpromo = date_debutpromo;
@@ -28,10 +35,19 @@ public class Offre {
    
     }
 
+    public Offre(int Id_promotion, int ref_equipement, Date date_debutpromo, Date date_finpromo, String Pourcentagepromo, Double Prix_equipement,String Nom_equipement) {
+        super(Prix_equipement,Nom_equipement);
+        this.Id_promotion = Id_promotion;
+        this.ref_equipement = ref_equipement;
+        this.date_debutpromo = date_debutpromo;
+        this.date_finpromo = date_finpromo;
+        this.Pourcentagepromo = Pourcentagepromo;
+    }
+
    
      
      
-      public Offre(int Id_promotion ,int ref_equipement, String date_debutpromo, String date_finpromo, String Pourcentagepromo) {
+      public Offre(int Id_promotion ,int ref_equipement, Date date_debutpromo, Date date_finpromo, String Pourcentagepromo) {
         this.Id_promotion = Id_promotion;
         this.ref_equipement = ref_equipement;
         this.date_debutpromo = date_debutpromo;
@@ -40,6 +56,9 @@ public class Offre {
     
 
     } 
+
+   
+    
      
      
      
@@ -79,26 +98,28 @@ public class Offre {
         this.ref_equipement = ref_equipement;
     }
 
-    public String getDate_debutpromo() {
+    public Date getDate_debutpromo() {
         return date_debutpromo;
     }
 
-    public void setDate_debutpromo(String date_debutpromo) {
+    public void setDate_debutpromo(Date date_debutpromo) {
         this.date_debutpromo = date_debutpromo;
     }
 
-    public String getDate_finpromo() {
+    public Date getDate_finpromo() {
         return date_finpromo;
     }
 
-    public void setDate_finpromo(String date_finpromo) {
+    public void setDate_finpromo(Date date_finpromo) {
         this.date_finpromo = date_finpromo;
     }
 
     @Override
     public String toString() {
-        return "Offre{" + "Id_promotion=" + Id_promotion + ", ref_equipement=" + ref_equipement + ", date_debutpromo=" + date_debutpromo + ", date_finpromo=" + date_finpromo + ", Pourcentagepromo=" + Pourcentagepromo  + '}';
+        return "Offre{" + "Id_promotion=" + Id_promotion + ", ref_equipement=" + ref_equipement + ", date_debutpromo=" + date_debutpromo + ", date_finpromo=" + date_finpromo + ", Pourcentagepromo=" + Pourcentagepromo + '}'+super.toString();
     }
+
+   
 
     public int getId_promotion() {
         return Id_promotion;
