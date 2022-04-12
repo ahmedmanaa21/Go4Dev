@@ -10,8 +10,9 @@ use Symfony\Component\Serializer\Annotation\Groups;
  * Offre
  *
  * @ORM\Table(name="offre", indexes={@ORM\Index(name="ref_equipement", columns={"ref_equipement"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass=OffreRepository::class)
  */
+ 
 class Offre
 {
     /**
@@ -117,6 +118,9 @@ class Offre
 
         return $this;
     }
-
+ public function __toString(){
+        $date=strval($this->dateDebutpromo);
+        return $date;
+    }
 
 }

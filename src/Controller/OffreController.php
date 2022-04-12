@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Entity\Offre;
 use App\Form\OffreType;
+use App\Repository\OffreRepository;
+use App\Repository\EquipementRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -16,6 +18,22 @@ use Symfony\Component\Form\Extension\Core\Type\DateType;
  */
 class OffreController extends AbstractController
 {
+
+
+
+      /**
+     * @Route("/front", name="offreFront", methods={"GET"})
+     */
+    public function indexFront(OffreRepository $offreRepository,EquipementRepository $equipementRepository): Response
+
+    {
+       
+        return $this->render('offre/frontoffre.html.twig', [
+            'offres' =>     $offreRepository->findAll()
+        ]);
+    } 
+
+
     /**
      * @Route("/", name="app_offre_index", methods={"GET"})
      */
