@@ -26,6 +26,12 @@ class Equipement
      * @var string
      *@Assert\NotBlank
      * @ORM\Column(name="nom_equipement", type="string", length=255, nullable=false)
+     *      * @Assert\Length(
+     * min=3,
+     * max=50,
+     * minMessage = "le nom doit comporter au moins {{ limit }} caractéres",
+     * maxMessage = "le prenom  doit comporter au plus {{ limit }} caractéres"
+     *)
      */
     private $nomEquipement;
 

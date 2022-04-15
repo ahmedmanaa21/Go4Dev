@@ -3,11 +3,12 @@
 {% block title %}Equipement index{% endblock %}
 
 {% block body %}
+<container>
     <h1>Equipement</h1>
 
     <table class="table">
         <thead>
-            <tr>
+            <tr class="table-primary">
                 <th>RefEquipement</th>
                 <th>NomEquipement</th>
                 <th>Image</th>
@@ -38,4 +39,5 @@
     </table>
 
     <a href="{{ path('app_equipement_new') }}">Create new</a>
+    </div>
 {% endblock %}
