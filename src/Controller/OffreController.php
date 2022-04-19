@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
-
+use App\service\MailerService;
 /**
  * @Route("/offre")
  */
@@ -51,7 +51,8 @@ class OffreController extends AbstractController
     /**
      * @Route("/new", name="app_offre_new", methods={"GET", "POST"})
      */
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    public function new(Request $request, EntityManagerInterface $entityManager,\Swift_Mailer $mailer,
+    MailerService $mailerService): Response
     {
         $offre = new Offre();
         $form = $this->createForm(OffreType::class, $offre);
@@ -63,6 +64,13 @@ class OffreController extends AbstractController
 
             return $this->redirectToRoute('app_offre_index', [], Response::HTTP_SEE_OTHER);
         }
+        
+        $mailerService->send(
+            "b",
+            "maissa.choura.antar@esprit.tn",
+            "mohamediheb.berraies@esprit.tn",
+            
+            "MailTemplate/emailTemplate.html.twig");
 
         return $this->render('offre/new.html.twig', [
             'offre' => $offre,
